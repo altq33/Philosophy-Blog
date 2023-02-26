@@ -6,6 +6,7 @@ import { validationResult } from "express-validator";
 import { UserModel } from "./models/User.js";
 import bcrypt from "bcrypt";
 import checkAuth from "./utils/checkAuth.js";
+import cors from "cors";
 
 mongoose.set("strictQuery", false);
 const dbURI = "mongodb://127.0.0.1:27017/phblog";
@@ -22,6 +23,7 @@ mongoose
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("Alldone");
