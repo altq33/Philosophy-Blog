@@ -1,19 +1,17 @@
 import React from "react";
 import app from "../App/app.module.scss";
-import { NavbarBtn } from "./NavbarBtn";
 import { NavLink } from "react-router-dom";
-
-import navbarStyles from "./navbar.module.scss";
+import navbar from "./navbar.module.scss";
 
 export const Navbar: React.FC = () => {
   return (
-    <div className={navbarStyles.header_nav}>
-      <nav className={navbarStyles.nav_menu}>
+    <div className={navbar.header_nav}>
+      <nav className={navbar.nav_menu}>
         <NavLink to={"/"}>
-          <NavbarBtn className={app.nav_btn} text="Sign in" />
+          <button className={app.nav_btn}>Sign in</button>
         </NavLink>
         <NavLink to={"/registr"}>
-          <NavbarBtn className={`${app.nav_btn} ${app.btn_up}`} text="Sign up" />
+          <button className={`${app.nav_btn} ${app.btn_up}`}>Sign Up</button>
         </NavLink>
       </nav>
     </div>
