@@ -3,13 +3,14 @@ import bcrypt from "bcrypt";
 import { userModel } from "../models/User.js";
 import { validationResult } from "express-validator";
 import { userService } from "../services/UserService.js";
+import { ApiError } from "../exceptions/ApiError.js";
 
 class UserController {
   async registration(req, res, next) {
     try {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
-        return res.status(400).json(errors.array());
+        return next(ApiError.BadRequest("Validation error", errors.array()));
       }
       const user = await userService.registration(
         req.body.email,
@@ -22,37 +23,67 @@ class UserController {
       });
       return res.json(user);
     } catch (error) {
-      console.log(error);
-      res.status(500).json({
-        message: "error to reg",
-      });
+      next(error);
     }
   }
 
   async login(req, res, next) {
     try {
-    } catch (error) {}
+      const { login, password } = req.body;
+      const userData = await userService.login(login, password);
+      res.cookie("refreshToken", userData.refreshToken, {
+        maxAge: 30 * 24 * 60 * 60 * 1000,
+        httpOnly: true,
+      });
+      return res.json(userData);
+    } catch (error) {
+      next(error);
+    }
   }
 
   async logout(req, res, next) {
     try {
-    } catch (error) {}
+      const { refreshToken } = req.cookies;
+      const token = await userService.logout(refreshToken);
+      res.clearCookie("refreshToken");
+      return res.status(200).json({ message: "Successful logout", token });
+    } catch (error) {
+      next(error);
+    }
   }
 
   async activate(req, res, next) {
     try {
-    } catch (error) {}
+      const activationLink = req.params.link;
+      await userService.activate(activationLink);
+      return res.redirect(process.env.CLIENT_URL);
+    } catch (error) {
+      next(error);
+    }
   }
 
   async refresh(req, res, next) {
     try {
-    } catch (error) {}
+      const { refreshToken } = req.cookies;
+
+      const userData = await userService.refresh(refreshToken);
+      res.cookie("refreshToken", userData.refreshToken, {
+        maxAge: 30 * 24 * 60 * 60 * 1000,
+        httpOnly: true,
+      });
+      return res.json(userData);
+    } catch (error) {
+      next(error);
+    }
   }
 
   async getUsers(req, res, next) {
     try {
-      res.json([1, 2, 3]);
-    } catch (error) {}
+      const users = await userService.getAllUsers();
+      return res.json(users);
+    } catch (error) {
+      next(error);
+    }
   }
 }
 
