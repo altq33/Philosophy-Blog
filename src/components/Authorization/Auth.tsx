@@ -2,13 +2,13 @@ import React, { ChangeEvent, FormEvent, useState } from "react";
 import app from "../App/app.module.scss";
 import axios from "axios";
 export const Auth: React.FC = () => {
-  const [login, setformLogin] = useState("");
-  const [password, setformPass] = useState("");
+  const [login, setLogin] = useState("");
+  const [password, setPass] = useState("");
   const handleChangeLogin = (e: ChangeEvent<HTMLInputElement>) => {
-    setformLogin(e.target.value);
+    setLogin(e.target.value);
   };
   const handleChangePass = (e: ChangeEvent<HTMLInputElement>) => {
-    setformPass(e.target.value);
+    setPass(e.target.value);
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {

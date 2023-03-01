@@ -2,17 +2,17 @@ import React, { ChangeEvent, FormEvent, useState } from "react";
 import app from "../App/app.module.scss";
 import axios from "axios";
 export const Registration: React.FC = () => {
-  const [login, setformLogin] = useState<string>("");
-  const [password, setformPass] = useState<string>("");
-  const [email, setformEmail] = useState("");
+  const [login, setLogin] = useState<string>("");
+  const [password, setPass] = useState<string>("");
+  const [email, setEmail] = useState("");
   const handleChangeLogin = (e: ChangeEvent<HTMLInputElement>) => {
-    setformLogin(e.target.value);
+    setLogin(e.target.value);
   };
   const handleChangePass = (e: ChangeEvent<HTMLInputElement>) => {
-    setformPass(e.target.value);
+    setPass(e.target.value);
   };
   const handleChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
-    setformEmail(e.target.value);
+    setEmail(e.target.value);
   };
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
