@@ -2,27 +2,27 @@ import React, { ChangeEvent, FormEvent, useState } from "react";
 import app from "../App/app.module.scss";
 import axios from "axios";
 export const Registration: React.FC = () => {
-  const [login, setformLogin] = useState<string>("");
-  const [password, setformPass] = useState<string>("");
-  const [email, setformEmail] = useState("")
+  const [login, setLogin] = useState<string>("");
+  const [password, setPass] = useState<string>("");
+  const [email, setEmail] = useState("");
   const handleChangeLogin = (e: ChangeEvent<HTMLInputElement>) => {
-    setformLogin(e.target.value);
+    setLogin(e.target.value);
   };
   const handleChangePass = (e: ChangeEvent<HTMLInputElement>) => {
-    setformPass(e.target.value);
+    setPass(e.target.value);
   };
   const handleChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
-    setformEmail(e.target.value);
+    setEmail(e.target.value);
   };
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const userData = {
       login: login,
       password: password,
-      email: email
+      email: email,
     };
     axios
-      .post("http://localhost:4444/auth/registration", userData, {
+      .post("http://localhost:4444/api/registration", userData, {
         headers: { "Content-Type": "application/json" },
       })
       .then((response) => {
@@ -45,7 +45,7 @@ export const Registration: React.FC = () => {
       <div className={app.form_block}>
         <h1>Registration</h1>
         <form className={app.form} onSubmit={handleSubmit}>
-        <label className={app.label}>
+          <label className={app.label}>
             E-mail
             <input
               onChange={handleChangeEmail}
