@@ -4,7 +4,7 @@ import axios from "axios";
 export const Registration: React.FC = () => {
   const [login, setformLogin] = useState<string>("");
   const [password, setformPass] = useState<string>("");
-  const [email, setformEmail] = useState("")
+  const [email, setformEmail] = useState("");
   const handleChangeLogin = (e: ChangeEvent<HTMLInputElement>) => {
     setformLogin(e.target.value);
   };
@@ -19,10 +19,10 @@ export const Registration: React.FC = () => {
     const userData = {
       login: login,
       password: password,
-      email: email
+      email: email,
     };
     axios
-      .post("http://localhost:4444/auth/registration", userData, {
+      .post("http://localhost:4444/api/registration", userData, {
         headers: { "Content-Type": "application/json" },
       })
       .then((response) => {
@@ -45,7 +45,7 @@ export const Registration: React.FC = () => {
       <div className={app.form_block}>
         <h1>Registration</h1>
         <form className={app.form} onSubmit={handleSubmit}>
-        <label className={app.label}>
+          <label className={app.label}>
             E-mail
             <input
               onChange={handleChangeEmail}

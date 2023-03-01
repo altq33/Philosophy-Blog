@@ -23,7 +23,7 @@ export const Auth: React.FC = () => {
       email: email
     };
     axios
-      .post("http://localhost:4444/auth/registration", userData, {
+      .post("http://localhost:4444/api/authorization", userData, {
         headers: { "Content-Type": "application/json" },
       })
       .then((response) => {
