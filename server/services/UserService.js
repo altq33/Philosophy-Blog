@@ -27,7 +27,7 @@ class UserService {
 
     await emailService.sendActivationMail(
       email,
-      `${process.env.API_URL}api/activate/${activationLink}`
+      `${process.env.API_URL}/api/activate/${activationLink}`
     );
     const tokens = tokenService.generateTokensPair({
       email,
@@ -104,6 +104,8 @@ class UserService {
     await tokenService.saveToken(user._id, tokens.refreshToken);
     return {
       ...tokens,
+      userId: user._id,
+      email: user._doc.email,
     };
   }
 
