@@ -1,9 +1,12 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import React, { ChangeEvent, FormEvent, useContext, useState } from "react";
 import app from "../App/app.module.scss";
-import axios from "axios";
+import { Context } from "../../main";
 export const Auth: React.FC = () => {
   const [login, setLogin] = useState("");
   const [password, setPass] = useState("");
+
+  const { store } = useContext(Context);
+
   const handleChangeLogin = (e: ChangeEvent<HTMLInputElement>) => {
     setLogin(e.target.value);
   };
@@ -13,27 +16,7 @@ export const Auth: React.FC = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const userData = {
-      login: login,
-      password: password,
-    };
-    axios
-      .post("http://localhost:4444/api/authorization", userData, {
-        headers: { "Content-Type": "application/json" },
-      })
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        if (error.response) {
-          console.log(error.response);
-          console.log("server responded");
-        } else if (error.request) {
-          console.log("network error");
-        } else {
-          console.log(error);
-        }
-      });
+    store.login(login, password);
   };
   return (
     <div className={app.main_row}>
@@ -58,7 +41,11 @@ export const Auth: React.FC = () => {
               value={password}
             />
           </label>
-          <input className={`${app.nav_btn} ${app.btn_up}`} type="submit" value="Sign in" />
+          <input
+            className={`${app.nav_btn} ${app.btn_up}`}
+            type="submit"
+            value="Sign in"
+          />
         </form>
       </div>
     </div>

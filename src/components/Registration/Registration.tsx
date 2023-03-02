@@ -1,43 +1,26 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import React, { ChangeEvent, FormEvent, useContext, useState } from "react";
 import app from "../App/app.module.scss";
 import axios from "axios";
+import { Context } from "../../main";
+
 export const Registration: React.FC = () => {
-  const [login, setLogin] = useState<string>("");
-  const [password, setPass] = useState<string>("");
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const { store } = useContext(Context);
+
   const handleChangeLogin = (e: ChangeEvent<HTMLInputElement>) => {
     setLogin(e.target.value);
   };
   const handleChangePass = (e: ChangeEvent<HTMLInputElement>) => {
-    setPass(e.target.value);
+    setPassword(e.target.value);
   };
   const handleChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   };
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const userData = {
-      login: login,
-      password: password,
-      email: email,
-    };
-    axios
-      .post("http://localhost:4444/api/registration", userData, {
-        headers: { "Content-Type": "application/json" },
-      })
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        if (error.response) {
-          console.log(error.response);
-          console.log("server responded");
-        } else if (error.request) {
-          console.log("network error");
-        } else {
-          console.log(error);
-        }
-      });
+    store.registration(login, email, password);
   };
 
   return (
