@@ -32,6 +32,7 @@ export const App: React.FC = () => {
         </div>
       </header>
       <main className={app.main}>
+        12313213
         <div className={app.wrap_container}>
           {store.isAuth ? (
             <div style={{ color: "white" }}>
