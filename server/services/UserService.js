@@ -104,8 +104,6 @@ class UserService {
     await tokenService.saveToken(user._id, tokens.refreshToken);
     return {
       ...tokens,
-      userId: user._id,
-      email: user._doc.email,
     };
   }
 
