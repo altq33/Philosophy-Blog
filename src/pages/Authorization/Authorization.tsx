@@ -1,9 +1,9 @@
 import React, { ChangeEvent, FormEvent, useContext, useState } from "react";
-import app from "../App/app.module.scss";
+import auth from "./auth.module.scss";
 import { Context } from "../../main";
-export const Auth: React.FC = () => {
+export const Authorization: React.FC = () => {
   const [login, setLogin] = useState("");
-  const [password, setPass] = useState("");
+  const [password, setPassword] = useState("");
 
   const { store } = useContext(Context);
 
@@ -11,7 +11,7 @@ export const Auth: React.FC = () => {
     setLogin(e.target.value);
   };
   const handleChangePass = (e: ChangeEvent<HTMLInputElement>) => {
-    setPass(e.target.value);
+    setPassword(e.target.value);
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -19,30 +19,30 @@ export const Auth: React.FC = () => {
     store.login(login, password);
   };
   return (
-    <div className={app.main_row}>
-      <div className={app.form_block}>
+    <div className={auth.main_row}>
+      <div className={auth.form_block}>
         <h1>Authorization</h1>
-        <form className={app.form} onSubmit={handleSubmit}>
-          <label className={app.label}>
+        <form className={auth.form} onSubmit={handleSubmit}>
+          <label className={auth.label}>
             Login
             <input
               onChange={handleChangeLogin}
-              className={app.input_field}
+              className={auth.input_field}
               name="login"
               value={login}
             />
           </label>
-          <label className={app.label}>
+          <label className={auth.label}>
             Password
             <input
               onChange={handleChangePass}
-              className={app.input_field}
+              className={auth.input_field}
               name="password"
               value={password}
             />
           </label>
           <input
-            className={`${app.nav_btn} ${app.btn_up}`}
+            className={`${auth.nav_btn} ${auth.btn_up}`}
             type="submit"
             value="Sign in"
           />

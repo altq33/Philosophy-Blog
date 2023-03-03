@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FormEvent, useContext, useState } from "react";
-import app from "../App/app.module.scss";
+import registr from "./registr.module.scss";
 import axios from "axios";
 import { Context } from "../../main";
 
@@ -24,43 +24,43 @@ export const Registration: React.FC = () => {
   };
 
   return (
-    <div className={app.main_row}>
-      <div className={app.form_block}>
+    <div className={registr.main_row}>
+      <div className={registr.form_block}>
         <h1>Registration</h1>
-        <form className={app.form} onSubmit={handleSubmit}>
-          <label className={app.label}>
+        <form className={registr.form} onSubmit={handleSubmit}>
+          <label className={registr.label}>
             E-mail
             <input
               onChange={handleChangeEmail}
-              className={app.input_field}
+              className={registr.input_field}
               name="email"
               value={email}
             />
           </label>
-          <label className={app.label}>
+          <label className={registr.label}>
             Login
             <input
               onChange={handleChangeLogin}
-              className={app.input_field}
+              className={registr.input_field}
               name="login"
               value={login}
             />
           </label>
-          <label className={app.label}>
+          <label className={registr.label}>
             Password
             <input
               onChange={handleChangePass}
-              className={app.input_field}
+              className={registr.input_field}
               name="password"
               value={password}
             />
           </label>
-          <label className={app.label}>
+          <label className={registr.label}>
             Confirm Password
-            <input className={app.input_field} name="confirm" />
+            <input className={registr.input_field} name="confirm" />
           </label>
           <input
-            className={`${app.nav_btn} ${app.btn_up}`}
+            className={`${registr.nav_btn} ${registr.btn_up}`}
             type="submit"
             value="Sign up"
           />

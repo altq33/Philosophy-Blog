@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./components/App/App";
 import "./index.css";
 import Store from "./store/store";
+import { BrowserRouter } from "react-router-dom";
 
 interface IStore {
   store: Store;
@@ -16,12 +17,14 @@ export const Context = createContext<IStore>({
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <Context.Provider
-      value={{
-        store,
-      }}
-    >
-      <App />
-    </Context.Provider>
+    <BrowserRouter>
+      <Context.Provider
+        value={{
+          store,
+        }}
+      >
+        <App />
+      </Context.Provider>
+    </BrowserRouter>
   </React.StrictMode>
 );
