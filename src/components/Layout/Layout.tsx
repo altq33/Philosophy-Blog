@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
 
 export const Layout = () => {
   return (
-    <div>
+    <div className={layout.wrap}>
       <header className={layout.header}>
         <div className={layout.wrap_container}>
           <Navbar />

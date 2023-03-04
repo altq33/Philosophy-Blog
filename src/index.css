@@ -1,13 +1,27 @@
 @import-normalize;
 body {
-  background: #f6f7f8;
-  font-family: "Montserrat";
+  background: white;
 }
-
 #root {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   height: 100%;
+}
+@font-face {
+  font-family: "Roboto Slab";
+  font-display: swap;
+  src: local("O"),
+    url("../../assets/fonts/Roboto/RobotoSlab-Black.ttf") format("ttf"),
+    url("../../assets/fonts/Roboto/RobotoSlab-Bold.ttf") format("ttf"),
+    url("../../assets/fonts/Roboto/RobotoSlab-ExtraBold.ttf") format("ttf"),
+    url("../../assets/fonts/Roboto/RobotoSlab-ExtraLight.ttf") format("ttf"),
+    url("../../assets/fonts/Roboto/RobotoSlab-Light.ttf") format("ttf"),
+    url("../../assets/fonts/Roboto/RobotoSlab-Medium.ttf") format("ttf"),
+    url("../../assets/fonts/Roboto/RobotoSlab-Regular.ttf") format("ttf"),
+    url("../../assets/fonts/Roboto/RobotoSlab-SemiBold.ttf") format("ttf"),
+    url("../../assets/fonts/Roboto/RobotoSlab-Thin.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
 }
