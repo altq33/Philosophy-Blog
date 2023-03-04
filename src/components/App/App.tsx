@@ -9,6 +9,7 @@ import { observer } from "mobx-react-lite";
 import AuthService from "../../services/AuthService";
 import { Layout } from "../Layout/Layout";
 import { Homepage } from "../../pages/Homepage";
+import { FormLayout } from "../FormLayout/FormLayout";
 
 export const App: React.FC = () => {
   const { store } = useContext(Context);
@@ -23,13 +24,16 @@ export const App: React.FC = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Homepage />} />
-        <Route path="/registration" element={<Registration />} />
-        <Route path="/authorization" element={<Authorization />} />
         <Route path="/blog" element={<Authorization />} />
         <Route path="/game" element={<Authorization />} />
         <Route path="/library" element={<Authorization />} />
         <Route path="/tournament" element={<Authorization />} />
         <Route path="/gallery" element={<Authorization />} />
+        <Route path="/users" element={<FormLayout />}>
+          <Route index element={<Homepage />} />
+          <Route path="/users/authorization" element={<Authorization />} />
+          <Route path="/users/registration" element={<Registration />} />
+        </Route>
       </Route>
     </Routes>
   );
