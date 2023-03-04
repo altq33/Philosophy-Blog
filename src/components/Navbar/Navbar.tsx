@@ -1,12 +1,14 @@
-import React from "react";
-import app from "../App/app.module.scss";
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import navbar from "./navbar.module.scss";
 import search_icon from "../../assets/icons/search.svg";
-import burger_icon from "../../assets/icons/free-icon-bar-7131131.png";
 import { CustomLink } from "./CustomLink";
 
-export const Navbar = () => {
+export const Navbar: React.FC = () => {
+  const [navMenu, setNavMenu] = useState(false);
+  const changeVisibilityBurger = () => {
+    setNavMenu((prev) => !prev);
+  }
   const activeStyle = {
     color: "#8fd8ac",
     borderBottom: "3px solid #8fd8ac",
@@ -16,41 +18,64 @@ export const Navbar = () => {
 
   return (
     <div className={navbar.navigation_container}>
-      <nav className={navbar.menu}>
-        <ul>
-          <CustomLink style={activeStyle} to="/">
+      <nav className={navbar.nav_menu}>
+        <ul className={
+          navMenu
+          ? [navbar.menu, navbar.active].join(" ")
+          : [navbar.menu].join(" ")
+        }>
+          <CustomLink closeBurger={changeVisibilityBurger} style={activeStyle} to="/">
             Главная
           </CustomLink>
 
-          <CustomLink style={activeStyle} to="/blog">
+          <CustomLink closeBurger={changeVisibilityBurger} style={activeStyle} to="/blog">
             Блог
           </CustomLink>
 
-          <CustomLink style={activeStyle} to="/game">
+          <CustomLink closeBurger={changeVisibilityBurger} style={activeStyle} to="/game">
             Игра
           </CustomLink>
 
-          <CustomLink style={activeStyle} to="/library">
+          <CustomLink closeBurger={changeVisibilityBurger} style={activeStyle} to="/library">
             Библиотека
           </CustomLink>
 
-          <CustomLink style={activeStyle} to="/tournament">
+          <CustomLink closeBurger={changeVisibilityBurger} style={activeStyle} to="/tournament">
             Турнир
           </CustomLink>
 
-          <CustomLink style={activeStyle} to="/gallery">
+          <CustomLink closeBurger={changeVisibilityBurger} style={activeStyle} to="/gallery">
             Галерея
           </CustomLink>
-        </ul>
+      </ul>
       </nav>
-
       <div className={navbar.right_nav}>
-        {/* ПОИСК ЗДЕСЬ ИНПУТ И ТД ИЗНАЧАЛЬНО ОНЛИ ИКОНА ПО НАЖАТИЮ ПОЯВЛЯЕТСЯ ИНПУТ*/}
-        {/* Бургер думаю тут будет но хз посмотришь сам (именно иконка)*/}
+        <div className={navbar.wrap_input}>
+          <input
+            type="text"
+            name="search"
+            className={navbar.input_search}
+            placeholder="Поиск..."
+          />
+          <a href="#" className={navbar.search_btn}>
+            <img src={search_icon} alt="search" />
+          </a>
+        </div>
         <nav className={navbar.auth_btns}>
           <Link to={"/users/authorization"}>Войти</Link>
-          <Link to={"/users/registration"}>Зарегистрироваться</Link>
         </nav>
+        <div
+          onClick={() => setNavMenu(!navMenu)}
+          className={
+            navMenu
+              ? [navbar.burger_menu, navbar.active_burger].join(" ")
+              : [navbar.burger_menu].join(" ")
+          }
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
     </div>
   );

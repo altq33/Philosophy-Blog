@@ -5,8 +5,10 @@ export const CustomLink = ({
   children,
   to,
   style,
+  closeBurger,
   ...props
 }: {
+  closeBurger: () => void;
   children: React.ReactNode;
   style: object
   to: string;
@@ -14,7 +16,7 @@ export const CustomLink = ({
   const match = useMatch(to);
 
   return (
-    <li
+    <li onClick={closeBurger}
       style={
         match
           ? style
