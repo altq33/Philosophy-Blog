@@ -1,40 +1,19 @@
-import React, {
-  ChangeEvent,
-  MouseEvent,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { ChangeEvent, useRef, useState } from "react";
 import search from "./search.module.scss";
 import search_icon from "../../assets/icons/search-svgrepo-com.svg";
+import { useOutsideClick } from "../../hooks/useOutsideClick";
+
 export const Search: React.FC = () => {
   const [searchIsOpen, setSearchIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const inputDOM = useRef<HTMLInputElement>(null);
-  const inputContainerDOM = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    function handleClickOutside(event: Event) {
-      if (
-        inputContainerDOM.current &&
-        !inputContainerDOM.current.contains(event.target as Node)
-      ) {
-        closeSearch();
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [inputDOM]);
+  const inputContainerDOM = useOutsideClick(() => {
+    setSearchIsOpen(false);
+  });
 
   const openSearch = () => {
     setSearchIsOpen(true);
     inputDOM?.current?.focus();
-  };
-
-  const closeSearch = () => {
-    setSearchIsOpen(false);
   };
 
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
