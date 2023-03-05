@@ -8,6 +8,10 @@
   margin-top: 30px;
 }
 
+.img {
+  align-self: flex-start;
+}
+
 .text_input {
   font-size: 17px;
   height: 54px;
@@ -19,7 +23,13 @@
   &:focus {
     border: 2px solid #5957ba;
   }
-  margin-bottom: 25px;
+  margin-bottom: 5px;
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+  }
 }
 
 .text_label {
@@ -28,17 +38,32 @@
   margin-bottom: 5px;
 }
 
+.error_input {
+  border: 2px solid red;
+}
+
 .submit {
+  cursor: pointer;
   width: 150px;
   height: 40px;
   color: white;
   align-self: center;
   font-weight: bold;
   font-size: 18px;
+  &:disabled,
+  &[disabled] {
+    background: linear-gradient(
+      180deg,
+      rgba(110, 108, 224, 0.3) 0%,
+      rgba(77, 76, 173, 0.3) 100%
+    );
+  }
+
   background: linear-gradient(
     180deg,
-    rgba(110, 108, 224, 0.3) 0%,
-    rgba(77, 76, 173, 0.3) 100%
+    rgb(110, 108, 224) 0%,
+    rgb(78, 76, 173) 100%
   );
+
   border-radius: 8px;
 }
