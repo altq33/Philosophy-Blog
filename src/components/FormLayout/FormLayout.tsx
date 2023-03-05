@@ -26,7 +26,6 @@ export const FormLayout = () => {
         </nav>
         <div className={formlayout.form_container}>
           <Outlet />
-          <img src="/src/assets/img/form-img.png" alt="form-img" />
         </div>
       </div>
     </div>
