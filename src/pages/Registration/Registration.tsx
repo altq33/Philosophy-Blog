@@ -6,6 +6,7 @@ import { IFormRegFields } from "../../types/Interfaces";
 import { ErrorContainer } from "../../components/ErrorContainer/ErrorContainer";
 
 export const Registration: React.FC = () => {
+  const [isVisiblePassword, setIsVisiblePassword] = useState(false);
   const { store } = useContext(Context);
   const {
     register,
@@ -15,7 +16,11 @@ export const Registration: React.FC = () => {
   } = useForm<IFormRegFields>({ mode: "onChange" });
 
   const onSubmit: SubmitHandler<IFormRegFields> = (data) => {
-    alert(JSON.stringify(data));
+    console.log(data);
+  };
+
+  const invertPasswordVisibility = () => {
+    setIsVisiblePassword((prev) => !prev);
   };
 
   return (
@@ -55,7 +60,7 @@ export const Registration: React.FC = () => {
               registr.text_input,
               errors?.email ? registr.error_input : "",
             ].join(" ")}
-            type="text"
+            type="email"
             {...register("email", {
               required: "Поле обязательно к заполнению",
               pattern: {
@@ -74,7 +79,7 @@ export const Registration: React.FC = () => {
               registr.text_input,
               errors?.password ? registr.error_input : "",
             ].join(" ")}
-            type="text"
+            type={isVisiblePassword ? "text" : "password"}
             {...register("password", {
               required: "Поле обязательно к заполнению",
               minLength: {
@@ -88,6 +93,14 @@ export const Registration: React.FC = () => {
               },
             })}
           />
+          <button
+            type="button"
+            className={[
+              registr.show_btn,
+              isVisiblePassword ? "" : registr.on,
+            ].join(" ")}
+            onClick={invertPasswordVisibility}
+          ></button>
         </label>
         <ErrorContainer errors={errors?.password} />
         <label htmlFor="">
@@ -97,7 +110,7 @@ export const Registration: React.FC = () => {
               registr.text_input,
               errors?.passwordRepeated ? registr.error_input : "",
             ].join(" ")}
-            type="text"
+            type="password"
             {...register("passwordRepeated", {
               required: "Поле обязательно к заполнению",
               validate: (val: string) => {

@@ -6,6 +6,9 @@
   display: inline-flex;
   flex-direction: column;
   margin-top: 30px;
+  label {
+    position: relative;
+  }
 }
 
 .img {
@@ -66,4 +69,18 @@
   );
 
   border-radius: 8px;
+}
+
+.show_btn {
+  &.on {
+    background: url("../../assets/icons/vis_on.svg");
+  }
+  background: url("../../assets/icons/vis_off.svg");
+  position: absolute;
+  top: 42%;
+  right: 15px;
+  height: 35px;
+  width: 35px;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
