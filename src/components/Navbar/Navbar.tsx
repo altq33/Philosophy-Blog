@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import navbar from "./navbar.module.scss";
 import { CustomLink } from "./CustomLink";
@@ -6,18 +6,27 @@ import { Search } from "../Search/Search";
 
 export const Navbar: React.FC = () => {
   const [navMenu, setNavMenu] = useState(false);
-  
+
   const changeVisibilityBurger = () => {
     setNavMenu((prev) => !prev);
   };
+
+  useEffect(() => {
+    if (navMenu) {
+      document.body.style.overflow = "hidden";
+      document.body.style.height = "100%";
+    } else {
+      document.body.style.overflow = "";
+      document.body.style.height = "";
+    }
+  }, [navMenu]);
   const activeStyle = {
     color: "#8fd8ac",
     borderBottom: "3px solid #8fd8ac",
     borderRadius: "1px 1px 0px 0px",
     paddingTop: "3px",
   };
-  
-  
+
   return (
     <div className={navbar.navigation_container}>
       <nav className={navbar.nav_menu}>
