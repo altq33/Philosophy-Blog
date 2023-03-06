@@ -9,3 +9,7 @@ export interface IFormRegFields {
     password: string;
     passwordRepeated: string;
   }
+
+export interface ISubmitErrorProps {
+    message: string;
+}

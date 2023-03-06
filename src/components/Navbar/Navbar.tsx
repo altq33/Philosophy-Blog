@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import navbar from "./navbar.module.scss";
 import { CustomLink } from "./CustomLink";
 import { Search } from "../Search/Search";

@@ -23,6 +23,9 @@
   background: #ffffff;
   border: 0.5px solid #c0c6c9;
   border-radius: 8px;
+  &.pdr {
+    padding-right: 52px;
+  }
   &:focus {
     border: 2px solid #5957ba;
   }

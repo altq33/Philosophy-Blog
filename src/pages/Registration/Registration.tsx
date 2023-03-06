@@ -4,9 +4,13 @@ import { Context } from "../../main";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IFormRegFields } from "../../types/Interfaces";
 import { ErrorContainer } from "../../components/ErrorContainer/ErrorContainer";
+import AuthService from "../../services/AuthService";
+import { AxiosError, AxiosResponse } from "axios";
+import { SubmitError } from "../../components/SubmitError/SubmitError";
 
 export const Registration: React.FC = () => {
   const [isVisiblePassword, setIsVisiblePassword] = useState(false);
+  const [error, setError] = useState("");
   const { store } = useContext(Context);
   const {
     register,
@@ -15,8 +19,18 @@ export const Registration: React.FC = () => {
     watch,
   } = useForm<IFormRegFields>({ mode: "onChange" });
 
-  const onSubmit: SubmitHandler<IFormRegFields> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<IFormRegFields> = ({
+    email,
+    password,
+    login,
+  }) => {
+    AuthService.registration(login, email, password)
+      .then((res) => {
+        setError("");
+      })
+      .catch((err) => {
+        setError("Ошибка регистрации, возможно логин или почта уже заняты");
+      });
   };
 
   const invertPasswordVisibility = () => {
@@ -30,6 +44,7 @@ export const Registration: React.FC = () => {
         action=""
         onSubmit={handleSubmit(onSubmit)}
       >
+        {error && <SubmitError message={error} />}
         <label htmlFor="">
           <h2 className={registr.text_label}>Логин*</h2>
           <input
@@ -77,6 +92,7 @@ export const Registration: React.FC = () => {
           <input
             className={[
               registr.text_input,
+              registr.pdr,
               errors?.password ? registr.error_input : "",
             ].join(" ")}
             type={isVisiblePassword ? "text" : "password"}
