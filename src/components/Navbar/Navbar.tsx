@@ -75,6 +75,12 @@ export const Navbar: React.FC = () => {
           >
             Галерея
           </CustomLink>
+          <CustomLink
+            closeBurger={changeVisibilityBurger}
+            to="/users/authorization"
+          >
+            Войти
+          </CustomLink>
         </ul>
       </nav>
       <div className={navbar.right_nav}>

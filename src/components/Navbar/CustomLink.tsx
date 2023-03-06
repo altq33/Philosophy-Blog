@@ -8,9 +8,9 @@ export const CustomLink = ({
   closeBurger,
   ...props
 }: {
-  closeBurger?: () => void;
+  closeBurger: () => void;
   children: React.ReactNode;
-  style: object
+  style?: object
   to: string;
 }) => {
   const match = useMatch(to);
