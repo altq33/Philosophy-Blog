@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import navbar from "./navbar.module.scss";
 import { CustomLink } from "./CustomLink";
 import { Search } from "../Search/Search";
 
 export const Navbar: React.FC = () => {
   const [navMenu, setNavMenu] = useState(false);
-  
+
   const changeVisibilityBurger = () => {
     setNavMenu((prev) => !prev);
   };
@@ -16,8 +16,7 @@ export const Navbar: React.FC = () => {
     borderRadius: "1px 1px 0px 0px",
     paddingTop: "3px",
   };
-  
-  
+
   return (
     <div className={navbar.navigation_container}>
       <nav className={navbar.nav_menu}>
