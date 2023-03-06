@@ -8,8 +8,13 @@ export interface IFormRegFields {
     email: string;
     password: string;
     passwordRepeated: string;
-  }
+}
 
 export interface ISubmitErrorProps {
     message: string;
+}
+
+export interface IFormAuthFields {
+    login: string;
+    password: string;
 }
