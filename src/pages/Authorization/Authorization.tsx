@@ -9,13 +9,7 @@ import { AxiosError, AxiosResponse } from "axios";
 import { SubmitError } from "../../components/SubmitError/SubmitError";
 export const Authorization: React.FC = () => {
   const [isVisiblePassword, setIsVisiblePassword] = useState(false);
-  const [isCapsLockOn, setIsCapsLockOn] = useState(false);
   const [error, setError] = useState("");
-  const checkCapsLock = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    e.getModifierState("CapsLock")
-      ? setIsCapsLockOn(true)
-      : setIsCapsLockOn(false);
-  };
   const { store } = useContext(Context);
   const {
     register,
@@ -44,7 +38,6 @@ export const Authorization: React.FC = () => {
         <label htmlFor="">
           <h2 className={auth.text_label}>Логин* / Почта*</h2>
           <input
-            onKeyUp={checkCapsLock}
             className={[
               auth.text_input,
               errors?.login ? auth.error_input : "",
@@ -59,7 +52,6 @@ export const Authorization: React.FC = () => {
         <label htmlFor="">
           <h2 className={auth.text_label}>Пароль*</h2>
           <input
-            onKeyUp={checkCapsLock}
             className={[
               auth.text_input,
               errors?.password ? auth.error_input : "",
@@ -85,7 +77,6 @@ export const Authorization: React.FC = () => {
           value="Отправить"
           disabled={!isValid}
         />
-        {isCapsLockOn && <h1 className={auth.capslock}>Включен CapsLock</h1> }
       </form>
       <img src="/src/assets/img/form-auth.png" alt="form-img" />
     </>
