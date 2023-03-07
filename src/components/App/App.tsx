@@ -10,6 +10,7 @@ import AuthService from "../../services/AuthService";
 import { Layout } from "../Layout/Layout";
 import { Homepage } from "../../pages/Homepage";
 import { FormLayout } from "../FormLayout/FormLayout";
+import { NotFound } from "../NotFound/NotFound";
 
 export const App: React.FC = () => {
   const { store } = useContext(Context);
@@ -34,6 +35,7 @@ export const App: React.FC = () => {
           <Route path="/users/authorization" element={<Authorization />} />
           <Route path="/users/registration" element={<Registration />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   );
