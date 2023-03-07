@@ -10,7 +10,7 @@ import AuthService from "../../services/AuthService";
 import { Layout } from "../Layout/Layout";
 import { Homepage } from "../../pages/Homepage";
 import { FormLayout } from "../FormLayout/FormLayout";
-import { NotFound } from "../NotFound/NotFound";
+import { NotFound } from "../../pages/NotFound/NotFound";
 
 export const App: React.FC = () => {
   const { store } = useContext(Context);

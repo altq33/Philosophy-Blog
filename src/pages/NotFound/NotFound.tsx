@@ -6,16 +6,16 @@ export const NotFound: React.FC = () => {
     <>
       <div className={not_found.column}>
         <div className={not_found.upper_content}>
-          <h1>4</h1>
+          <span>4</span>
           <img src="/src/assets/GIF/black_hole.gif" alt="404..." />
-          <h1>4</h1>
+          <span>4</span>
         </div>
         <div className={not_found.down_content}>
-          <h1>Страница не найдена</h1>
-          <span>
+          <h2>Страница не найдена</h2>
+          <p>
             О-оой! К сожалению вы перетрудились в своих познаниях настолько, что
             выпали из бытия.
-          </span>
+          </p>
           <div className={not_found.auth_btns}>
             <Link to={"/"}>Встать на путь истинный</Link>
           </div>

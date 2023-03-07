@@ -14,20 +14,21 @@
   img {
     width: 300px;
   }
-  h1 {
+  span {
     font-size: 250px;
   }
 }
 .down_content {
+  padding-bottom: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 40px;
-  h1 {
+  h2 {
     text-align: center;
     font-size: 40px;
   }
-  span {
+  p {
     text-align: center;
     line-height: 40px;
     margin: auto;
@@ -59,7 +60,7 @@
     img {
       width: 200px;
     }
-    h1 {
+    span {
       font-size: 200px;
     }
   }
@@ -69,7 +70,7 @@
     img {
       width: 200px;
     }
-    h1 {
+    span {
       font-size: 150px;
     }
   }
@@ -79,15 +80,15 @@
     img {
       width: 150px;
     }
-    h1 {
+    span {
       font-size: 100px;
     }
   }
   .down_content {
-    h1 {
+    h2 {
       font-size: 30px;
     }
-    span {
+    p {
       font-size: 18px;
     }
   }
@@ -99,7 +100,7 @@
     }
   }
   .down_content {
-    span {
+    p {
       font-size: 16px;
     }
   }
