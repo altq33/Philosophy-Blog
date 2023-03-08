@@ -18,12 +18,13 @@ export const Authorization: React.FC = () => {
   } = useForm<IFormAuthFields>({ mode: "onChange" });
 
   const onSubmit: SubmitHandler<IFormAuthFields> = ({ login, password }) => {
-    AuthService.login(login, password)
+    store
+      .login(login, password)
       .then((res) => {
         setError("");
       })
       .catch((err) => {
-        setError("Ошибка авторизации, возможно не верный логин / почта или пароль");
+        setError("Неверный логин или пароль");
       });
   };
 
@@ -70,7 +71,7 @@ export const Authorization: React.FC = () => {
           ></button>
         </label>
         <ErrorContainer errors={errors?.password} />
-        
+
         <input
           className={auth.submit}
           type="submit"

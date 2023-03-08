@@ -56,12 +56,12 @@
 .nav_menu {
   ul {
     li {
-      &:last-child {
+      &.auth_burg {
         display: none;
         align-items: center;
         font-size: 20px;
         font-weight: bold;
-        border: 1px solid #7b83ce;;
+        border: 1px solid #7b83ce;
         border-radius: 40px;
         background: white;
         a {
@@ -71,7 +71,6 @@
           justify-content: center;
           padding: 20px 20px;
           height: 42px;
-          
         }
       }
     }
@@ -85,7 +84,7 @@
   display: none;
   cursor: pointer;
   span {
-    transition: all .4s;
+    transition: all 0.4s;
     width: 30px;
     height: 2px;
     position: absolute;
@@ -142,7 +141,7 @@
   .nav_menu {
     ul {
       li {
-        &:last-child {
+        &.auth_burg {
           display: flex;
         }
       }

@@ -34,7 +34,7 @@ export default class Store {
       const user: IUser = { email: response.data.email, id: response.data.id };
       this.setUser(user);
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   }
 
@@ -46,7 +46,7 @@ export default class Store {
       const user: IUser = { email: response.data.email, id: response.data.id };
       this.setUser(user);
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   }
 

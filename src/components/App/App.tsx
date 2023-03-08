@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Navbar } from "../Navbar/Navbar";
 import app from "./app.module.scss";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Registration } from "../../pages/Registration/Registration";
 import { Authorization } from "../../pages/Authorization/Authorization";
 import { Context } from "../../main";
@@ -32,8 +32,26 @@ export const App: React.FC = () => {
         <Route path="/gallery" element={<Authorization />} />
         <Route path="/users" element={<FormLayout />}>
           <Route index element={<Homepage />} />
-          <Route path="/users/authorization" element={<Authorization />} />
-          <Route path="/users/registration" element={<Registration />} />
+          <Route
+            path="/users/authorization"
+            element={
+              store.isAuth ? (
+                <Navigate to="/" replace state={"unwanted-try"} />
+              ) : (
+                <Authorization />
+              )
+            }
+          />
+          <Route
+            path="/users/registration"
+            element={
+              store.isAuth ? (
+                <Navigate to="/" replace state={"unwanted-try"} />
+              ) : (
+                <Registration />
+              )
+            }
+          />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Route>

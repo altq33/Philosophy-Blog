@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import navbar from "./navbar.module.scss";
 import { CustomLink } from "./CustomLink";
 import { Search } from "../Search/Search";
+import { Context } from "../../main";
+import { observer } from "mobx-react-lite";
 
-export const Navbar: React.FC = () => {
+export const Navbar: React.FC = observer(() => {
+  const { store } = useContext(Context);
   const [navMenu, setNavMenu] = useState(false);
 
   const changeVisibilityBurger = () => {
@@ -20,6 +23,7 @@ export const Navbar: React.FC = () => {
       document.body.style.height = "";
     }
   }, [navMenu]);
+
   const activeStyle = {
     color: "#8fd8ac",
     borderBottom: "3px solid #8fd8ac",
@@ -84,19 +88,32 @@ export const Navbar: React.FC = () => {
           >
             Галерея
           </CustomLink>
-          <CustomLink
-            closeBurger={changeVisibilityBurger}
-            to="/users/authorization"
-          >
-            Войти
-          </CustomLink>
+
+          {!store.isAuth && (
+            <CustomLink
+              className={navbar.auth_burg}
+              closeBurger={changeVisibilityBurger}
+              to="/users/authorization"
+            >
+              Войти
+            </CustomLink>
+          )}
         </ul>
       </nav>
       <div className={navbar.right_nav}>
         <Search />
+
         <nav className={navbar.auth_btns}>
-          <Link to={"/users/authorization"}>Войти</Link>
+          {store.isAuth ? (
+            //  TODO здесь будет компонент профиля (селект где будет ссылка на страницу профиля, кнопка логаута
+            //  сама кнопка для открытия менюшки будет содержать аватарку и логин а такаже иконку стрелочки
+            // при наведелнии будет появляться менюшка с логаутом и ссылкой на профиль)
+            <div>{store.user.email}</div>
+          ) : (
+            <Link to={"/users/authorization"}>Войти</Link>
+          )}
         </nav>
+
         <div
           onClick={() => setNavMenu(!navMenu)}
           className={
@@ -112,4 +129,4 @@ export const Navbar: React.FC = () => {
       </div>
     </div>
   );
-};
+});
