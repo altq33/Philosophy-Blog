@@ -41,6 +41,7 @@ class UserService {
       ...tokens,
       userId: user._id,
       email: user._doc.email,
+      login: user._doc.login,
     };
   }
 
@@ -68,6 +69,7 @@ class UserService {
       ...tokens,
       userId: user._id,
       email: user._doc.email,
+      login: user._doc.login,
     };
   }
 
@@ -106,6 +108,7 @@ class UserService {
       ...tokens,
       userId: user._id,
       email: user._doc.email,
+      login: user._doc.login,
     };
   }
 

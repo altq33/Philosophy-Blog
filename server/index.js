@@ -39,7 +39,7 @@ app.get("/", (req, res) => {
   res.send("Alldone");
 });
 
-app.listen(PORT, (err) => {
+app.listen(PORT, "192.168.1.64", (err) => {
   if (err) {
     return console.error(err);
   }
