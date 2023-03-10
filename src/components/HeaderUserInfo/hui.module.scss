@@ -18,9 +18,11 @@
   position: relative;
   align-items: center;
   gap: 10px;
+
   &.active_link {
     border-radius: 25px;
     background: #8ce3af92;
+    transition: background ease 0.3s;
     &::after {
       transform: rotate(90deg);
     }
@@ -34,6 +36,7 @@
     background: url("../../assets/icons/expand.svg");
   }
   &:hover {
+    transition: background ease 0.3s;
     background: #8ce3af;
   }
 }
@@ -45,6 +48,7 @@
   width: 100%;
   bottom: -100px;
   padding-top: 5px;
+  transition: all ease 0.3s;
 }
 
 .modal_content {
@@ -59,6 +63,7 @@
 .active {
   visibility: visible;
   opacity: 70%;
+  transition: all ease 0.3s;
 }
 
 .login {
@@ -114,9 +119,7 @@
 @media (max-width: 750px) {
   .login,
   .wrap:after {
-
     display: none;
-    
   }
   .wrap {
     padding: 0;
