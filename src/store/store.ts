@@ -31,7 +31,11 @@ export default class Store {
       const response = await AuthService.login(login, password);
       localStorage.setItem("accessToken", response.data.accessToken);
       this.setAuth(true);
-      const user: IUser = { email: response.data.email, id: response.data.id };
+      const user: IUser = {
+        email: response.data.email,
+        id: response.data.id,
+        login: response.data.login,
+      };
       this.setUser(user);
     } catch (error) {
       throw error;
@@ -43,7 +47,11 @@ export default class Store {
       const response = await AuthService.registration(login, email, password);
       localStorage.setItem("accessToken", response.data.accessToken);
       this.setAuth(true);
-      const user: IUser = { email: response.data.email, id: response.data.id };
+      const user: IUser = {
+        email: response.data.email,
+        id: response.data.id,
+        login: response.data.login,
+      };
       this.setUser(user);
     } catch (error) {
       throw error;
@@ -69,7 +77,11 @@ export default class Store {
       });
       localStorage.setItem("accessToken", response.data.accessToken);
       this.setAuth(true);
-      const user: IUser = { email: response.data.email, id: response.data.id };
+      const user: IUser = {
+        email: response.data.email,
+        id: response.data.id,
+        login: response.data.login,
+      };
       this.setUser(user);
     } catch (error) {
       console.log(error);

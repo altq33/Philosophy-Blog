@@ -7,6 +7,7 @@ import { ErrorContainer } from "../../components/ErrorContainer/ErrorContainer";
 import AuthService from "../../services/AuthService";
 import { AxiosError, AxiosResponse } from "axios";
 import { SubmitError } from "../../components/SubmitError/SubmitError";
+import { useNavigate } from "react-router-dom";
 export const Authorization: React.FC = () => {
   const [isVisiblePassword, setIsVisiblePassword] = useState(false);
   const [error, setError] = useState("");
@@ -16,12 +17,14 @@ export const Authorization: React.FC = () => {
     formState: { errors, isValid },
     handleSubmit,
   } = useForm<IFormAuthFields>({ mode: "onChange" });
+  const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<IFormAuthFields> = ({ login, password }) => {
     store
       .login(login, password)
       .then((res) => {
         setError("");
+        navigate("/");
       })
       .catch((err) => {
         setError("Неверный логин или пароль");

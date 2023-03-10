@@ -5,11 +5,12 @@ import { CustomLink } from "./CustomLink";
 import { Search } from "../Search/Search";
 import { Context } from "../../main";
 import { observer } from "mobx-react-lite";
+import { HeaderUserInfo } from "../HeaderUserInfo/HeaderUserInfo";
 
-export const Navbar: React.FC = observer(() => {
+const Navbar: React.FC = () => {
   const { store } = useContext(Context);
   const [navMenu, setNavMenu] = useState(false);
-
+  console.log(store.isAuth);
   const changeVisibilityBurger = () => {
     setNavMenu((prev) => !prev);
   };
@@ -105,12 +106,11 @@ export const Navbar: React.FC = observer(() => {
 
         <nav className={navbar.auth_btns}>
           {store.isAuth ? (
-            //  TODO здесь будет компонент профиля (селект где будет ссылка на страницу профиля, кнопка логаута
-            //  сама кнопка для открытия менюшки будет содержать аватарку и логин а такаже иконку стрелочки
-            // при наведелнии будет появляться менюшка с логаутом и ссылкой на профиль)
-            <div>{store.user.email}</div>
+            <HeaderUserInfo name={store.user.login} avatarUrl="" />
           ) : (
-            <Link to={"/users/authorization"}>Войти</Link>
+            <Link className={navbar.auth_btn} to={"/users/authorization"}>
+              Войти
+            </Link>
           )}
         </nav>
 
@@ -129,4 +129,6 @@ export const Navbar: React.FC = observer(() => {
       </div>
     </div>
   );
-});
+};
+
+export default observer(Navbar);

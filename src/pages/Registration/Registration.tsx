@@ -7,6 +7,7 @@ import { ErrorContainer } from "../../components/ErrorContainer/ErrorContainer";
 import { SubmitError } from "../../components/SubmitError/SubmitError";
 
 import { observer } from "mobx-react-lite";
+import { useNavigate } from "react-router-dom";
 
 export const Registration: React.FC = observer(() => {
   const [isVisiblePassword, setIsVisiblePassword] = useState(false);
@@ -18,6 +19,7 @@ export const Registration: React.FC = observer(() => {
     handleSubmit,
     watch,
   } = useForm<IFormRegFields>({ mode: "onChange" });
+  const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<IFormRegFields> = ({
     email,
@@ -28,6 +30,7 @@ export const Registration: React.FC = observer(() => {
       .registration(login, email, password)
       .then((res) => {
         setError("");
+        navigate("/");
       })
       .catch((err) => {
         setError("Ошибка регистрации, возможно логин или почта уже заняты");
