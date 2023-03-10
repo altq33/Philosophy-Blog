@@ -10,7 +10,6 @@ import { HeaderUserInfo } from "../HeaderUserInfo/HeaderUserInfo";
 const Navbar: React.FC = () => {
   const { store } = useContext(Context);
   const [navMenu, setNavMenu] = useState(false);
-  console.log(store.isAuth);
   const changeVisibilityBurger = () => {
     setNavMenu((prev) => !prev);
   };
