@@ -22,7 +22,11 @@ const UserLinks: React.FC<IUserLinksProps> = ({
       <div className={hui.modal_content}>
         <div className={hui.part_title}>Аккаунт</div>
         <ul className={hui.list}>
-          <UserListItem title="Профиль" to={`/${userName}`} icon={profileIcon} />
+          <UserListItem
+            title="Профиль"
+            to={`/${userName}`}
+            icon={profileIcon}
+          />
         </ul>
         <div className={hui.part_title}>Сайт</div>
         <ul className={hui.list}>
