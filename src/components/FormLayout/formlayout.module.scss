@@ -34,7 +34,6 @@
     width: 100%;
     display: flex;
     gap: 50px;
-    flex-direction: column;
     li {
       flex-grow: 0;
       color: #586870;
@@ -60,6 +59,7 @@
     ul {
       justify-content: center;
       align-items: center;
+      flex-direction: column;
     }
   }
 }
