@@ -33,15 +33,41 @@
   ul {
     width: 100%;
     display: flex;
+    gap: 50px;
+    flex-direction: column;
     li {
+      flex-grow: 0;
       color: #586870;
       height: 40px;
       display: flex;
       justify-content: center;
       align-items: center;
-      &:first-child {
-        margin-right: 50px;
-      }
+     
+    }
+  }
+}
+@media (max-width: 1430px) {
+  .form_container {
+    flex-direction: column;
+  }
+  .plate {
+    img {
+      align-self: center;
+    }
+    width: 100%;
+  }
+  .links_container {
+    ul {
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+@media (max-width: 490px) {
+  .links_container {
+    ul {
+      justify-content: center;
+      font-size: 24px;
     }
   }
 }

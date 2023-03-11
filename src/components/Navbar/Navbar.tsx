@@ -42,7 +42,7 @@ const Navbar: React.FC = () => {
           }
         >
           <CustomLink
-            closeBurger={changeVisibilityBurger}
+            closeBurger={navMenu ? changeVisibilityBurger : undefined}
             style={activeStyle}
             to="/"
           >
@@ -50,7 +50,7 @@ const Navbar: React.FC = () => {
           </CustomLink>
 
           <CustomLink
-            closeBurger={changeVisibilityBurger}
+            closeBurger={navMenu ? changeVisibilityBurger : undefined}
             style={activeStyle}
             to="/blog"
           >
@@ -58,7 +58,7 @@ const Navbar: React.FC = () => {
           </CustomLink>
 
           <CustomLink
-            closeBurger={changeVisibilityBurger}
+            closeBurger={navMenu ? changeVisibilityBurger : undefined}
             style={activeStyle}
             to="/game"
           >
@@ -66,7 +66,7 @@ const Navbar: React.FC = () => {
           </CustomLink>
 
           <CustomLink
-            closeBurger={changeVisibilityBurger}
+            closeBurger={navMenu ? changeVisibilityBurger : undefined}
             style={activeStyle}
             to="/library"
           >
@@ -74,7 +74,7 @@ const Navbar: React.FC = () => {
           </CustomLink>
 
           <CustomLink
-            closeBurger={changeVisibilityBurger}
+            closeBurger={navMenu ? changeVisibilityBurger : undefined}
             style={activeStyle}
             to="/tournament"
           >
@@ -82,7 +82,7 @@ const Navbar: React.FC = () => {
           </CustomLink>
 
           <CustomLink
-            closeBurger={changeVisibilityBurger}
+            closeBurger={navMenu ? changeVisibilityBurger : undefined}
             style={activeStyle}
             to="/gallery"
           >
@@ -92,7 +92,7 @@ const Navbar: React.FC = () => {
           {!store.isAuth && (
             <CustomLink
               className={navbar.auth_burg}
-              closeBurger={changeVisibilityBurger}
+              closeBurger={navMenu ? changeVisibilityBurger : undefined}
               to="/users/authorization"
             >
               Войти
