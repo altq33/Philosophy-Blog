@@ -6,6 +6,7 @@ import { Search } from "../Search/Search";
 import { Context } from "../../main";
 import { observer } from "mobx-react-lite";
 import { HeaderUserInfo } from "../HeaderUserInfo/HeaderUserInfo";
+import avatar from "../../assets/Img/base-profile-avatar.png";
 
 const Navbar: React.FC = () => {
   const { store } = useContext(Context);
@@ -105,7 +106,7 @@ const Navbar: React.FC = () => {
 
         <nav className={navbar.auth_btns}>
           {store.isAuth ? (
-            <HeaderUserInfo name={store.user.login} avatarUrl="" />
+            <HeaderUserInfo name={store.user.login} avatarUrl={store.user.avatarUrl ?? avatar} />
           ) : (
             <Link className={navbar.auth_btn} to={"/users/authorization"}>
               Войти

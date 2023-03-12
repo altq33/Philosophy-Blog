@@ -3,7 +3,7 @@ import IUser from "../types/IUser";
 import AuthService from "../services/AuthService";
 import axios from "axios";
 import { AuthResponse } from "../types/responses/AuthResponse";
-import { API_URL } from "../http";
+import { API_URL, SERVER_HOST } from "../http";
 
 export default class Store {
   user = {} as IUser;
@@ -35,6 +35,9 @@ export default class Store {
         email: response.data.email,
         id: response.data.id,
         login: response.data.login,
+        avatarUrl: response.data.avatarUrl
+          ? `${SERVER_HOST}/${response.data.avatarUrl}`
+          : undefined,
       };
       this.setUser(user);
     } catch (error) {
@@ -51,6 +54,9 @@ export default class Store {
         email: response.data.email,
         id: response.data.id,
         login: response.data.login,
+        avatarUrl: response.data.avatarUrl
+          ? `${SERVER_HOST}/${response.data.avatarUrl}`
+          : undefined,
       };
       this.setUser(user);
     } catch (error) {
@@ -81,6 +87,9 @@ export default class Store {
         email: response.data.email,
         id: response.data.id,
         login: response.data.login,
+        avatarUrl: response.data.avatarUrl
+          ? `${SERVER_HOST}/${response.data.avatarUrl}`
+          : undefined,
       };
       this.setUser(user);
     } catch (error) {

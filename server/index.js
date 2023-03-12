@@ -25,6 +25,8 @@ mongoose
 const app = express();
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use("/uploads/users/avatars", express.static("uploads/users/avatars"));
 app.use(
   cors({
     credentials: true,
@@ -39,7 +41,7 @@ app.get("/", (req, res) => {
   res.send("Alldone");
 });
 
-app.listen(PORT, "192.168.0.106", (err) => {
+app.listen(PORT, process.env.CLIENT_HOST, (err) => {
   if (err) {
     return console.error(err);
   }

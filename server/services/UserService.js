@@ -42,6 +42,7 @@ class UserService {
       userId: user._id,
       email: user._doc.email,
       login: user._doc.login,
+      avatarUrl: user._doc?.avatarUrl,
     };
   }
 
@@ -70,6 +71,7 @@ class UserService {
       userId: user._id,
       email: user._doc.email,
       login: user._doc.login,
+      avatarUrl: user._doc?.avatarUrl,
     };
   }
 
@@ -109,12 +111,22 @@ class UserService {
       userId: user._id,
       email: user._doc.email,
       login: user._doc.login,
+      avatarUrl: user._doc?.avatarUrl,
     };
   }
 
   async getAllUsers() {
     const users = userModel.find();
     return users;
+  }
+
+  async updateAvatarUrl(url, login) {
+    const user = await userModel.findOne({ login });
+    if (!user) {
+      throw ApiError.BadRequest("Error when updating");
+    }
+    user.avatarUrl = url;
+    await user.save();
   }
 }
 

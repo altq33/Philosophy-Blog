@@ -81,10 +81,6 @@ h6 {
   font-weight: 400;
 }
 
-body {
-  padding-top: 136px;
-}
-
 @font-face {
   font-family: "Inter";
   src: url("./assets/fonts/Inter/Inter-Regular.ttf") format("ttf");

@@ -1,4 +1,10 @@
-import React, { ChangeEvent, FormEvent, useContext, useState } from "react";
+import React, {
+  ChangeEvent,
+  FormEvent,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import auth from "./auth.module.scss";
 import { Context } from "../../main";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -7,8 +13,10 @@ import { ErrorContainer } from "../../components/ErrorContainer/ErrorContainer";
 import AuthService from "../../services/AuthService";
 import { AxiosError, AxiosResponse } from "axios";
 import { SubmitError } from "../../components/SubmitError/SubmitError";
-import { useNavigate } from "react-router-dom";
-export const Authorization: React.FC = () => {
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { observer } from "mobx-react-lite";
+
+export const Authorization: React.FC = observer(() => {
   const [isVisiblePassword, setIsVisiblePassword] = useState(false);
   const [error, setError] = useState("");
   const { store } = useContext(Context);
@@ -40,7 +48,7 @@ export const Authorization: React.FC = () => {
       <form className={auth.form} action="" onSubmit={handleSubmit(onSubmit)}>
         {error && <SubmitError message={error} />}
         <label htmlFor="">
-          <h2 className={auth.text_label}>Логин* / Почта*</h2>
+          <h2 className={auth.text_label}>Логин / Почта *</h2>
           <input
             className={[
               auth.text_input,
@@ -85,4 +93,4 @@ export const Authorization: React.FC = () => {
       <img src="/src/assets/img/form-auth.png" alt="form-img" />
     </>
   );
-};
+});
