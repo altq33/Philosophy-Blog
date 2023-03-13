@@ -51,3 +51,9 @@ export interface IAvatarBlock {
   userLogin: string | undefined;
   role: string;
 }
+export interface IUserMiniCardProps {
+  avatarUrl: string; 
+  sex: string; 
+  login: string;
+  since: string; 
+}

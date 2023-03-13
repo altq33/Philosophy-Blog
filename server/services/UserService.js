@@ -116,7 +116,13 @@ class UserService {
   }
 
   async getAllUsers() {
-    const users = userModel.find();
+    const users = userModel.find({}, {
+      _id: 0,
+      login: 1,
+      sex: 1,
+      createdAt: 1,
+      avatarUrl: 1,
+    });
     return users;
   }
 

@@ -1,0 +1,106 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+.wrap_container {
+  max-width: 1832px;
+  margin: 0 auto;
+  display: flex;
+  padding: 0 44px;
+  justify-content: center;
+  align-items: center;
+}
+
+.users_list {
+  display: flex;
+  width: 60%;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.card {
+  font-family: Inter;
+  box-shadow: 0 0 25px rgba(27, 30, 52, 0.3);
+  width: 250px;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: center;
+  height: 300px;
+  display: flex;
+  transform-style: preserve-3d;
+  border-radius: 5px;
+  .login {
+    text-shadow: 1px 0px 7px black;
+  }
+  background: #a8ff78; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to top,
+    #78ffd6,
+    #a8ff78
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to top,
+    #78ffd6,
+    #a8ff78
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: black;
+  &:nth-child(2n) {
+    .login {
+      text-shadow: 1px 0px 7px white;
+    }
+    color: white;
+    background: #a17fe0; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to bottom,
+      #5d26c1,
+      #a17fe0
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to bottom,
+      #5d26c1,
+      #a17fe0
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+  padding: 10px;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  transform: translateZ(10px);
+  -webkit-box-shadow: 2px 16px 23px 5px rgba(10, 18, 24, 0.2);
+  -moz-box-shadow: 2px 16px 23px 5px rgba(10, 18, 24, 0.2);
+  box-shadow: 2px 16px 23px 5px rgba(10, 18, 24, 0.2);
+}
+
+.login {
+  letter-spacing: 2px;
+  transform: translateZ(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  margin-top: 15px;
+  border-bottom: 2px solid black;
+  border-bottom-right-radius: 1px;
+  border-bottom-left-radius: 1px;
+  font-size: 30px;
+  font-weight: 500;
+  padding-bottom: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: inherit;
+  margin-bottom: 10px;
+  &:visited {
+    color: inherit;
+  }
+}
+
+.dict {
+  transform: translateZ(10px);
+  display: flex;
+  font-size: 18px;
+  padding: 4px;
+}
