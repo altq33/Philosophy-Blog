@@ -41,7 +41,7 @@ app.get("/", (req, res) => {
   res.send("Alldone");
 });
 
-app.listen(PORT, process.env.CLIENT_HOST, (err) => {
+app.listen(PORT, (err) => {
   if (err) {
     return console.error(err);
   }

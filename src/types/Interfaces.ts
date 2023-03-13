@@ -36,3 +36,10 @@ export interface IUserListItemProps {
   icon: string;
   onClick?: () => void;
 }
+
+export interface IUserMiniCardProps {
+  avatarUrl: string; 
+  sex: string; 
+  login: string;
+  since: string; 
+}

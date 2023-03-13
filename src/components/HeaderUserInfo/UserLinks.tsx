@@ -4,6 +4,7 @@ import { IUserLinksProps } from "../../types/Interfaces";
 import { UserListItem } from "./UserListItem";
 import profileIcon from "../../assets/icons/profile.svg";
 import logoutIcon from "../../assets/icons/logout.svg";
+import usersIcon from "../../assets/icons/users-icon.svg";
 import { Context } from "../../main";
 import { observer } from "mobx-react-lite";
 
@@ -13,7 +14,7 @@ const UserLinks: React.FC<IUserLinksProps> = ({
   userName,
 }) => {
   const { store } = useContext(Context);
-
+  
   return (
     <div
       onMouseEnter={changeVisibility}
@@ -30,6 +31,7 @@ const UserLinks: React.FC<IUserLinksProps> = ({
         </ul>
         <div className={hui.part_title}>Сайт</div>
         <ul className={hui.list}>
+          <UserListItem title="Пользователи" to={`/users`} icon={usersIcon} />
           <UserListItem
             title="Выйти"
             to={`/users/authorization`}
