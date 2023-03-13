@@ -1,6 +1,7 @@
 import React from "react";
 import profile from "./profile.module.scss";
 import { useParams } from "react-router-dom";
+import { PorfileCard } from "../../components/ProfileCard/ProfileCard";
 
 /* TODO:  Итак здесь будет профиль, профиль идет от корня с параметром логин,
  именно по логину будет вытягиваться вся инфа с сервера, если профиль, для разной отрисовки своего профиля и 
@@ -11,6 +12,10 @@ import { useParams } from "react-router-dom";
 
 export const Profile = () => {
   const params = useParams();
-  return <div>{params.login}</div>;
+  return (
+    <div className={profile.wrap_container}>
+      <PorfileCard />
+    </div>
+  );
 };
     

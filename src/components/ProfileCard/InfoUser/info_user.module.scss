@@ -1,0 +1,54 @@
+.quality {
+  padding: 8px 14px;
+  color: hsl(0, 0%, 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: hsl(234, 46%, 65%);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  flex: none;
+  order: 0;
+  cursor: pointer;
+  flex-grow: 0;
+  transition: all ease-in-out 0.5s;
+  border-radius: 6px;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+.quality_ul {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.info_card {
+  display: flex;
+  gap: 35px;
+  flex-direction: column;
+  padding: 40px 30px;
+  background: hsl(144deg 61% 72%);
+  border-radius: 10px;
+  font-family: "Inter";
+}
+.field {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
+  display: flex;
+  gap: 4px;
+  span {
+    font-weight: 500;
+    color:hsl(240, 2%, 24%);
+  }
+}
+.fields {
+  display: flex;
+  gap: 7px;
+  flex-direction: column;
+}

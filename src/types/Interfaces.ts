@@ -36,3 +36,18 @@ export interface IUserListItemProps {
   icon: string;
   onClick?: () => void;
 }
+
+export interface IQualityUser {
+  quality_user: string;
+}
+
+export interface IUserField {
+  field: string;
+  user_field: string;
+}
+
+export interface IAvatarBlock {
+  avatar: string;
+  userLogin: string | undefined;
+  role: string;
+}
