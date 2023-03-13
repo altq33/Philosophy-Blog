@@ -38,12 +38,12 @@ export interface IUserListItemProps {
 }
 
 export interface IQualityUser {
-  quality_user: string;
+  value: string;
 }
 
 export interface IUserField {
-  field: string;
-  user_field: string;
+  title: string;
+  value: string;
 }
 
 export interface IAvatarBlock {

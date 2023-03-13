@@ -6,18 +6,18 @@ export const InfoUser = () => {
   return (
     <div className={info_user.info_card}>
       <div className={info_user.fields}>
-        <InfoUserField field="Age:" user_field="26" />
-        <InfoUserField field="Status:" user_field="Single" />
-        <InfoUserField field="Location:" user_field="Brooklyn" />
-        <InfoUserField field="Trend:" user_field="Humanism" />
+        <InfoUserField title="Age:" value="26" />
+        <InfoUserField title="Status:" value="Single" />
+        <InfoUserField title="Location:" value="Brooklyn" />
+        <InfoUserField title="Trend:" value="Humanism" />
       </div>
       <ul className={info_user.quality_ul}>
-        <Quality quality_user="Organized" />
-        <Quality quality_user="Protective" />
-        <Quality quality_user="Practical" />
-        <Quality quality_user="Hardworking" />
-        <Quality quality_user="Passionate" />
-        <Quality quality_user="Punctual" />
+        <Quality value="Organized" />
+        <Quality value="Protective" />
+        <Quality value="Practical" />
+        <Quality value="Hardworking" />
+        <Quality value="Passionate" />
+        <Quality value="Punctual" />
       </ul>
     </div>
   );
