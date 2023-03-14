@@ -8,7 +8,7 @@
     line-height: 20px;
     color: rgb(0, 0, 0);
     &:last-child {
-        color: hsl(0, 0%, 100%)
+      color: hsl(0, 0%, 100%);
     }
   }
 }
@@ -22,12 +22,14 @@
   border-radius: 6px;
   width: 100%;
   position: relative;
-  height: 15px;
+  height: 16px;
 }
 .square {
+  display: block;
   position: absolute;
-  width: 15px;
-  height: 15px;
+  width: 16px;
+  height: 100%;
   top: 0;
+  transform: translate(-50%);
   background: rgb(255, 165, 14);
 }
