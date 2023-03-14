@@ -27,6 +27,7 @@ router.post("/logout", userContoller.logout);
 router.get("/activate/:link", userContoller.activate);
 router.get("/refresh", userContoller.refresh);
 router.get("/users", authMiddleware, userContoller.getUsers);
+router.get("/users/:login", userContoller.getUserProfile)
 router.post(
   "/users/upload/avatar",
   authMiddleware,

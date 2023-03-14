@@ -2,22 +2,26 @@ import React from "react";
 import { Quality } from "./Quality";
 import { InfoUserField } from "./InfoUserField";
 import info_user from "./info_user.module.scss";
-export const InfoUser = () => {
+import { IUserInfoProps } from "../../../types/Interfaces";
+export const InfoUser: React.FC<IUserInfoProps> = ({
+  age,
+  sex,
+  location,
+  direction,
+  qualities,
+}) => {
   return (
     <div className={info_user.info_card}>
       <div className={info_user.fields}>
-        <InfoUserField title="Age:" value="26" />
-        <InfoUserField title="Status:" value="Single" />
-        <InfoUserField title="Location:" value="Brooklyn" />
-        <InfoUserField title="Trend:" value="Humanism" />
+        <InfoUserField title="Возраст:" value={age} />
+        <InfoUserField title="Пол:" value={sex} />
+        <InfoUserField title="Локация:" value={location} />
+        <InfoUserField title="Философское направление:" value={direction} />
       </div>
       <ul className={info_user.quality_ul}>
-        <Quality value="Organized" />
-        <Quality value="Protective" />
-        <Quality value="Practical" />
-        <Quality value="Hardworking" />
-        <Quality value="Passionate" />
-        <Quality value="Punctual" />
+        {qualities.map((el, i) => {
+          return <Quality key={i} value={el} />;
+        })}
       </ul>
     </div>
   );

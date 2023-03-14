@@ -116,13 +116,18 @@ class UserService {
   }
 
   async getAllUsers() {
-    const users = userModel.find({}, {
-      _id: 0,
-      login: 1,
-      sex: 1,
-      createdAt: 1,
-      avatarUrl: 1,
-    });
+    const users = userModel.find(
+      {},
+      {
+        _id: 0,
+        login: 1,
+        bio: {
+          sex: 1,
+        },
+        createdAt: 1,
+        avatarUrl: 1,
+      }
+    );
     return users;
   }
 
@@ -133,6 +138,23 @@ class UserService {
     }
     user.avatarUrl = url;
     await user.save();
+  }
+
+  async getProfile(login) {
+    const user = await userModel.findOne(
+      { login },
+      {
+        login: 1,
+        _id: 0,
+        bio: 1,
+        role: 1,
+        avatarUrl: 1,
+      }
+    );
+    if (!user) {
+      throw ApiError.BadRequest("User not found");
+    }
+    return user;
   }
 }
 

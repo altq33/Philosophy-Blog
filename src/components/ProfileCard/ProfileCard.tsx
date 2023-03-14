@@ -3,14 +3,17 @@ import { AvatarBlock } from "./AvatarBlock/AvatarBlock";
 import { InfoUser } from "./InfoUser/InfoUser";
 import { useParams } from "react-router-dom";
 import profile_card from "./profile_card.module.scss";
-export const PorfileCard: React.FC = () => {
-  const paramsLogin = useParams();
+import avatar from "../../assets/Img/base-profile-avatar.png";
+import { IProfileCardProps } from "../../types/Interfaces";
+import { SERVER_HOST } from "../../http";
+
+export const ProfileCard: React.FC<IProfileCardProps> = ({ user }) => {
   return (
     <div className={profile_card.card}>
       <AvatarBlock
-        avatar="src\assets\Img\avatar.jpg"
-        userLogin={paramsLogin.login}
-        role="User"
+        avatar={ user.avatarUrl ? `${SERVER_HOST}/${user.avatarUrl}` : avatar}
+        userLogin={user.login}
+        role={user.role}
       />
       <div className={profile_card.quote_block}>
         <div className={profile_card.svg_quote}>
@@ -39,12 +42,15 @@ export const PorfileCard: React.FC = () => {
             />
           </svg>
         </div>
-        <p className={profile_card.quote}>
-          I'm looking for a site that will simplify the planning of my business
-          trips.
-        </p>
+        <p className={profile_card.quote}>{user.bio.quote}</p>
       </div>
-      <InfoUser />
+      <InfoUser
+        age={user.bio.age}
+        location={user.bio.location}
+        sex={user.bio.sex}
+        direction={user.bio.philosophyDirection}
+        qualities={user.bio.qualities}
+      />
     </div>
   );
 };

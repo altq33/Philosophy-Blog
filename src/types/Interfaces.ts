@@ -1,3 +1,5 @@
+import { IProfileUser } from "./responses/UserResponse";
+
 export interface IBtn {
   className: string;
   text: string;
@@ -43,7 +45,7 @@ export interface IQualityUser {
 
 export interface IUserField {
   title: string;
-  value: string;
+  value: string | number;
 }
 
 export interface IAvatarBlock {
@@ -53,10 +55,10 @@ export interface IAvatarBlock {
 }
 
 export interface IUserMiniCardProps {
-  avatarUrl: string; 
-  sex: string; 
+  avatarUrl: string;
+  sex: string;
   login: string;
-  since: string; 
+  since: string;
 }
 
 export interface IUserInfo {
@@ -67,5 +69,17 @@ export interface IUserInfo {
 export interface ISlider {
   left_value: string;
   right_value: string;
-  style: object;
+  position: number;
+}
+
+export interface IProfileCardProps {
+  user: IProfileUser;
+}
+
+export interface IUserInfoProps {
+  age: number;
+  sex: string;
+  location: string;
+  direction: string;
+  qualities: string[];
 }

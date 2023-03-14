@@ -23,7 +23,7 @@ export const Users = () => {
             login={el.login}
             avatarUrl={el.avatarUrl}
             since={el.createdAt}
-            sex={el.sex}
+            sex={el.bio.sex}
           />
         ))}
       </ul>
