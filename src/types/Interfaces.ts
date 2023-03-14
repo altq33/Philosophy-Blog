@@ -51,9 +51,21 @@ export interface IAvatarBlock {
   userLogin: string | undefined;
   role: string;
 }
+
 export interface IUserMiniCardProps {
   avatarUrl: string; 
   sex: string; 
   login: string;
   since: string; 
+}
+
+export interface IUserInfo {
+  title: string;
+  children: React.ReactNode;
+}
+
+export interface ISlider {
+  left_value: string;
+  right_value: string;
+  style: object;
 }

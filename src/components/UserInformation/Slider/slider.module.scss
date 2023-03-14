@@ -1,0 +1,33 @@
+.titles {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  span {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgb(0, 0, 0);
+    &:last-child {
+        color: hsl(0, 0%, 100%)
+    }
+  }
+}
+.parent {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.slider {
+  background: hsl(144, 61%, 72%);
+  border-radius: 6px;
+  width: 100%;
+  position: relative;
+  height: 15px;
+}
+.square {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  top: 0;
+  background: rgb(255, 165, 14);
+}
