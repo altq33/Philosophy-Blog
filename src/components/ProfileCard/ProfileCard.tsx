@@ -42,13 +42,13 @@ export const ProfileCard: React.FC<IProfileCardProps> = ({ user }) => {
             />
           </svg>
         </div>
-        <p className={profile_card.quote}>{user.bio.quote}</p>
+        <p className={profile_card.quote}>{user.bio.quote ? user.bio.quote : "Не указано"}</p>
       </div>
       <InfoUser
-        age={user.bio.age}
-        location={user.bio.location}
-        sex={user.bio.sex}
-        direction={user.bio.philosophyDirection}
+        age={user.bio.age ? user.bio.age : "Не указано"}
+        location={user.bio.location ? user.bio.location:  "Не указано"}
+        sex={user.bio.sex ? user.bio.sex :  "Не указано"}
+        direction={user.bio.philosophyDirection ? user.bio.philosophyDirection : "Не указано"}
         qualities={user.bio.qualities}
       />
     </div>

@@ -77,9 +77,13 @@ export interface IProfileCardProps {
 }
 
 export interface IUserInfoProps {
-  age: number;
+  age: number | string;
   sex: string;
   location: string;
   direction: string;
   qualities: string[];
+}
+
+export interface IUserList {
+  value: string;
 }

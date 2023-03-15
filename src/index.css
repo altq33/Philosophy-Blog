@@ -112,3 +112,10 @@ h6 {
 body {
   overflow-x: hidden;
 }
+body::-webkit-scrollbar {
+  width: 12px;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: hsl(234, 46%, 65%);
+  border-radius: 20px;
+}

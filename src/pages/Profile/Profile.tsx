@@ -7,6 +7,7 @@ import { Slider } from "../../components/UserInformation/Slider/Slider";
 import { IProfileUser } from "../../types/responses/UserResponse";
 import UserService from "../../services/UserService";
 import { NotFound } from "../NotFound/NotFound";
+import { UserList } from "../../components/UserList/UserList";
 
 /* TODO:  Итак здесь будет профиль, профиль идет от корня с параметром логин,
  именно по логину будет вытягиваться вся инфа с сервера, если профиль, для разной отрисовки своего профиля и 
@@ -33,32 +34,40 @@ export const Profile = () => {
       <div className={profile.profile_row}>
         <ProfileCard user={user} />
         <div className={profile.middle_section}>
-          <UserInformation title="Bio">
-            <div className={profile.bio}>{user.bio.bio}</div>
+          <UserInformation title="Биография">
+            <div className={profile.bio}>
+              {user.bio.bio ? user.bio.bio : "Не указано"}
+            </div>
           </UserInformation>
-          <UserInformation title="Personality">
+          <UserInformation title="Личность">
             <div className={profile.slider_block}>
               <Slider
                 position={user.bio.personality[0]}
-                left_value="Introvert"
-                right_value="Extrovert"
+                left_value="Интроверт"
+                right_value="Экстроверт"
               />
               <Slider
                 position={user.bio.personality[1]}
-                left_value="Analytical"
-                right_value="Creative"
+                left_value="Аналитик"
+                right_value="Творческий"
               />
               <Slider
                 position={user.bio.personality[2]}
-                left_value="Loyal"
-                right_value="Fickle"
+                left_value="Верный"
+                right_value="Переменный"
               />
               <Slider
                 position={user.bio.personality[3]}
-                left_value="Passive"
-                right_value="Active"
+                left_value="Пассив"
+                right_value="Актив"
               />
             </div>
+          </UserInformation>
+          <UserInformation title="Цели">
+            <ul className={profile.user_list}>
+              <UserList value="To spend less time booking travel" />
+              <UserList value="To narrow her options quickly" />
+            </ul>
           </UserInformation>
         </div>
       </div>

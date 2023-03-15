@@ -23,7 +23,7 @@ export const Footer: React.FC = () => {
             </h1>
           </div>
           <p className={footer.year}>
-            © 2023 Philosophy Blog. All Rights Reserved.
+            © 2023 Philosophy Blog. Все права защищены.
           </p>
           <nav className={footer.nav}>
             <div className={footer.social}>

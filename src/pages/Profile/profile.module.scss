@@ -13,6 +13,7 @@
   font-size: 16px;
   line-height: 27px;
   color: #ffffff;
+  height: 210px;
 }
 .middle_section {
   max-width: 485px;
@@ -30,4 +31,21 @@
   .profile_row {
     justify-content: center;
   }
+}
+.user_list {
+  li {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 32px;
+    color: #ffffff;
+    &:before {
+      content: "•";
+      margin-right: 10px;
+      font-weight: bold;
+      color: hsl(144, 61%, 72%);
+    }
+  }
+  padding-bottom: 19px;
+  list-style-type: square;
 }
