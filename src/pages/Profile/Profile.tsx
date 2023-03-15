@@ -47,7 +47,7 @@ export const Profile = () => {
                 right_value="Экстроверт"
               />
               <Slider
-                position={5}
+                position={user.bio.personality[1]}
                 left_value="Аналитик"
                 right_value="Творческий"
               />
