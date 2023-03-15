@@ -16,8 +16,8 @@ export const Slider: React.FC<ISlider> = ({
         <div
           className={slider.square}
           style={{
-            left: `${position * 10}%`,
-            [position == 0 ? "transform" : ""]: "none",
+            left: `${(position ? position : 0) * 10}%`,
+            [!position ? "transform" : ""]: "none",
             [position == 10 ? "transform" : ""]: "translate(-100%)",
           }}
         ></div>

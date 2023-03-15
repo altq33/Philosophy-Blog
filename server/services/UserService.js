@@ -18,6 +18,7 @@ class UserService {
     const doc = new userModel({
       email,
       login,
+      role: "User",
       password: passwordHash,
       activated: false,
       activationLink,

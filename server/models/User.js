@@ -22,7 +22,10 @@ const UserSchema = new mongoose.Schema(
     },
     activationLink: { type: String },
     avatarUrl: String,
-    role: String,
+    role: {
+      type: String,
+      required: true,
+    },
     bio: {
       age: Number,
       sex: String, 
