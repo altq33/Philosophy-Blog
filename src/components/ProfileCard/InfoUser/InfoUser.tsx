@@ -16,7 +16,7 @@ export const InfoUser: React.FC<IUserInfoProps> = ({
         <InfoUserField title="Возраст:" value={age} />
         <InfoUserField title="Пол:" value={sex} />
         <InfoUserField title="Локация:" value={location} />
-        <InfoUserField title="Философское направление:" value={direction} />
+        <InfoUserField title="Направление:" value={direction} />
       </div>
       <ul className={info_user.quality_ul}>
         {qualities.map((el, i) => {

@@ -9,7 +9,7 @@ export const AvatarBlock: React.FC<IAvatarBlock> = ({
   return (
     <div className={avatar_block.avatar_card}>
       <img className={avatar_block.avatar} src={avatar} />
-      <h2 className={avatar_block.userLogin}>{userLogin}</h2>
+      <h2 className={avatar_block.userLogin} title={userLogin}>{userLogin}</h2>
       <h4 className={avatar_block.role}>{role}</h4>
     </div>
   );

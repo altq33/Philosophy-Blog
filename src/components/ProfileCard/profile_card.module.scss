@@ -39,3 +39,8 @@
     max-width: 485px;
   }
 }
+@media (max-width: 370px) {
+  .card {
+    padding: 36px 20px 40px 20px;
+  }
+}

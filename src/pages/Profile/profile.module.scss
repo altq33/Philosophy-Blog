@@ -1,12 +1,11 @@
 .wrap_container {
   max-width: 1832px;
-  padding: 0 44px;
+  margin: 0 auto;
 }
 .profile_row {
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
-  justify-content: center;
   margin-bottom: 40px;
 }
 .bio {
@@ -26,4 +25,9 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+@media (max-width: 947px) {
+  .profile_row {
+    justify-content: center;
+  }
 }
