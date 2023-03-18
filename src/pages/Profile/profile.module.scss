@@ -7,13 +7,14 @@
   flex-wrap: wrap;
   gap: 30px;
   margin-bottom: 40px;
+  align-items: stretch;
+  max-height: 100%;
 }
 .bio {
   font-weight: 400;
   font-size: 16px;
   line-height: 27px;
   color: #ffffff;
-  height: 210px;
 }
 .middle_section {
   max-width: 485px;
