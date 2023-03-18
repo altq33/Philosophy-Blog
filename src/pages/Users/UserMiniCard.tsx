@@ -40,8 +40,9 @@ export const UserMiniCard: React.FC<IUserMiniCardProps> = ({
       "Ноября",
       "Декабря",
     ];
+
     const correctDate = new Date(date);
-    return `${months[correctDate.getMonth() - 1]} ${correctDate.getFullYear()}`;
+    return `${months[correctDate.getMonth()]} ${correctDate.getFullYear()}`;
   };
 
   return (

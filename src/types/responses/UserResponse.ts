@@ -20,5 +20,6 @@ export interface IProfileUser {
     philosophyDirection: string;
     qualities: string[];
     personality: number[];
+    goals: string[];
   };
 }

@@ -35,6 +35,7 @@ const UserSchema = new mongoose.Schema(
       philosophyDireсtion: String,
       qualities: [String],
       personality: [Number],
+      goals: [String],
     },
   },
   {

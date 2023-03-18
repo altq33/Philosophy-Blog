@@ -6,7 +6,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
-  margin-bottom: 40px;
   align-items: stretch;
   max-height: 100%;
 }
@@ -47,6 +46,12 @@
       color: hsl(144, 61%, 72%);
     }
   }
-  padding-bottom: 19px;
   list-style-type: square;
+}
+
+.no_goals {
+  color: white;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 27px;
 }
