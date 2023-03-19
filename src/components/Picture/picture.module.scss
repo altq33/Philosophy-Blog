@@ -1,0 +1,26 @@
+.img_gallery {
+  width: 100%;
+  cursor: pointer;
+  padding-bottom: 10px;
+}
+.hover {
+  filter: brightness(60%);
+  transition: all 0.5s ease;
+}
+.picture_block {
+  width: 100%;
+  cursor: pointer;
+  padding-bottom: 10px;
+}
+.picture_block {
+  position: relative;
+  svg {
+    background: white;
+    padding: 10px;
+    border-radius: 25px;
+    position: absolute;
+    bottom: 30px;
+    right: 25px;
+    width: 30px;
+  }
+}

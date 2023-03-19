@@ -23,3 +23,7 @@ export interface IProfileUser {
     goals: string[];
   };
 }
+
+export interface IGallery {
+  url: string;
+}

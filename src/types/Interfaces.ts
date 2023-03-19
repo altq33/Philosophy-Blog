@@ -1,4 +1,4 @@
-import { IProfileUser } from "./responses/UserResponse";
+import { IGallery, IProfileUser } from "./responses/UserResponse";
 
 export interface IBtn {
   className: string;
@@ -86,4 +86,12 @@ export interface IUserInfoProps {
 
 export interface IUserList {
   value: string;
+}
+
+export interface IPicture {
+  url: string;
+}
+
+export interface IGalleryProps {
+  pictures?: IGallery;
 }

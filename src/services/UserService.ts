@@ -1,7 +1,7 @@
 import { AxiosResponse } from "axios";
 import $api from "../http";
 import IUser from "../types/IUser";
-import { IProfileUser } from "../types/responses/UserResponse";
+import { IGallery, IProfileUser } from "../types/responses/UserResponse";
 
 export default class UserService {
   static async getUsers(): Promise<AxiosResponse<IUser[]>> {
@@ -10,5 +10,9 @@ export default class UserService {
 
   static async getProfile(login: string): Promise<AxiosResponse<IProfileUser>> {
     return $api.get(`/users/${login}`);
+  }
+
+  static async getPictures(): Promise<AxiosResponse<IGallery[]>> {
+    return $api.get(`/gallery`);
   }
 }
