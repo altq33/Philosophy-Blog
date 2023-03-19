@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { userContoller } from "../controllers/UserController.js";
+import { galleryController } from "../controllers/GalleryController.js";
 import { registrationValidations } from "../validations/registrationValidation.js";
 import { authMiddleware } from "../middlewares/authMiddleware.js";
 import multer from "multer";
@@ -28,6 +29,7 @@ router.get("/activate/:link", userContoller.activate);
 router.get("/refresh", userContoller.refresh);
 router.get("/users", authMiddleware, userContoller.getUsers);
 router.get("/users/:login", userContoller.getUserProfile)
+router.get("/gallery", galleryController.getPictures)
 router.post(
   "/users/upload/avatar",
   authMiddleware,

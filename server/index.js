@@ -27,6 +27,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use("/uploads/users/avatars", express.static("uploads/users/avatars"));
+app.use("/uploads/pictures", express.static("uploads/pictures"));
 app.use(
   cors({
     credentials: true,
