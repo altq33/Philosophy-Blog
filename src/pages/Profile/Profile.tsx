@@ -19,7 +19,6 @@ export const Profile = () => {
       setUser(res.data);
     });
   }, [params.login]);
-  console.log("render");
 
   return !user ? (
     <NotFound />
