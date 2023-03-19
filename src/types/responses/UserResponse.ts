@@ -17,7 +17,7 @@ export interface IProfileUser {
     bio: string;
     quote: string;
     location: string;
-    philosophyDirection: string;
+    philosophyDireсtion: string;
     qualities: string[];
     personality: number[];
     goals: string[];

@@ -48,7 +48,7 @@ export const ProfileCard: React.FC<IProfileCardProps> = ({ user }) => {
         age={user.bio.age ? user.bio.age : "Не указано"}
         location={user.bio.location ? user.bio.location:  "Не указано"}
         sex={user.bio.sex ? user.bio.sex :  "Не указано"}
-        direction={user.bio.philosophyDirection ? user.bio.philosophyDirection : "Не указано"}
+        direction={user.bio.philosophyDireсtion ? user.bio.philosophyDireсtion : "Не указано"}
         qualities={user.bio.qualities}
       />
     </div>
