@@ -11,6 +11,7 @@ import { FormLayout } from "../FormLayout/FormLayout";
 import { NotFound } from "../../pages/NotFound/NotFound";
 import { Profile } from "../../pages/Profile/Profile";
 import { Users } from "../../pages/Users/Users";
+import { ProfileSettings } from "../../pages/ProfileSettings/ProfileSettings";
 
 const App: React.FC = () => {
   const { store } = useContext(Context);
@@ -31,6 +32,7 @@ const App: React.FC = () => {
         <Route path="/tournament" element={<Authorization />} />
         <Route path="/gallery" element={<Authorization />} />
         <Route path="/:login" element={<Profile />} />
+        <Route path="/:login/settings" element={<ProfileSettings />} />
         <Route path="/users" element={<Users />} />
         <Route path="/users" element={<FormLayout />}>
           <Route path="/users/authorization" element={<Authorization />} />

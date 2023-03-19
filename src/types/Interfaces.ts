@@ -87,3 +87,7 @@ export interface IUserInfoProps {
 export interface IUserList {
   value: string;
 }
+
+export interface IProfileMenuProps {
+  login: string;
+}

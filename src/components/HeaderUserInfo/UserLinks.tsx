@@ -5,6 +5,7 @@ import { UserListItem } from "./UserListItem";
 import profileIcon from "../../assets/icons/profile.svg";
 import logoutIcon from "../../assets/icons/logout.svg";
 import usersIcon from "../../assets/icons/users-icon.svg";
+import settingsIcon from "../../assets/icons/settings.svg";
 import { Context } from "../../main";
 import { observer } from "mobx-react-lite";
 
@@ -27,6 +28,11 @@ const UserLinks: React.FC<IUserLinksProps> = ({
             title="Профиль"
             to={`/${userName}`}
             icon={profileIcon}
+          />
+           <UserListItem
+            title="Настройки"
+            to={`/${userName}/settings`}
+            icon={settingsIcon}
           />
         </ul>
         <div className={hui.part_title}>Сайт</div>
