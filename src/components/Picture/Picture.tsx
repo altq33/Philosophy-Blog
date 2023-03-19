@@ -4,19 +4,27 @@ import { IPicture } from "../../types/Interfaces";
 
 export const Picture: React.FC<IPicture> = ({ url }) => {
   const [isHovering, setHover] = useState(false);
-  const handleMouseOver = () => {
+  const handleMouseEnter = () => {
     setHover(true);
   };
-  const handleMouseOut = () => {
+  const handleMouseLeave = () => {
     setHover(false);
   };
   return (
     <div
       className={picture.picture_block}
-      onMouseOver={handleMouseOver}
-      onMouseOut={handleMouseOut}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
-      <img className={isHovering ? [picture.img_gallery, picture.hover].join(" ") : picture.img_gallery} src={url} alt={url} />
+      <img
+        className={
+          isHovering
+            ? [picture.img_gallery, picture.hover].join(" ")
+            : picture.img_gallery
+        }
+        src={url}
+        alt={url}
+      />
       {isHovering && (
         <svg
           id="Layer_1"
