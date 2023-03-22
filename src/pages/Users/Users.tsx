@@ -15,14 +15,7 @@ export const Users = () => {
     });
   }, []);
 
-  return !usersList.length ? (
-    <div className={users.wrap_container}>
-      {" "}
-      <h2 className={users.warning}>
-        Для просмотра пользователей <Link to="/users/authorization" className={users.link}>авторизуйтесь!</Link>
-      </h2>
-    </div>
-  ) : (
+  return (
     <div className={users.wrap_container}>
       <ul className={users.users_list}>
         {usersList.map((el: IPublicUser) => (

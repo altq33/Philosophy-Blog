@@ -91,3 +91,10 @@ export interface IUserList {
 export interface IProfileMenuProps {
   login: string;
 }
+
+export interface IAuthRequiredProps {
+  description: string;
+  linkPath: string;
+  linkTitle: string;
+  children: React.ReactElement;
+}

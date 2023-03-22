@@ -12,6 +12,7 @@ import { NotFound } from "../../pages/NotFound/NotFound";
 import { Profile } from "../../pages/Profile/Profile";
 import { Users } from "../../pages/Users/Users";
 import { ProfileSettings } from "../../pages/ProfileSettings/ProfileSettings";
+import { AuthRequired } from "../../hoc/AuthRequired";
 
 const App: React.FC = () => {
   const { store } = useContext(Context);
@@ -33,7 +34,18 @@ const App: React.FC = () => {
         <Route path="/gallery" element={<Authorization />} />
         <Route path="/:login" element={<Profile />} />
         <Route path="/:login/settings" element={<ProfileSettings />} />
-        <Route path="/users" element={<Users />} />
+        <Route
+          path="/users"
+          element={
+            <AuthRequired
+              description={"Для просмотра пользователей "}
+              linkPath={"/users/authorization"}
+              linkTitle={"авторизуйтесь"}
+            >
+              <Users />
+            </AuthRequired>
+          }
+        />
         <Route path="/users" element={<FormLayout />}>
           <Route path="/users/authorization" element={<Authorization />} />
           <Route path="/users/registration" element={<Registration />} />
