@@ -13,6 +13,7 @@ import { Profile } from "../../pages/Profile/Profile";
 import { Users } from "../../pages/Users/Users";
 import { ProfileSettings } from "../../pages/ProfileSettings/ProfileSettings";
 import { AuthRequired } from "../../hoc/AuthRequired";
+import { CurrentUser } from "../../hoc/CurrentUser";
 
 const App: React.FC = () => {
   const { store } = useContext(Context);
@@ -33,7 +34,14 @@ const App: React.FC = () => {
         <Route path="/tournament" element={<Authorization />} />
         <Route path="/gallery" element={<Authorization />} />
         <Route path="/:login" element={<Profile />} />
-        <Route path="/:login/settings" element={<ProfileSettings />} />
+        <Route
+          path="/:login/settings"
+          element={
+            <CurrentUser>
+              <ProfileSettings />
+            </CurrentUser>
+          }
+        />
         <Route
           path="/users"
           element={

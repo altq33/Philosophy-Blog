@@ -98,3 +98,7 @@ export interface IAuthRequiredProps {
   linkTitle: string;
   children: React.ReactElement;
 }
+
+export interface ICurrentUserProps {
+  children: React.ReactElement;
+}
