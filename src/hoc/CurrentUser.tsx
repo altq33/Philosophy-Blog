@@ -6,21 +6,14 @@ import hoc from "./hoc.module.scss";
 import { observer } from "mobx-react-lite";
 
 export const CurrentUser = observer(({ children }: ICurrentUserProps) => {
-  const {
-    store: { user },
-  } = useContext(Context);
+  const { store } = useContext(Context);
   const params = useParams();
-  const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    user.login && setIsLoading(false);
-  }, [user.login]);
+  if (store.isLoading) return null; // TODO: сюда лоудер компонент
 
-  if (isLoading) return null;  // TODO: сюда лоудер компонент
-
-  return params.login == user.login ? (
+  return params.login == store.user.login ? (
     children
   ) : (
-    <Navigate to={`/${user.login}`} />
+    <Navigate to={`/${store.user.login}`} />
   );
 });
