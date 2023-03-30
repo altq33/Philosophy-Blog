@@ -1,14 +1,15 @@
-import React, { ChangeEvent, FormEvent, useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import registr from "./registr.module.scss";
 import { Context } from "../../main";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IFormRegFields } from "../../types/Interfaces";
 import { ErrorContainer } from "../../components/ErrorContainer/ErrorContainer";
-import AuthService from "../../services/AuthService";
-import { AxiosError, AxiosResponse } from "axios";
 import { SubmitError } from "../../components/SubmitError/SubmitError";
 
-export const Registration: React.FC = () => {
+import { observer } from "mobx-react-lite";
+import { useNavigate } from "react-router-dom";
+
+export const Registration: React.FC = observer(() => {
   const [isVisiblePassword, setIsVisiblePassword] = useState(false);
   const [error, setError] = useState("");
   const { store } = useContext(Context);
@@ -18,15 +19,18 @@ export const Registration: React.FC = () => {
     handleSubmit,
     watch,
   } = useForm<IFormRegFields>({ mode: "onChange" });
+  const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<IFormRegFields> = ({
     email,
     password,
     login,
   }) => {
-    AuthService.registration(login, email, password)
+    store
+      .registration(login, email, password)
       .then((res) => {
         setError("");
+        navigate("/");
       })
       .catch((err) => {
         setError("Ошибка регистрации, возможно логин или почта уже заняты");
@@ -152,4 +156,4 @@ export const Registration: React.FC = () => {
       />
     </>
   );
-};
+});

@@ -1,0 +1,57 @@
+.wrap_container {
+  max-width: 1832px;
+  margin: 0 auto;
+}
+.profile_row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  align-items: stretch;
+  max-height: 100%;
+}
+.bio {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 27px;
+  color: #ffffff;
+}
+.middle_section {
+  max-width: 485px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.slider_block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+@media (max-width: 947px) {
+  .profile_row {
+    justify-content: center;
+  }
+}
+.user_list {
+  li {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 32px;
+    color: #ffffff;
+    &:before {
+      content: "•";
+      margin-right: 10px;
+      font-weight: bold;
+      color: hsl(144, 61%, 72%);
+    }
+  }
+  list-style-type: square;
+}
+
+.no_goals {
+  color: white;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 27px;
+}

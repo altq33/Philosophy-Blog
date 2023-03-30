@@ -42,13 +42,13 @@
 }
 @media (max-width: 1488px) {
   .logo {
-    margin-right: 0;
+    margin-right: 20px;
   }
 }
 
 @media (max-width: 485px) {
   .logo {
-    margin-right: 0;
+    margin-right: 10px;
     h1 {
       font-size: 25px;
     }
@@ -58,6 +58,14 @@
   .logo {
     h1 {
       font-size: 18px;
+    }
+  }
+}
+
+@media (max-width: 350px) {
+  .logo {
+    svg {
+      display: none;
     }
   }
 }

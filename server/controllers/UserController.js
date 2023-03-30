@@ -85,6 +85,31 @@ class UserController {
       next(error);
     }
   }
+
+  async uploadAvatar(req, res, next) {
+    try {
+      await userService.updateAvatarUrl(
+        `uploads/users/avatars/${req.user.login}-avatar.${
+          req.file.mimetype.split("/")[1]
+        }`,
+        req.user.login
+      );
+      return res.json({
+        message: "Successful",
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async getUserProfile(req, res, next) {
+    try {
+      const user = await userService.getProfile(req.params.login);
+      res.json(user);
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 export const userContoller = new UserController();

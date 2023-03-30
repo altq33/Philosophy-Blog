@@ -1,0 +1,45 @@
+.card {
+  font-style: normal;
+  max-width: 330px;
+  width: 100%;
+  padding: 36px 40px 40px 40px;
+  background: hsl(234deg 46% 65%);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  max-height: 100%;
+}
+.quote {
+  font-family: "SF";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  text-align: center;
+  color: #ffffff;
+}
+.svg_quote {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    text-align: center;
+}
+.quote_block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 11px;
+    padding-bottom: 40px;
+}
+@media (max-width: 947px) {
+  .card {
+    max-width: 485px;
+  }
+}
+@media (max-width: 370px) {
+  .card {
+    padding: 36px 20px 40px 20px;
+  }
+}

@@ -18,10 +18,25 @@ const UserSchema = new mongoose.Schema(
     },
     activated: {
       type: Boolean,
-      required: true,
+      required: true, 
     },
     activationLink: { type: String },
     avatarUrl: String,
+    role: {
+      type: String,
+      required: true,
+    },
+    bio: {
+      age: Number,
+      sex: String, 
+      bio: String,
+      quote: String,
+      location: String,
+      philosophyDireсtion: String,
+      qualities: [String],
+      personality: [Number],
+      goals: [String],
+    },
   },
   {
     timestamps: true,

@@ -37,7 +37,7 @@ body {
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  background-color: #f6f7f8;
+  background-color: #f6f7f8;    
 }
 input,
 button,
@@ -81,10 +81,6 @@ h6 {
   font-weight: 400;
 }
 
-body {
-  padding-top: 136px;
-}
-
 @font-face {
   font-family: "Inter";
   src: url("./assets/fonts/Inter/Inter-Regular.ttf") format("ttf");
@@ -99,10 +95,27 @@ body {
   font-style: normal;
 }
 
+@font-face {
+  font-family: "SF";
+  src: url("./assets/fonts/SF-Pro-Display/SF-Pro-Display-Regular.otf") format("otf");
+  font-weight: bold;
+  font-style: normal;
+}
+
 #root {
   display: flex;
   flex-direction: column;
   align-items: center;
   min-width: 100%;
   min-height: 100%;
+}
+body {
+  overflow-x: hidden;
+}
+body::-webkit-scrollbar {
+  width: 12px;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: hsl(234, 46%, 65%);
+  border-radius: 20px;
 }

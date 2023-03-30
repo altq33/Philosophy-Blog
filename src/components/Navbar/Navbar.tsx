@@ -1,12 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import navbar from "./navbar.module.scss";
 import { CustomLink } from "./CustomLink";
 import { Search } from "../Search/Search";
+import { Context } from "../../main";
+import { observer } from "mobx-react-lite";
+import { HeaderUserInfo } from "../HeaderUserInfo/HeaderUserInfo";
+import avatar from "../../assets/Img/base-profile-avatar.png";
 
-export const Navbar: React.FC = () => {
+const Navbar: React.FC = () => {
+  const { store } = useContext(Context);
   const [navMenu, setNavMenu] = useState(false);
-
   const changeVisibilityBurger = () => {
     setNavMenu((prev) => !prev);
   };
@@ -20,6 +24,7 @@ export const Navbar: React.FC = () => {
       document.body.style.height = "";
     }
   }, [navMenu]);
+
   const activeStyle = {
     color: "#8fd8ac",
     borderBottom: "3px solid #8fd8ac",
@@ -38,7 +43,7 @@ export const Navbar: React.FC = () => {
           }
         >
           <CustomLink
-            closeBurger={changeVisibilityBurger}
+            closeBurger={navMenu ? changeVisibilityBurger : undefined}
             style={activeStyle}
             to="/"
           >
@@ -46,7 +51,7 @@ export const Navbar: React.FC = () => {
           </CustomLink>
 
           <CustomLink
-            closeBurger={changeVisibilityBurger}
+            closeBurger={navMenu ? changeVisibilityBurger : undefined}
             style={activeStyle}
             to="/blog"
           >
@@ -54,7 +59,7 @@ export const Navbar: React.FC = () => {
           </CustomLink>
 
           <CustomLink
-            closeBurger={changeVisibilityBurger}
+            closeBurger={navMenu ? changeVisibilityBurger : undefined}
             style={activeStyle}
             to="/game"
           >
@@ -62,7 +67,7 @@ export const Navbar: React.FC = () => {
           </CustomLink>
 
           <CustomLink
-            closeBurger={changeVisibilityBurger}
+            closeBurger={navMenu ? changeVisibilityBurger : undefined}
             style={activeStyle}
             to="/library"
           >
@@ -70,7 +75,7 @@ export const Navbar: React.FC = () => {
           </CustomLink>
 
           <CustomLink
-            closeBurger={changeVisibilityBurger}
+            closeBurger={navMenu ? changeVisibilityBurger : undefined}
             style={activeStyle}
             to="/tournament"
           >
@@ -78,25 +83,37 @@ export const Navbar: React.FC = () => {
           </CustomLink>
 
           <CustomLink
-            closeBurger={changeVisibilityBurger}
+            closeBurger={navMenu ? changeVisibilityBurger : undefined}
             style={activeStyle}
             to="/gallery"
           >
             Галерея
           </CustomLink>
-          <CustomLink
-            closeBurger={changeVisibilityBurger}
-            to="/users/authorization"
-          >
-            Войти
-          </CustomLink>
+
+          {!store.isAuth && (
+            <CustomLink
+              className={navbar.auth_burg}
+              closeBurger={navMenu ? changeVisibilityBurger : undefined}
+              to="/users/authorization"
+            >
+              Войти
+            </CustomLink>
+          )}
         </ul>
       </nav>
       <div className={navbar.right_nav}>
         <Search />
+
         <nav className={navbar.auth_btns}>
-          <Link to={"/users/authorization"}>Войти</Link>
+          {store.isAuth ? (
+            <HeaderUserInfo name={store.user.login} avatarUrl={store.user.avatarUrl ?? avatar} />
+          ) : (
+            <Link className={navbar.auth_btn} to={"/users/authorization"}>
+              Войти
+            </Link>
+          )}
         </nav>
+
         <div
           onClick={() => setNavMenu(!navMenu)}
           className={
@@ -113,3 +130,5 @@ export const Navbar: React.FC = () => {
     </div>
   );
 };
+
+export default observer(Navbar);
