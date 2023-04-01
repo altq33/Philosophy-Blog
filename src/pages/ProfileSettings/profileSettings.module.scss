@@ -1,9 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
 .wrap_container {
   max-width: 1832px;
   margin: 0 auto;
 }
 
 .settings_container {
-    display: flex;
-    width: 100%;
+  display: flex;
+  width: 100%;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  column-gap: 50px;
+  flex-wrap: wrap;
+}
+
+.label {
+  font-family: Inter;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 20px;
+  padding-bottom: 10px;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slider_container {
+  background: rgba(41, 57, 200, 0.642);
+  padding: 10px;
+  width: 300px;
+  border-radius: 10px;
+}
+
+.menu {
+  animation: fadeIn 0.2s ease-in-out;
 }

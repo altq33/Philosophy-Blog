@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import app from "./app.module.scss";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { Registration } from "../../pages/Registration/Registration";
 import { Authorization } from "../../pages/Authorization/Authorization";
 import { Context } from "../../main";
@@ -37,9 +37,15 @@ const App: React.FC = () => {
         <Route
           path="/:login/settings"
           element={
-            <CurrentUser>
-              <ProfileSettings />
-            </CurrentUser>
+            <AuthRequired
+              description={"Для действий с аккаунтом "}
+              linkPath={"/users/authorization"}
+              linkTitle={"авторизуйтесь"}
+            >
+              <CurrentUser>
+                <ProfileSettings />
+              </CurrentUser>
+            </AuthRequired>
           }
         />
         <Route

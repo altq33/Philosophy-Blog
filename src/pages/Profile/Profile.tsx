@@ -8,17 +8,10 @@ import { IProfileUser } from "../../types/responses/UserResponse";
 import UserService from "../../services/UserService";
 import { NotFound } from "../NotFound/NotFound";
 import { UserList } from "../../components/UserList/UserList";
+import { useUserProfile } from "../../hooks/useUserProfile";
 
 export const Profile = () => {
-  const params = useParams();
-  const [user, setUser] = useState<IProfileUser | null>(null);
-
-  useEffect(() => {
-    scrollTo(0, 0);
-    UserService.getProfile(params.login!!).then((res) => {
-      setUser(res.data);
-    });
-  }, [params.login]);
+  const { user, isLoading } = useUserProfile();
 
   return !user ? (
     <NotFound />
@@ -35,24 +28,24 @@ export const Profile = () => {
           <UserInformation title="Личность">
             <div className={profile.slider_block}>
               <Slider
-                position={user.bio.personality[0]}
-                left_value="Интроверт"
-                right_value="Экстроверт"
+                position={user.bio.personality[0] ?? 5}
+                left_value="Релативизм"
+                right_value="Абсолютизм"
               />
               <Slider
-                position={user.bio.personality[1]}
-                left_value="Аналитик"
-                right_value="Творческий"
+                position={user.bio.personality[1] ?? 5}
+                left_value="Идеализм"
+                right_value="Материализм"
               />
               <Slider
-                position={user.bio.personality[2]}
-                left_value="Верный"
-                right_value="Переменный"
+                position={user.bio.personality[2] ?? 5}
+                left_value="Эскапизм"
+                right_value="Реализм"
               />
               <Slider
-                position={user.bio.personality[3]}
-                left_value="Пассив"
-                right_value="Актив"
+                position={user.bio.personality[3] ?? 5}
+                left_value="Диалектика"
+                right_value="Метафизика"
               />
             </div>
           </UserInformation>

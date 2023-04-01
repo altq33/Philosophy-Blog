@@ -1,4 +1,7 @@
+import { Control, RegisterOptions, UseFormRegister } from "react-hook-form";
 import { IProfileUser } from "./responses/UserResponse";
+import { SelectComponents } from "react-select/dist/declarations/src/components";
+import { GroupBase, StylesConfig } from "react-select";
 
 export interface IBtn {
   className: string;
@@ -10,6 +13,23 @@ export interface IFormRegFields {
   email: string;
   password: string;
   passwordRepeated: string;
+}
+
+export interface IFormSettingsFields {
+  login: string;
+  email: string;
+  quote: string | null;
+  avatar: FileList;
+  age: number | null;
+  location: string | null;
+  bio: string | null;
+  sex: string | null;
+  goals: string[] | null;
+  direction: string | null;
+  relativismOrAbsolutism: number;
+  idealismOrMaterialism: number;
+  escapismOrRealism: number;
+  dialecticsOrMetaphysics: number;
 }
 
 export interface ISubmitErrorProps {
@@ -92,6 +112,22 @@ export interface IProfileMenuProps {
   login: string;
 }
 
+export type fieldsName =
+  | "login"
+  | "email"
+  | "quote"
+  | "age"
+  | "location"
+  | "bio"
+  | "direction"
+  | "sex"
+  | "relativismOrAbsolutism"
+  | "idealismOrMaterialism"
+  | "escapismOrRealism"
+  | "dialecticsOrMetaphysics"
+  | "avatar"
+  | "goals";
+
 export interface IAuthRequiredProps {
   description: string;
   linkPath: string;
@@ -101,4 +137,92 @@ export interface IAuthRequiredProps {
 
 export interface ICurrentUserProps {
   children: React.ReactElement;
+}
+
+export interface IProfileSettingsInput {
+  label: string;
+  initValue?: string | number;
+  type?: string;
+  rows?: number;
+  cols?: number;
+  textarea?: boolean;
+  select?: boolean;
+  control?: Control<IFormSettingsFields>;
+  defaultValue?: string | null;
+  autoComplete?: boolean;
+  maxLength?: number;
+  components?: Partial<
+    SelectComponents<
+      | {
+          value: null;
+          label: string;
+        }
+      | {
+          value: string;
+          label: string;
+        },
+      false,
+      GroupBase<
+        | {
+            value: null;
+            label: string;
+          }
+        | {
+            value: string;
+            label: string;
+          }
+      >
+    >
+  >;
+  styles?: StylesConfig<
+    | {
+        value: null;
+        label: string;
+      }
+    | {
+        value: string;
+        label: string;
+      },
+    false,
+    GroupBase<
+      | {
+          value: null;
+          label: string;
+        }
+      | {
+          value: string;
+          label: string;
+        }
+    >
+  >;
+  options?: { value: string | null; label: string }[];
+  name: fieldsName;
+  register: UseFormRegister<IFormSettingsFields>;
+  validationSchema?: RegisterOptions;
+  isSearchable?: boolean;
+}
+
+export interface IInputSliderProps {
+  max: number;
+  min: number;
+  leftLabel: string;
+  rightLabel: string;
+  value: number;
+  name: fieldsName;
+  register: UseFormRegister<IFormSettingsFields>;
+}
+
+export interface IInputFileProps {
+  name: fieldsName;
+  register: UseFormRegister<IFormSettingsFields>;
+  onChange?: React.ChangeEventHandler<HTMLInputElement> | undefined;
+}
+
+export interface IFormAvatarUploaderProps extends IInputFileProps {
+  avatarUrl: string;
+}
+
+export interface IGoalsEditorProps {
+  onChange: (value: string[] | null) => void;
+  defaultGoals: string[] | null;
 }
