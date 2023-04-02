@@ -15,6 +15,11 @@ export interface IFormRegFields {
   passwordRepeated: string;
 }
 
+export interface IGoal {
+  id: string;
+  value: string;
+}
+
 export interface IFormSettingsFields {
   login: string;
   email: string;
@@ -225,4 +230,22 @@ export interface IFormAvatarUploaderProps extends IInputFileProps {
 export interface IGoalsEditorProps {
   onChange: (value: string[] | null) => void;
   defaultGoals: string[] | null;
+}
+
+export interface IGoalsListItemProps {
+  value: IGoal;
+  onDelete: (id: string) => void;
+}
+
+export interface IValidationRules {
+  maxLength?: number;
+  minLength?: number;
+  maxElements?: number;
+}
+
+export interface IAddItemFormProps {
+  addItem: (value: string) => void;
+  placeholder?: string;
+  validationRules?: IValidationRules;
+  currentElements?: number;
 }

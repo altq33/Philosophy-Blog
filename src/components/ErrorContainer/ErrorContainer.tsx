@@ -7,7 +7,7 @@ export const ErrorContainer = ({ errors }: { errors?: FieldError }) => {
     <div
       className={[error.error_container, errors ? error.visible : ""].join(" ")}
     >
-      {errors && errors?.message}
+      {errors && errors.message}
     </div>
   );
 };

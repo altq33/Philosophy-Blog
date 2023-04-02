@@ -12,7 +12,7 @@ import {
   UseFormStateReturn,
   useForm,
 } from "react-hook-form";
-import { IFormSettingsFields } from "../../types/Interfaces";
+import { IFormSettingsFields, IGoal } from "../../types/Interfaces";
 import { ProfileSettingsInput } from "../../components/UI/ProfileSettingsInput";
 import Select, { components } from "react-select";
 import { selectStyle } from "./selectStyle";
@@ -208,23 +208,29 @@ export const ProfileSettings = () => {
             </label>
           </section>
           <section className={profileSettings.group}>
-            <FormAvatarUploader
-              name="avatar"
-              register={register}
-              avatarUrl={
-                user?.avatarUrl
-                  ? `${SERVER_HOST}/${user.avatarUrl}`
-                  : baseAvatar
-              }
-            />
-            <Controller
-              control={control}
-              defaultValue={user?.bio.goals}
-              render={({ field: { onChange, value } }) => (
-                <GoalsEditor onChange={onChange} defaultGoals={value} />
-              )}
-              name={"goals"}
-            />
+            <label htmlFor="" className={profileSettings.label}>
+              Аватар
+              <FormAvatarUploader
+                name="avatar"
+                register={register}
+                avatarUrl={
+                  user?.avatarUrl
+                    ? `${SERVER_HOST}/${user.avatarUrl}`
+                    : baseAvatar
+                }
+              />
+            </label>
+            <label htmlFor="" className={profileSettings.label}>
+              Цели
+              <Controller
+                control={control}
+                defaultValue={user?.bio.goals}
+                render={({ field: { onChange, value } }) => (
+                  <GoalsEditor onChange={onChange} defaultGoals={value} />
+                )}
+                name={"goals"}
+              />
+            </label>
           </section>
 
           <input type="submit" />
