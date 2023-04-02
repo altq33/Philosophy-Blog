@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import picture from "./picture.module.scss";
 import { IPicture } from "../../types/Interfaces";
-
+import { LazyLoadImage} from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/opacity.css";
+import "react-lazy-load-image-component/src/effects/blur.css";
+import "react-lazy-load-image-component/src/effects/black-and-white.css";
 export const Picture: React.FC<IPicture> = ({ url }) => {
   const [isHovering, setHover] = useState(false);
   const handleMouseEnter = () => {
@@ -16,14 +19,16 @@ export const Picture: React.FC<IPicture> = ({ url }) => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <img
+      <LazyLoadImage
         className={
           isHovering
             ? [picture.img_gallery, picture.hover].join(" ")
             : picture.img_gallery
         }
         src={url}
+        effect="blur"
         alt={url}
+        placeholderSrc={url}
       />
       {isHovering && (
         <svg
