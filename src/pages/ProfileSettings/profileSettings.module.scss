@@ -8,13 +8,17 @@
 .settings_container {
   display: flex;
   width: 100%;
+  justify-content: center;
 }
 
 .form {
-  width: 100%;
   display: flex;
   column-gap: 50px;
   flex-wrap: wrap;
+  position: relative;
+  @media (max-width: 750px) {
+    flex-direction: column;
+  }
 }
 
 .label {
@@ -46,4 +50,34 @@
 
 .menu {
   animation: fadeIn 0.2s ease-in-out;
+}
+
+.submit,
+.back {
+  display: flex;
+  background: rgb(102, 114, 208);
+  border-radius: 10px;
+  padding: 7px;
+  color: white !important;
+  font-size: 17px !important;
+  font-family: Inter !important;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.submit:disabled {
+  background: rgba(102, 114, 208, 0.3);
+}
+.buttons_container {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  @media (max-width: 750px) {
+    flex-direction: column;
+  }
 }

@@ -1,29 +1,26 @@
-import React, { useEffect } from "react";
 import profileSettings from "./profileSettings.module.scss";
 import { useUserProfile } from "../../hooks/useUserProfile";
-import {
-  Controller,
-  ControllerFieldState,
-  ControllerRenderProps,
-  FieldValues,
-  RegisterOptions,
-  SubmitHandler,
-  UseFormRegisterReturn,
-  UseFormStateReturn,
-  useForm,
-} from "react-hook-form";
-import { IFormSettingsFields, IGoal } from "../../types/Interfaces";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { IFormSettingsFields } from "../../types/Interfaces";
 import { ProfileSettingsInput } from "../../components/UI/ProfileSettingsInput";
-import Select, { components } from "react-select";
-import { selectStyle } from "./selectStyle";
+import { components } from "react-select";
+
 import { InputSlider } from "../../components/UI/InputSlider";
-import { InputFile } from "../../components/UI/InputFile";
 import { FormAvatarUploader } from "../../components/FormAvatarUploader/FormAvatarUploader";
 import baseAvatar from "../../assets/Img/base-profile-avatar.png";
 import { SERVER_HOST } from "../../http";
-import { GoalsEditor } from "../../components/GoalsEditor/GoalsEditor";
+import { ListEditor } from "../../components/ListEditor/ListEditor";
+import { GoalsListItem } from "../../components/ListEditor/GoalsListItem";
+import { QualitiesListItem } from "../../components/ListEditor/QualitiesListItem";
+import { Context } from "../../main";
+import { Link, useNavigate } from "react-router-dom";
+import { MouseEvent, useContext } from "react";
+import { directionOptions, sexOptions } from "../../resources/options";
+import { selectStyle } from "../../resources/styles";
 
 export const ProfileSettings = () => {
+  const { store } = useContext(Context);
+  const navigate = useNavigate();
   const { user, isLoading } = useUserProfile();
   const {
     register,
@@ -36,39 +33,7 @@ export const ProfileSettings = () => {
     data: IFormSettingsFields
   ) => console.log(data);
 
-  const sexOptions = [
-    { value: null, label: "Не указано" },
-    { value: "M", label: "Мужской" },
-    { value: "W", label: "Женский" },
-  ];
-
-  const directionOptions = [
-    { value: null, label: "Не указано" },
-    { value: "Эмпиризм", label: "Эмпиризм" },
-    { value: "Рационализм", label: "Рационализм" },
-    { value: "Идеализм", label: "Идеализм" },
-    { value: "Позитивизм", label: "Позитивизм" },
-    { value: "Стоицизм", label: "Стоицизм" },
-    { value: "Структурализм", label: "Структурализм" },
-    { value: "Феноменология", label: "Феноменология" },
-    { value: "Материализм", label: "Материализм" },
-    { value: "Экзистенциализм", label: "Экзистенциализм" },
-    { value: "Скептицизм", label: "Скептицизм" },
-    { value: "Цинизм", label: "Цинизм" },
-    { value: "Романтичность", label: "Романтичность" },
-    { value: "Догматизм", label: "Догматизм" },
-    { value: "Критика", label: "Критика" },
-    { value: "Контрактуализм", label: "Контрактуализм" },
-    { value: "Утилитаризм", label: "Утилитаризм" },
-    { value: "Коммунизм", label: "Коммунизм" },
-    { value: "Социализм", label: "Социализм" },
-    { value: "Либерализм", label: "Либерализм" },
-    { value: "Либертарианство", label: "Либертарианство" },
-  ];
-
-  return isLoading ? (
-    <div>Загрузка</div> // TODO: Loader
-  ) : (
+  return (
     <div className={profileSettings.wrap_container}>
       <div className={profileSettings.settings_container}>
         <form
@@ -209,6 +174,58 @@ export const ProfileSettings = () => {
           </section>
           <section className={profileSettings.group}>
             <label htmlFor="" className={profileSettings.label}>
+              Цели
+              <Controller
+                control={control}
+                defaultValue={user?.bio.goals}
+                render={({ field: { onChange, value } }) => (
+                  <ListEditor
+                    onChange={onChange}
+                    defaultItems={value}
+                    placeholder="Введите цель"
+                    render={(el, deleteItem) => (
+                      <GoalsListItem value={el} onDelete={deleteItem} />
+                    )}
+                    validationRules={{
+                      maxLength: 50,
+                      minLength: 10,
+                      maxElements: 3,
+                    }}
+                  />
+                )}
+                name={"goals"}
+              />
+            </label>
+            <label htmlFor="" className={profileSettings.label}>
+              Качества
+              <Controller
+                control={control}
+                defaultValue={user?.bio.qualities}
+                render={({ field: { onChange, value } }) => (
+                  <ListEditor
+                    onChange={onChange}
+                    defaultItems={value}
+                    placeholder="Введите качество"
+                    render={(el, deleteItem) => (
+                      <QualitiesListItem value={el} onDelete={deleteItem} />
+                    )}
+                    containerStyles={{
+                      flexFlow: "row wrap",
+                      justifyContent: "flex-start",
+                    }}
+                    validationRules={{
+                      maxLength: 15,
+                      minLength: 1,
+                      maxElements: 10,
+                    }}
+                  />
+                )}
+                name={"qualities"}
+              />
+            </label>
+          </section>
+          <section className={profileSettings.group}>
+            <label htmlFor="" className={profileSettings.label}>
               Аватар
               <FormAvatarUploader
                 name="avatar"
@@ -220,20 +237,26 @@ export const ProfileSettings = () => {
                 }
               />
             </label>
-            <label htmlFor="" className={profileSettings.label}>
-              Цели
-              <Controller
-                control={control}
-                defaultValue={user?.bio.goals}
-                render={({ field: { onChange, value } }) => (
-                  <GoalsEditor onChange={onChange} defaultGoals={value} />
-                )}
-                name={"goals"}
-              />
-            </label>
           </section>
 
-          <input type="submit" />
+          <div className={profileSettings.buttons_container}>
+            <input
+              type="button"
+              disabled={!isValid}
+              value="Изменить"
+              onClick={handleSubmit(onSubmit)}
+              className={profileSettings.submit}
+            />
+            <a
+              className={profileSettings.back}
+              onClick={(e: MouseEvent<HTMLAnchorElement>) => {
+                e.preventDefault();
+                navigate(-1);
+              }}
+            >
+              Назад
+            </a>
+          </div>
         </form>
       </div>
     </div>

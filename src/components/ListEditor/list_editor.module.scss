@@ -50,3 +50,33 @@
   background-size: cover;
   background-color: transparent;
 }
+
+.list_item_qual {
+  display: flex;
+  padding: 5px;
+  color: black;
+  align-items: center;
+  background: #8ce3af;
+  gap: 5px;
+  font-size: 16px;
+  border-radius: 10px;
+  .value {
+    display: flex;
+    align-items: center;
+    &::before {
+      content: none;
+    }
+  }
+}
+
+.no_items {
+  display: flex;
+  font-size: 17px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 0;
+  color: white;
+}
+
+

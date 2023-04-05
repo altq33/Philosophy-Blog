@@ -2,6 +2,7 @@ import { Control, RegisterOptions, UseFormRegister } from "react-hook-form";
 import { IProfileUser } from "./responses/UserResponse";
 import { SelectComponents } from "react-select/dist/declarations/src/components";
 import { GroupBase, StylesConfig } from "react-select";
+import { FC, ReactElement } from "react";
 
 export interface IBtn {
   className: string;
@@ -15,7 +16,7 @@ export interface IFormRegFields {
   passwordRepeated: string;
 }
 
-export interface IGoal {
+export interface IListItem {
   id: string;
   value: string;
 }
@@ -35,6 +36,7 @@ export interface IFormSettingsFields {
   idealismOrMaterialism: number;
   escapismOrRealism: number;
   dialecticsOrMetaphysics: number;
+  qualities: string[] | null;
 }
 
 export interface ISubmitErrorProps {
@@ -131,7 +133,8 @@ export type fieldsName =
   | "escapismOrRealism"
   | "dialecticsOrMetaphysics"
   | "avatar"
-  | "goals";
+  | "goals"
+  | "qualities";
 
 export interface IAuthRequiredProps {
   description: string;
@@ -227,13 +230,21 @@ export interface IFormAvatarUploaderProps extends IInputFileProps {
   avatarUrl: string;
 }
 
-export interface IGoalsEditorProps {
+export interface IListEditorProps {
   onChange: (value: string[] | null) => void;
-  defaultGoals: string[] | null;
+  defaultItems: string[] | null;
+  placeholder?: string;
+  validationRules?: IValidationRules;
+  containerStyles?: React.CSSProperties;
+  render: (
+    el: IListItem,
+    deleteItem: (id: string) => void,
+    i: number | undefined
+  ) => ReactElement;
 }
 
 export interface IGoalsListItemProps {
-  value: IGoal;
+  value: IListItem;
   onDelete: (id: string) => void;
 }
 

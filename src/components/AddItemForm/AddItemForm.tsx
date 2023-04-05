@@ -53,6 +53,7 @@ export const AddItemForm: React.FC<IAddItemFormProps> = ({
   const onAdd = () => {
     if (validationRules && !isValid(value)) return;
     addItem(value);
+    setValue("");
     inputDOM?.current?.focus();
   };
 
