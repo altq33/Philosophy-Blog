@@ -260,3 +260,21 @@ export interface IAddItemFormProps {
   validationRules?: IValidationRules;
   currentElements?: number;
 }
+
+export interface IFormUserData {
+  oldLogin: string;
+  user: {
+    login: string;
+    bio: {
+      age: number | null;
+      sex: string | null;
+      bio: string | null;
+      quote: string | null;
+      location: string | null;
+      philosophyDireсtion: string | null;
+      qualities: string[] | null;
+      personality: number[] | null;
+      goals: string[] | null;
+    };
+  };
+}

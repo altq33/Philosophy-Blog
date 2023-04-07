@@ -1,11 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import profile from "./profile.module.scss";
-import { useParams, Navigate, useNavigate } from "react-router-dom";
 import { ProfileCard } from "../../components/ProfileCard/ProfileCard";
 import { UserInformation } from "../../components/UserInformation/UserInformation";
 import { Slider } from "../../components/UserInformation/Slider/Slider";
-import { IProfileUser } from "../../types/responses/UserResponse";
-import UserService from "../../services/UserService";
 import { NotFound } from "../NotFound/NotFound";
 import { UserList } from "../../components/UserList/UserList";
 import { useUserProfile } from "../../hooks/useUserProfile";
@@ -51,7 +48,7 @@ export const Profile = () => {
           </UserInformation>
           <UserInformation title="Цели">
             <ul className={profile.user_list}>
-              {user.bio.goals.length ? (
+              {user.bio?.goals?.length ? (
                 user.bio.goals.map((goal, index) => {
                   return <UserList key={index} value={goal} />;
                 })

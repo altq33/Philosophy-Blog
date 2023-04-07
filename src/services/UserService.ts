@@ -1,7 +1,8 @@
-import { AxiosResponse } from "axios";
+import axios, { AxiosResponse } from "axios";
 import $api from "../http";
 import IUser from "../types/IUser";
 import { IProfileUser } from "../types/responses/UserResponse";
+import { IFormUserData } from "../types/Interfaces";
 
 export default class UserService {
   static async getUsers(): Promise<AxiosResponse<IUser[]>> {
@@ -10,5 +11,13 @@ export default class UserService {
 
   static async getProfile(login: string): Promise<AxiosResponse<IProfileUser>> {
     return $api.get(`/users/${login}`);
+  }
+
+  static async updateProfile(user: FormData, login: string) {
+    return $api.patch(`/users/${login}`, user, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
   }
 }

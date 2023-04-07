@@ -1,7 +1,7 @@
 export const sexOptions = [
   { value: null, label: "Не указано" },
-  { value: "M", label: "Мужской" },
-  { value: "W", label: "Женский" },
+  { value: "Мужской", label: "Мужской" },
+  { value: "Женский", label: "Женский" },
 ];
 
 export const directionOptions = [

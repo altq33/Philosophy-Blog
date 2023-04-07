@@ -14,7 +14,7 @@ export const InfoUser: React.FC<IUserInfoProps> = ({
     <div className={info_user.info_card}>
       <div className={info_user.fields}>
         <InfoUserField title="Возраст:" value={age} />
-        <InfoUserField title="Пол:" value={sex} />
+        <InfoUserField title="Пол:" value={sex ? sex : "Не указан"} />
         <InfoUserField title="Локация:" value={location} />
         <InfoUserField title="Направление:" value={direction} />
       </div>

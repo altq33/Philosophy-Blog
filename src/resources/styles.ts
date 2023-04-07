@@ -43,3 +43,7 @@ export const selectStyle = {
     color: "white",
   }),
 };
+
+export const errorContainerProfileStyle = {
+  display: "none",
+};

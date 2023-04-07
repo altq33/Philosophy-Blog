@@ -1,7 +1,7 @@
 import profileSettings from "./profileSettings.module.scss";
 import { useUserProfile } from "../../hooks/useUserProfile";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import { IFormSettingsFields } from "../../types/Interfaces";
+import { IFormSettingsFields, IFormUserData } from "../../types/Interfaces";
 import { ProfileSettingsInput } from "../../components/UI/ProfileSettingsInput";
 import { components } from "react-select";
 
@@ -14,26 +14,79 @@ import { GoalsListItem } from "../../components/ListEditor/GoalsListItem";
 import { QualitiesListItem } from "../../components/ListEditor/QualitiesListItem";
 import { Context } from "../../main";
 import { Link, useNavigate } from "react-router-dom";
-import { MouseEvent, useContext } from "react";
+import { MouseEvent, useContext, useRef } from "react";
 import { directionOptions, sexOptions } from "../../resources/options";
-import { selectStyle } from "../../resources/styles";
+import {
+  errorContainerProfileStyle,
+  selectStyle,
+} from "../../resources/styles";
+import UserService from "../../services/UserService";
+import { observer } from "mobx-react-lite";
+import {
+  ageValidationObject,
+  bioValidationObject,
+  locationValidationObject,
+  loginValidationObject,
+  quoteValidationObject,
+} from "../../resources/validations";
+import { ErrorContainer } from "../../components/ErrorContainer/ErrorContainer";
 
-export const ProfileSettings = () => {
+export const ProfileSettings = observer(() => {
   const { store } = useContext(Context);
   const navigate = useNavigate();
   const { user, isLoading } = useUserProfile();
+
   const {
     register,
     formState: { errors, isValid },
     handleSubmit,
     control,
   } = useForm<IFormSettingsFields>({ mode: "onChange" });
-
   const onSubmit: SubmitHandler<IFormSettingsFields> = (
     data: IFormSettingsFields
-  ) => console.log(data);
+  ) => {
+    const formUserData: IFormUserData = {
+      oldLogin: user?.login!!,
+      user: {
+        login: data.login,
+        bio: {
+          age: data.age,
+          sex: data.sex,
+          location: data.location,
+          bio: data.bio,
+          quote: data.quote,
+          philosophyDireсtion: data.direction,
+          personality: [
+            data.relativismOrAbsolutism,
+            data.idealismOrMaterialism,
+            data.escapismOrRealism,
+            data.dialecticsOrMetaphysics,
+          ],
+          goals: data.goals,
+          qualities: data.qualities,
+        },
+      },
+    };
 
-  return (
+    const formData = new FormData();
+
+    formData.append("avatar", data.avatar[0]);
+    formData.append("user", JSON.stringify(formUserData));
+
+    UserService.updateProfile(formData, formUserData.oldLogin)
+      .then((res) => {
+        store.checkAuth().then((res) => {
+          navigate(`/${formUserData.user.login}/settings`);
+        });
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+
+  return isLoading ? (
+    <div>Лоадинг</div>
+  ) : (
     <div className={profileSettings.wrap_container}>
       <div className={profileSettings.settings_container}>
         <form
@@ -43,14 +96,17 @@ export const ProfileSettings = () => {
           onSubmit={handleSubmit(onSubmit)}
         >
           <section className={profileSettings.group}>
-            {" "}
             <ProfileSettingsInput
               label="Логин"
               initValue={user?.login!!}
               type="text"
               name="login"
               register={register}
-              validationSchema={{ required: true }}
+              validationSchema={loginValidationObject}
+            />
+            <ErrorContainer
+              styles={errorContainerProfileStyle}
+              errors={errors?.login}
             />
             <ProfileSettingsInput
               label="Возраст"
@@ -58,7 +114,11 @@ export const ProfileSettings = () => {
               type="number"
               name="age"
               register={register}
-              validationSchema={{ required: true, valueAsNumber: true }}
+              validationSchema={ageValidationObject}
+            />
+            <ErrorContainer
+              styles={errorContainerProfileStyle}
+              errors={errors?.age}
             />
             <ProfileSettingsInput
               label="Локация"
@@ -66,7 +126,11 @@ export const ProfileSettings = () => {
               type="text"
               name="location"
               register={register}
-              validationSchema={{ required: true }}
+              validationSchema={locationValidationObject}
+            />
+            <ErrorContainer
+              styles={errorContainerProfileStyle}
+              errors={errors?.location}
             />
             <ProfileSettingsInput
               label="Биография"
@@ -76,8 +140,12 @@ export const ProfileSettings = () => {
               cols={10}
               maxLength={250}
               register={register}
-              validationSchema={{ required: true }}
+              validationSchema={bioValidationObject}
               textarea
+            />
+            <ErrorContainer
+              styles={errorContainerProfileStyle}
+              errors={errors?.bio}
             />
             <ProfileSettingsInput
               label="Цитата"
@@ -87,8 +155,12 @@ export const ProfileSettings = () => {
               cols={10}
               maxLength={100}
               register={register}
-              validationSchema={{ required: true }}
+              validationSchema={quoteValidationObject}
               textarea
+            />
+            <ErrorContainer
+              styles={errorContainerProfileStyle}
+              errors={errors?.quote}
             />
           </section>
           <section className={profileSettings.group}>
@@ -261,4 +333,4 @@ export const ProfileSettings = () => {
       </div>
     </div>
   );
-};
+});
