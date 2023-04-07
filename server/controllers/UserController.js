@@ -86,14 +86,19 @@ class UserController {
     }
   }
 
-  async uploadAvatar(req, res, next) {
+  async updateUserProfile(req, res, next) {
     try {
-      await userService.updateAvatarUrl(
-        `uploads/users/avatars/${req.user.login}-avatar.${
-          req.file.mimetype.split("/")[1]
-        }`,
-        req.user.login
+      const user = JSON.parse(req.body.user);
+      await userService.updateUserProfile(
+        req.file
+          ? `uploads/users/avatars/${req.params.login}-avatar.${
+              req.file.mimetype.split("/")[1]
+            }`
+          : undefined,
+        req.params.login,
+        user.user
       );
+
       return res.json({
         message: "Successful",
       });

@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import { router } from "./router/index.js";
 import { errorMiddleware } from "./middlewares/errorMiddleware.js";
+import nocache from "nocache";
 
 dotenv.config();
 
@@ -25,6 +26,7 @@ mongoose
 const app = express();
 
 app.use(express.json());
+app.use(nocache());
 app.use(express.urlencoded({ extended: false }));
 app.use("/uploads/users/avatars", express.static("uploads/users/avatars"));
 app.use(
@@ -34,9 +36,12 @@ app.use(
   })
 );
 app.use(cookieParser());
+app.use((req, res, next) => {
+  res.set("Cache-Control", "no-store");
+  next();
+});
 app.use("/api", router);
 app.use(errorMiddleware);
-
 app.get("/", (req, res) => {
   res.send("Alldone");
 });
