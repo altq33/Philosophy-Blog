@@ -18,7 +18,7 @@ const UserSchema = new mongoose.Schema(
     },
     activated: {
       type: Boolean,
-      required: true, 
+      required: true,
     },
     activationLink: { type: String },
     avatarUrl: String,
@@ -28,7 +28,7 @@ const UserSchema = new mongoose.Schema(
     },
     bio: {
       age: Number,
-      sex: String, 
+      sex: String,
       bio: String,
       quote: String,
       location: String,

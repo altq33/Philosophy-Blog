@@ -11,7 +11,6 @@ import { Loader } from "../../components/Loader/Loader";
 export const Users = () => {
   const [usersList, setUsersList] = useState<any>([]);
   const [loading, setLoading] = useState(false);
-  const [responseError, setResponseError] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -20,21 +19,10 @@ export const Users = () => {
         setLoading(false);
         setUsersList(res.data);
       })
-      .catch(() => {
-        setResponseError(true);
-      });
+      .catch(() => {});
   }, []);
 
-  return !usersList.length && responseError ? (
-    <div className={users.wrap_container}>
-      <h2 className={users.warning}>
-        Для просмотра пользователей
-        <Link to="/users/authorization" className={users.link}>
-          авторизуйтесь!
-        </Link>
-      </h2>
-    </div>
-  ) : (
+  return (
     <div className={users.wrap_container}>
       {loading ? (
         <div className={users.wrapper_loader}>

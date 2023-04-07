@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import app from "./app.module.scss";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { Registration } from "../../pages/Registration/Registration";
 import { Authorization } from "../../pages/Authorization/Authorization";
 import { Context } from "../../main";
@@ -12,6 +12,9 @@ import { NotFound } from "../../pages/NotFound/NotFound";
 import { Profile } from "../../pages/Profile/Profile";
 import { Users } from "../../pages/Users/Users";
 import { Gallery } from "../../pages/Gallery/Gallery";
+import { ProfileSettings } from "../../pages/ProfileSettings/ProfileSettings";
+import { AuthRequired } from "../../hoc/AuthRequired";
+import { CurrentUser } from "../../hoc/CurrentUser";
 
 const App: React.FC = () => {
   const { store } = useContext(Context);
@@ -32,7 +35,32 @@ const App: React.FC = () => {
         <Route path="/tournament" element={<Authorization />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/:login" element={<Profile />} />
-        <Route path="/users" element={<Users />} />
+        <Route
+          path="/:login/settings"
+          element={
+            <AuthRequired
+              description={"Для действий с аккаунтом "}
+              linkPath={"/users/authorization"}
+              linkTitle={"авторизуйтесь"}
+            >
+              <CurrentUser>
+                <ProfileSettings />
+              </CurrentUser>
+            </AuthRequired>
+          }
+        />
+        <Route
+          path="/users"
+          element={
+            <AuthRequired
+              description={"Для просмотра пользователей "}
+              linkPath={"/users/authorization"}
+              linkTitle={"авторизуйтесь"}
+            >
+              <Users />
+            </AuthRequired>
+          }
+        />
         <Route path="/users" element={<FormLayout />}>
           <Route path="/users/authorization" element={<Authorization />} />
           <Route path="/users/registration" element={<Registration />} />

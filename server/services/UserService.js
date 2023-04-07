@@ -132,13 +132,15 @@ class UserService {
     return users;
   }
 
-  async updateAvatarUrl(url, login) {
-    const user = await userModel.findOne({ login });
-    if (!user) {
+  async updateUserProfile(url, login, user) {
+    const currentUser = await userModel.findOneAndUpdate({ login }, user);
+    if (!currentUser) {
       throw ApiError.BadRequest("Error when updating");
     }
-    user.avatarUrl = url;
-    await user.save();
+    if (url) {
+      currentUser.avatarUrl = url;
+      await currentUser.save();
+    }
   }
 
   async getProfile(login) {
