@@ -8,7 +8,7 @@ import { observer } from "mobx-react-lite";
 import { HeaderUserInfo } from "../HeaderUserInfo/HeaderUserInfo";
 import avatar from "../../assets/Img/base-profile-avatar.png";
 
-const Navbar: React.FC = () => {
+export const Navbar: React.FC = observer(() => {
   const { store } = useContext(Context);
   const [navMenu, setNavMenu] = useState(false);
   const changeVisibilityBurger = () => {
@@ -105,8 +105,11 @@ const Navbar: React.FC = () => {
         <Search />
 
         <nav className={navbar.auth_btns}>
-          {store.isAuth ? (
-            <HeaderUserInfo name={store.user.login} avatarUrl={store.user.avatarUrl ?? avatar} />
+          {store.isAuth && !store.isLoading ? (
+            <HeaderUserInfo
+              name={store.user.login}
+              avatarUrl={store.user.avatarUrl ?? avatar}
+            />
           ) : (
             <Link className={navbar.auth_btn} to={"/users/authorization"}>
               Войти
@@ -129,6 +132,4 @@ const Navbar: React.FC = () => {
       </div>
     </div>
   );
-};
-
-export default observer(Navbar);
+});

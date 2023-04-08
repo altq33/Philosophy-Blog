@@ -1,11 +1,10 @@
 import React, { useContext } from "react";
 import header from "./header.module.scss";
-import Navbar from "../Navbar/Navbar";
+import { Navbar } from "../Navbar/Navbar";
 import { Context } from "../../main";
 import { Link } from "react-router-dom";
 
 export const Header = () => {
-
   return (
     <header className={header.header}>
       <div className={header.wrap_container}>

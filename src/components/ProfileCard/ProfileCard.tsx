@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { AvatarBlock } from "./AvatarBlock/AvatarBlock";
 import { InfoUser } from "./InfoUser/InfoUser";
 import { useParams } from "react-router-dom";
@@ -6,15 +6,19 @@ import profile_card from "./profile_card.module.scss";
 import avatar from "../../assets/Img/base-profile-avatar.png";
 import { IProfileCardProps } from "../../types/Interfaces";
 import { SERVER_HOST } from "../../http";
+import { ProfileMenu } from "../ProfileMenu/ProfileMenu";
+import { Context } from "../../main";
 
 export const ProfileCard: React.FC<IProfileCardProps> = ({ user }) => {
+  const { store } = useContext(Context);
   return (
     <div className={profile_card.card}>
       <AvatarBlock
-        avatar={ user.avatarUrl ? `${SERVER_HOST}/${user.avatarUrl}` : avatar}
+        avatar={user.avatarUrl ? `${SERVER_HOST}/${user.avatarUrl}` : avatar}
         userLogin={user.login}
         role={user.role}
       />
+      {user.login === store.user.login && <ProfileMenu login={user.login} />}
       <div className={profile_card.quote_block}>
         <div className={profile_card.svg_quote}>
           <svg
@@ -42,13 +46,19 @@ export const ProfileCard: React.FC<IProfileCardProps> = ({ user }) => {
             />
           </svg>
         </div>
-        <p className={profile_card.quote}>{user.bio.quote ? user.bio.quote : "Не указано"}</p>
+        <p className={profile_card.quote}>
+          {user.bio.quote ? user.bio.quote : "Не указано"}
+        </p>
       </div>
       <InfoUser
         age={user.bio.age ? user.bio.age : "Не указано"}
-        location={user.bio.location ? user.bio.location:  "Не указано"}
-        sex={user.bio.sex ? user.bio.sex :  "Не указано"}
-        direction={user.bio.philosophyDireсtion ? user.bio.philosophyDireсtion : "Не указано"}
+        location={user.bio.location ? user.bio.location : "Не указано"}
+        sex={user.bio.sex ? user.bio.sex : "Не указано"}
+        direction={
+          user.bio.philosophyDireсtion
+            ? user.bio.philosophyDireсtion
+            : "Не указано"
+        }
         qualities={user.bio.qualities}
       />
     </div>

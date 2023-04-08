@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import hui from "./hui.module.scss";
 import { Context } from "../../main";
 import { IHeaderUserInfoProps } from "../../types/Interfaces";

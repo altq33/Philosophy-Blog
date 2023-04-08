@@ -8,7 +8,7 @@ import { API_URL, SERVER_HOST } from "../http";
 export default class Store {
   user = {} as IUser;
   isAuth = false;
-  isLoading = false;
+  isLoading = true;
 
   constructor() {
     makeAutoObservable(this);
