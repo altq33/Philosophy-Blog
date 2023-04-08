@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import ttb from "./ttb.module.scss";
 
 export const ToTopButton = () => {
@@ -12,13 +12,17 @@ export const ToTopButton = () => {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      if (window.pageYOffset > 300) {
+    const toggleVisibility = () => {
+      if (window.scrollY > 300) {
         setShowButton(true);
       } else {
         setShowButton(false);
       }
-    });
+    };
+
+    window.addEventListener("scroll", toggleVisibility);
+
+    return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
   return showButton ? (

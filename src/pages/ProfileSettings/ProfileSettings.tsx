@@ -316,7 +316,7 @@ export const ProfileSettings = observer(() => {
             <input
               type="button"
               disabled={!isValid}
-              value="Изменить"
+              value="Сохранить"
               onClick={handleSubmit(onSubmit)}
               className={profileSettings.submit}
             />
