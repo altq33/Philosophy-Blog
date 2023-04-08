@@ -40,6 +40,7 @@ export const ProfileSettings = observer(() => {
     register,
     formState: { errors, isValid },
     handleSubmit,
+    setError,
     control,
   } = useForm<IFormSettingsFields>({ mode: "onChange" });
   const onSubmit: SubmitHandler<IFormSettingsFields> = (
@@ -80,7 +81,7 @@ export const ProfileSettings = observer(() => {
         });
       })
       .catch((e) => {
-        console.log(e);
+        setError("login", { type: "custom", message: "Логин уже занят" });
       });
   };
 

@@ -16,6 +16,7 @@ router.post("/authorization", userContoller.login);
 router.post("/logout", userContoller.logout);
 router.get("/activate/:link", userContoller.activate);
 router.get("/refresh", userContoller.refresh);
+router.get("/gallery", galleryController.getPictures);
 router.get("/users", authMiddleware, userContoller.getUsers);
 router.get("/users/:login", userContoller.getUserProfile);
 router.patch(
