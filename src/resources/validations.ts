@@ -47,3 +47,25 @@ export const quoteValidationObject = {
     message: "Ваша цитата слишком обширна",
   },
 };
+
+export const emailValidationObject = {
+  required: "Поле обязательно к заполнению",
+  pattern: {
+    value:
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+    message: "Неправильный формат email",
+  },
+};
+
+export const passwordValidationObject = {
+  required: "Поле обязательно к заполнению",
+  minLength: {
+    value: 10,
+    message: "Пароль должен иметь минимум 10 символов",
+  },
+  pattern: {
+    value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/,
+    message:
+      "Пароль должен содержать строчные и прописные латинские буквы и цифры",
+  },
+};

@@ -70,6 +70,20 @@
   cursor: pointer;
 }
 
+.to_pass {
+  display: flex;
+  background: #8ce3af;
+  border-radius: 10px;
+  padding: 7px;
+  color: black !important;
+  font-size: 17px !important;
+  font-family: Inter !important;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 auto;
+  cursor: pointer;
+}
+
 .submit:disabled {
   background: rgba(102, 114, 208, 0.3);
 }

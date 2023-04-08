@@ -15,6 +15,7 @@ import { Gallery } from "../../pages/Gallery/Gallery";
 import { ProfileSettings } from "../../pages/ProfileSettings/ProfileSettings";
 import { AuthRequired } from "../../hoc/AuthRequired";
 import { CurrentUser } from "../../hoc/CurrentUser";
+import { PasswordSettings } from "../../pages/PasswordSettings/PasswordSettings";
 
 const App: React.FC = () => {
   const { store } = useContext(Context);
@@ -45,6 +46,20 @@ const App: React.FC = () => {
             >
               <CurrentUser>
                 <ProfileSettings />
+              </CurrentUser>
+            </AuthRequired>
+          }
+        />
+        <Route
+          path="/:login/settings/password"
+          element={
+            <AuthRequired
+              description={"Для действий с аккаунтом "}
+              linkPath={"/users/authorization"}
+              linkTitle={"авторизуйтесь"}
+            >
+              <CurrentUser>
+                <PasswordSettings />
               </CurrentUser>
             </AuthRequired>
           }

@@ -3,6 +3,7 @@ import { Control, RegisterOptions, UseFormRegister } from "react-hook-form";
 import { SelectComponents } from "react-select/dist/declarations/src/components";
 import { GroupBase, StylesConfig } from "react-select";
 import { FC, ReactElement } from "react";
+import { CSSProperties } from "@emotion/serialize";
 
 export interface IBtn {
   className: string;
@@ -41,6 +42,7 @@ export interface IFormSettingsFields {
 
 export interface ISubmitErrorProps {
   message: string;
+  styles?: React.CSSProperties;
 }
 
 export interface IFormAuthFields {
@@ -284,4 +286,9 @@ export interface IFormUserData {
       goals: string[] | null;
     };
   };
+}
+
+export interface IChangePasswordFormFields {
+  newPassword: string;
+  oldPassword: string;
 }

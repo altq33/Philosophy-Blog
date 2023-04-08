@@ -8,6 +8,7 @@ import { SubmitError } from "../../components/SubmitError/SubmitError";
 
 import { observer } from "mobx-react-lite";
 import { useNavigate } from "react-router-dom";
+import { emailValidationObject, loginValidationObject, passwordValidationObject } from "../../resources/validations";
 
 export const Registration: React.FC = observer(() => {
   const [isVisiblePassword, setIsVisiblePassword] = useState(false);
@@ -57,18 +58,7 @@ export const Registration: React.FC = observer(() => {
               errors?.login ? registr.error_input : "",
             ].join(" ")}
             type="text"
-            {...register("login", {
-              required: "Поле обязательно к заполнению",
-              minLength: {
-                value: 3,
-                message: "Логин должен иметь минимум 3 символа",
-              },
-              pattern: {
-                value: /^[A-Za-z0-9_]+$/,
-                message:
-                  "В логине можно использовать только латинские буквы, цифры и нижнее подчеркивание",
-              },
-            })}
+            {...register("login", loginValidationObject)}
           />
         </label>
         <ErrorContainer errors={errors?.login} />
@@ -80,14 +70,7 @@ export const Registration: React.FC = observer(() => {
               errors?.email ? registr.error_input : "",
             ].join(" ")}
             type="email"
-            {...register("email", {
-              required: "Поле обязательно к заполнению",
-              pattern: {
-                value:
-                  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                message: "Неправильный формат email",
-              },
-            })}
+            {...register("email", emailValidationObject)}
           />
         </label>
         <ErrorContainer errors={errors?.email} />
@@ -100,18 +83,7 @@ export const Registration: React.FC = observer(() => {
               errors?.password ? registr.error_input : "",
             ].join(" ")}
             type={isVisiblePassword ? "text" : "password"}
-            {...register("password", {
-              required: "Поле обязательно к заполнению",
-              minLength: {
-                value: 10,
-                message: "Пароль должен иметь минимум 10 символов",
-              },
-              pattern: {
-                value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/,
-                message:
-                  "Пароль должен содержать строчные и прописные латинские буквы и цифры",
-              },
-            })}
+            {...register("password", passwordValidationObject)}
           />
           <button
             type="button"

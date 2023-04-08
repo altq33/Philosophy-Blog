@@ -2,9 +2,9 @@ import React from "react";
 import { ISubmitErrorProps } from "../../types/Interfaces";
 import suberr from "./suberr.module.scss";
 
-export const SubmitError: React.FC<ISubmitErrorProps> = ({ message }) => {
+export const SubmitError: React.FC<ISubmitErrorProps> = ({ message, styles }) => {
   return (
-    <div>
+    <div style={styles}>
       <div className={suberr.container}>ОШИБКА</div>
       <div className={suberr.errors}>{message}</div>
     </div>

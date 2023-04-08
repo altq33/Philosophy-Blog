@@ -23,4 +23,15 @@ export default class UserService {
       },
     });
   }
+  static updatePassword(
+    login: string,
+    newPassword: string,
+    oldPassword: string
+  ) {
+    return $api.patch(`/users/${login}/password`, {
+      login,
+      newPassword,
+      oldPassword,
+    });
+  }
 }

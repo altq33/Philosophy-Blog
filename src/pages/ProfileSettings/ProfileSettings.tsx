@@ -13,7 +13,7 @@ import { ListEditor } from "../../components/ListEditor/ListEditor";
 import { GoalsListItem } from "../../components/ListEditor/GoalsListItem";
 import { QualitiesListItem } from "../../components/ListEditor/QualitiesListItem";
 import { Context } from "../../main";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { MouseEvent, useContext, useRef } from "react";
 import { directionOptions, sexOptions } from "../../resources/options";
 import {
@@ -30,10 +30,12 @@ import {
   quoteValidationObject,
 } from "../../resources/validations";
 import { ErrorContainer } from "../../components/ErrorContainer/ErrorContainer";
+import { Loader } from "../../components/Loader/Loader";
 
 export const ProfileSettings = observer(() => {
   const { store } = useContext(Context);
   const navigate = useNavigate();
+  const location = useLocation();
   const { user, isLoading } = useUserProfile();
 
   const {
@@ -43,6 +45,7 @@ export const ProfileSettings = observer(() => {
     setError,
     control,
   } = useForm<IFormSettingsFields>({ mode: "onChange" });
+
   const onSubmit: SubmitHandler<IFormSettingsFields> = (
     data: IFormSettingsFields
   ) => {
@@ -86,7 +89,9 @@ export const ProfileSettings = observer(() => {
   };
 
   return isLoading ? (
-    <div>Лоадинг</div>
+    <div className={profileSettings.wrap_container}>
+      <Loader />
+    </div>
   ) : (
     <div className={profileSettings.wrap_container}>
       <div className={profileSettings.settings_container}>
@@ -310,6 +315,12 @@ export const ProfileSettings = observer(() => {
                 }
               />
             </label>
+            <Link
+              to={`${location.pathname}/password`}
+              className={profileSettings.to_pass}
+            >
+              Сменить Пароль
+            </Link>
           </section>
 
           <div className={profileSettings.buttons_container}>

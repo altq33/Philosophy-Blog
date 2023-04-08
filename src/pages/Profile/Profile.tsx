@@ -6,11 +6,16 @@ import { Slider } from "../../components/UserInformation/Slider/Slider";
 import { NotFound } from "../NotFound/NotFound";
 import { UserList } from "../../components/UserList/UserList";
 import { useUserProfile } from "../../hooks/useUserProfile";
+import { Loader } from "../../components/Loader/Loader";
 
 export const Profile = () => {
   const { user, isLoading } = useUserProfile();
 
-  return !user ?? !isLoading ? (
+  return isLoading ? (
+    <div className={profile.wrap_container}>
+      <Loader />
+    </div>
+  ) : !user ? (
     <NotFound />
   ) : (
     <div className={profile.wrap_container}>
