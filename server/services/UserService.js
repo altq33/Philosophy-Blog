@@ -18,6 +18,7 @@ class UserService {
     const doc = new userModel({
       email,
       login,
+      role: "User",
       password: passwordHash,
       activated: false,
       activationLink,
@@ -41,6 +42,8 @@ class UserService {
       ...tokens,
       userId: user._id,
       email: user._doc.email,
+      login: user._doc.login,
+      avatarUrl: user._doc?.avatarUrl,
     };
   }
 
@@ -68,6 +71,8 @@ class UserService {
       ...tokens,
       userId: user._id,
       email: user._doc.email,
+      login: user._doc.login,
+      avatarUrl: user._doc?.avatarUrl,
     };
   }
 
@@ -106,12 +111,53 @@ class UserService {
       ...tokens,
       userId: user._id,
       email: user._doc.email,
+      login: user._doc.login,
+      avatarUrl: user._doc?.avatarUrl,
     };
   }
 
   async getAllUsers() {
-    const users = userModel.find();
+    const users = userModel.find(
+      {},
+      {
+        _id: 0,
+        login: 1,
+        bio: {
+          sex: 1,
+        },
+        createdAt: 1,
+        avatarUrl: 1,
+      }
+    );
     return users;
+  }
+
+  async updateUserProfile(url, login, user) {
+    const currentUser = await userModel.findOneAndUpdate({ login }, user);
+    if (!currentUser) {
+      throw ApiError.BadRequest("Error when updating");
+    }
+    if (url) {
+      currentUser.avatarUrl = url;
+      await currentUser.save();
+    }
+  }
+
+  async getProfile(login) {
+    const user = await userModel.findOne(
+      { login },
+      {
+        login: 1,
+        _id: 0,
+        bio: 1,
+        role: 1,
+        avatarUrl: 1,
+      }
+    );
+    if (!user) {
+      throw ApiError.BadRequest("User not found");
+    }
+    return user;
   }
 }
 

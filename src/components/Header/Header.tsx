@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import header from "./header.module.scss";
 import { Navbar } from "../Navbar/Navbar";
+import { Context } from "../../main";
 import { Link } from "react-router-dom";
 
 export const Header = () => {

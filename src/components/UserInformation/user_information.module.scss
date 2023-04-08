@@ -1,0 +1,16 @@
+.info_card_block {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  font-family: Inter;
+  font-style: normal;
+  padding: 40px;
+  background: hsl(234, 46%, 65%);
+  border-radius: 10px;
+}
+.title_block {
+  font-weight: 700;
+  font-size: 24px;
+  color: hsl(144, 61%, 72%);
+  padding-bottom: 20px;
+}

@@ -85,6 +85,36 @@ class UserController {
       next(error);
     }
   }
+
+  async updateUserProfile(req, res, next) {
+    try {
+      const user = JSON.parse(req.body.user);
+      await userService.updateUserProfile(
+        req.file
+          ? `uploads/users/avatars/${req.params.login}-avatar.${
+              req.file.mimetype.split("/")[1]
+            }`
+          : undefined,
+        req.params.login,
+        user.user
+      );
+
+      return res.json({
+        message: "Successful",
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async getUserProfile(req, res, next) {
+    try {
+      const user = await userService.getProfile(req.params.login);
+      res.json(user);
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 export const userContoller = new UserController();

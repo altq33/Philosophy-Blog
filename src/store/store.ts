@@ -3,12 +3,12 @@ import IUser from "../types/IUser";
 import AuthService from "../services/AuthService";
 import axios from "axios";
 import { AuthResponse } from "../types/responses/AuthResponse";
-import { API_URL } from "../http";
+import { API_URL, SERVER_HOST } from "../http";
 
 export default class Store {
   user = {} as IUser;
   isAuth = false;
-  isLoading = false;
+  isLoading = true;
 
   constructor() {
     makeAutoObservable(this);
@@ -31,10 +31,17 @@ export default class Store {
       const response = await AuthService.login(login, password);
       localStorage.setItem("accessToken", response.data.accessToken);
       this.setAuth(true);
-      const user: IUser = { email: response.data.email, id: response.data.id };
+      const user: IUser = {
+        email: response.data.email,
+        id: response.data.id,
+        login: response.data.login,
+        avatarUrl: response.data.avatarUrl
+          ? `${SERVER_HOST}/${response.data.avatarUrl}`
+          : undefined,
+      };
       this.setUser(user);
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   }
 
@@ -43,10 +50,17 @@ export default class Store {
       const response = await AuthService.registration(login, email, password);
       localStorage.setItem("accessToken", response.data.accessToken);
       this.setAuth(true);
-      const user: IUser = { email: response.data.email, id: response.data.id };
+      const user: IUser = {
+        email: response.data.email,
+        id: response.data.id,
+        login: response.data.login,
+        avatarUrl: response.data.avatarUrl
+          ? `${SERVER_HOST}/${response.data.avatarUrl}`
+          : undefined,
+      };
       this.setUser(user);
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   }
 
@@ -69,7 +83,14 @@ export default class Store {
       });
       localStorage.setItem("accessToken", response.data.accessToken);
       this.setAuth(true);
-      const user: IUser = { email: response.data.email, id: response.data.id };
+      const user: IUser = {
+        email: response.data.email,
+        id: response.data.id,
+        login: response.data.login,
+        avatarUrl: response.data.avatarUrl
+          ? `${SERVER_HOST}/${response.data.avatarUrl}`
+          : undefined,
+      };
       this.setUser(user);
     } catch (error) {
       console.log(error);

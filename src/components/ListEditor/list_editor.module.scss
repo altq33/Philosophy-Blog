@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+.container {
+  display: flex;
+  background: rgb(114, 125, 218);
+  padding: 5px;
+  border-radius: 10px;
+  flex-direction: column;
+  width: 300px;
+  font-family: Inter;
+}
+
+.list {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+  gap: 10px;
+}
+
+.list_item {
+  font-size: 15px;
+  display: flex;
+  justify-content: space-between;
+  &:hover {
+    background: rgb(102, 114, 208);
+  }
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.value {
+  display: flex;
+  align-items: center;
+  &:before {
+    content: "•";
+    margin-right: 5px;
+    font-weight: bold;
+    color: hsl(144, 61%, 72%);
+  }
+}
+
+.delete {
+  height: 20px;
+  width: 20px;
+  background-image: url("../../assets/icons/close.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: transparent;
+}
+
+.list_item_qual {
+  display: flex;
+  padding: 5px;
+  color: black;
+  align-items: center;
+  background: #8ce3af;
+  gap: 5px;
+  font-size: 16px;
+  border-radius: 10px;
+  .value {
+    display: flex;
+    align-items: center;
+    &::before {
+      content: none;
+    }
+  }
+}
+
+.no_items {
+  display: flex;
+  font-size: 17px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 0;
+  color: white;
+}
+
+
