@@ -115,6 +115,21 @@ class UserController {
       next(error);
     }
   }
+
+  async updateUserPassword(req, res, next) {
+    try {
+      await userService.updateUserPassword(
+        req.params.login,
+        req.body.oldPassword,
+        req.body.newPassword
+      );
+      return res.json({
+        message: "Successful",
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 export const userContoller = new UserController();

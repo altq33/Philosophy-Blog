@@ -159,6 +159,28 @@ class UserService {
     }
     return user;
   }
+
+  async updateUserPassword(login, oldPassword, newPassword) {
+    const user = await userModel.findOne(
+      { login },
+      {
+        password: 1,
+      }
+    );
+    if (!user) {
+      throw ApiError.BadRequest("Error when updating");
+    }
+    const isValidPass = await bcrypt.compare(oldPassword, user.password);
+
+    if (isValidPass) {
+      const salt = await bcrypt.genSalt(3);
+      const newPasswordHash = await bcrypt.hash(newPassword, salt);
+      user.password = newPasswordHash;
+      await user.save();
+    } else {
+      throw ApiError.BadRequest("Passwordd dont match");
+    }
+  }
 }
 
 export const userService = new UserService();

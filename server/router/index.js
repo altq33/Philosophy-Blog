@@ -25,5 +25,10 @@ router.patch(
   fileMiddleware.single("avatar"),
   userContoller.updateUserProfile
 );
+router.patch(
+  "/users/:login/password",
+  authMiddleware,
+  userContoller.updateUserPassword
+);
 
 export { router };
