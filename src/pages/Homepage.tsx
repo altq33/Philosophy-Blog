@@ -25,6 +25,13 @@ export const Homepage = () => {
           style={{
             backgroundImage: `url(src/assets/Img/t-selin-erkan-vihkDSPuMdM-unsplash.png)`,
             backgroundSize: "contain",
+
+          }}
+        ></ParallaxLayer>
+        <ParallaxLayer
+          offset={0}
+          speed={0.4}
+          style={{
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -43,32 +50,49 @@ export const Homepage = () => {
           style={{
             backgroundImage: `url(src/assets/Img/miti-7O_x-zaM_ug-unsplash.png)`,
             backgroundSize: "contain",
+           
+          }}
+        >
+          
+        </ParallaxLayer>
+        <ParallaxLayer
+          offset={1}
+          speed={0.75}
+          style={{
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
             color: "#fff",
             marginTop: "50px",
-            textAlign: "center",
+            textAlign: "center", // добавлено свойство для центрирования текста
           }}
         >
-          <h2 className={homepage.text}>Have Fun!</h2>
+          <h2 className={homepage.text}>Welcome to Philosophy Blog</h2>
         </ParallaxLayer>
         <ParallaxLayer
           offset={2}
-          speed={0.65}
+          speed={0.9}
           data-background-url="src/assets/Img/freya-ingva-FcAQd8TCBzE-unsplash.png"
           style={{
             backgroundImage: `url(src/assets/Img/freya-ingva-FcAQd8TCBzE-unsplash.png)`,
             backgroundSize: "contain",
             backgroundPosition: "-180px",
+          }}
+        >
+          
+        </ParallaxLayer>
+        <ParallaxLayer
+          offset={2}
+          speed={1.1}
+          style={{
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
             color: "#fff",
             marginTop: "50px",
-            textAlign: "center",
+            textAlign: "center", // добавлено свойство для центрирования текста
           }}
         >
           <h2 className={homepage.text}>Welcome to Philosophy Blog</h2>
