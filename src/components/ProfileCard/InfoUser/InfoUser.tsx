@@ -19,7 +19,7 @@ export const InfoUser: React.FC<IUserInfoProps> = ({
         <InfoUserField title="Направление:" value={direction} />
       </div>
       <ul className={info_user.quality_ul}>
-        {qualities.map((el, i) => {
+        {qualities?.map((el, i) => {
           return <Quality key={i} value={el} />;
         })}
       </ul>
