@@ -37,7 +37,7 @@ body {
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  background-color: #f6f7f8;    
+  background-color: #f6f7f8;
 }
 input,
 button,
@@ -97,7 +97,8 @@ h6 {
 
 @font-face {
   font-family: "SF";
-  src: url("./assets/fonts/SF-Pro-Display/SF-Pro-Display-Regular.otf") format("otf");
+  src: url("./assets/fonts/SF-Pro-Display/SF-Pro-Display-Regular.otf")
+    format("otf");
   font-weight: bold;
   font-style: normal;
 }
@@ -111,6 +112,7 @@ h6 {
 }
 body {
   overflow-x: hidden;
+  overflow-y: scroll;
 }
 body::-webkit-scrollbar {
   width: 12px;

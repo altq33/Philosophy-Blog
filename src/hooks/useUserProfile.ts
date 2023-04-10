@@ -10,10 +10,14 @@ export const useUserProfile = () => {
   useEffect(() => {
     scrollTo(0, 0);
     setIsLoading(true);
-    UserService.getProfile(params.login!!).then((res) => {
-      setUser(res.data);
-      setIsLoading(false);
-    });
+    UserService.getProfile(params.login!!)
+      .then((res) => {
+        setUser(res.data);
+        setIsLoading(false);
+      })
+      .catch(() => {
+        setIsLoading(false);
+      });
   }, [params.login]);
 
   return { user, isLoading };
