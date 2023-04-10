@@ -30,6 +30,7 @@ app.use(nocache());
 app.use(express.urlencoded({ extended: false }));
 app.use("/uploads/users/avatars", express.static("uploads/users/avatars"));
 app.use("/uploads/pictures", express.static("uploads/pictures"));
+app.use("/uploads/posts/covers", express.static("uploads/posts/covers"));
 app.use(
   cors({
     credentials: true,
