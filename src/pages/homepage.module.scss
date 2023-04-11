@@ -1,16 +1,47 @@
 .text {
-  color: rgb(255, 255, 255);
-  font-family: "Roboto Slab";
-  font-size: 4.5em;
+  color: #7b83ce;
+  font-size: 3.5em;
+  font-family: Inter;
+  padding-left: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  p {
+    &:first-child {
+      color: #7b83ce;
+      font-weight: 500;
+    }
+    &:last-child {
+      color: #000000;
+      max-width: 85%;
+      font-weight: 300;
+    }
+  }
 }
-.text_1 {
-  color: rgb(255, 255, 255);
-  font-family: "Roboto Slab";
-  font-size: 1.5em;
-  padding-top: 10px;
-  padding-left: 520px;
-  line-height: 40px;
+.text2 {
+  color: #000000;
+  font-family: Inter;
+  text-align: center;
+  font-size: 3.5em;
+  font-weight: 500;
+  padding-bottom: 20px;
 }
 .parent {
-  background-color: #7b83ce;
+  background: #f6f7f8;
+  transition: background 1s ease-in-out;
+}
+
+.parallax {
+  background: #f6f7f8;
+  transition: background 1s ease-in-out;
+}
+
+.parallax__layer {
+  background: #f6f7f8;
+  transition: background 1s ease-in-out;
+}
+
+.parallax__layer1 {
+  background: #f6f7f8;
+  transition: background 1s ease-in-out;
 }
