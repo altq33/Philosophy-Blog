@@ -33,7 +33,7 @@ export default class Store {
       this.setAuth(true);
       const user: IUser = {
         email: response.data.email,
-        id: response.data.id,
+        userId: response.data.userId,
         login: response.data.login,
         avatarUrl: response.data.avatarUrl
           ? `${SERVER_HOST}/${response.data.avatarUrl}`
@@ -52,7 +52,7 @@ export default class Store {
       this.setAuth(true);
       const user: IUser = {
         email: response.data.email,
-        id: response.data.id,
+        userId: response.data.userId,
         login: response.data.login,
         avatarUrl: response.data.avatarUrl
           ? `${SERVER_HOST}/${response.data.avatarUrl}`
@@ -85,7 +85,7 @@ export default class Store {
       this.setAuth(true);
       const user: IUser = {
         email: response.data.email,
-        id: response.data.id,
+        userId: response.data.userId,
         login: response.data.login,
         avatarUrl: response.data.avatarUrl
           ? `${SERVER_HOST}/${response.data.avatarUrl}`

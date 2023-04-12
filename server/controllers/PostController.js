@@ -16,7 +16,7 @@ class PostContoller {
         imgUrl: req.file ? `uploads/posts/covers/${req.trueFileName}` : "",
         description: req.body.description,
         text: req.body.text,
-        tags: req.body.tags,
+        tags: JSON.parse(req.body.tags),
         user: req.body.user,
       });
 
