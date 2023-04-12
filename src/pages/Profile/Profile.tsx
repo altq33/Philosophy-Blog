@@ -9,8 +9,9 @@ import { useUserProfile } from "../../hooks/useUserProfile";
 import { Loader } from "../../components/Loader/Loader";
 import { Context } from "../../main";
 import { Link } from "react-router-dom";
+import { UserPosts } from "../../components/UserPosts/UserPosts";
 
-export const Profile = () => {
+export const Profile: React.FC = () => {
   const { user, isLoading } = useUserProfile();
   const { store } = useContext(Context);
 
@@ -75,6 +76,14 @@ export const Profile = () => {
               Создать пост
             </Link>
           )}
+          <Link to={`/posts/${store.user.userId}`}>
+            <UserPosts
+              src="server/uploads/users/avatars/altq33-avatar.jpeg"
+              title="Мияги или же Валберисasdasadsasdasdadsaskjdaskldaslkdjsalkjdlsajdlj"
+              description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, consequuntur necessitatibus distinctio odio quam atque autem, est consequatur ipsum fugit reprehenderit nam earum sequi optio neque molestiae pariatur dicta id! Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, consequuntur necessitatibus distinctio odio quam atque autem, est consequatur ipsum fugit reprehenderit nam earum sequi optio neque molestiae pariatur dicta id!"
+              user={user}
+            />
+          </Link>
         </div>
       </div>
     </div>

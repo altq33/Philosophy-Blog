@@ -337,3 +337,11 @@ export interface IPost {
   };
   createdAt: string;
 }
+
+export interface IUserPosts {
+  src: string;
+  title: string;
+  description: string;
+  // onDelete: (id: string) => void;
+  user: IProfileUser;
+}
