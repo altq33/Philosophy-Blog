@@ -25,6 +25,7 @@
     "react-select": "^5.7.2",
     "react-simplemde-editor": "^5.2.0",
     "react-spring": "^9.7.1",
+    "react-vanilla-tilt": "^1.0.0",
     "vanilla-tilt": "^1.8.0"
   },
   "devDependencies": {

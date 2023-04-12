@@ -1,3 +1,5 @@
+import { IPost } from "../Interfaces";
+
 export interface IPublicUser {
   login: string;
   bio: {
@@ -11,6 +13,7 @@ export interface IProfileUser {
   login: string;
   avatarUrl: string;
   role: string;
+  posts: IPost[];
   bio: {
     age: number;
     sex: string;

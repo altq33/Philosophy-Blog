@@ -322,3 +322,18 @@ export interface ICreatePostFields {
   cover: FileList;
   tags: string[];
 }
+
+export interface IPost {
+  _id: string;
+  title: string;
+  imgUrl: string;
+  description: string;
+  text: string;
+  tags: [string] | null;
+  viewsCount: number;
+  user: {
+    avatarUrl: string;
+    login: string;
+  };
+  createdAt: string;
+}
