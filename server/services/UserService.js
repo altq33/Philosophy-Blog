@@ -1,4 +1,5 @@
 import { userModel } from "../models/User.js";
+import { postModel } from "../models/Post.js";
 import bcrypt from "bcrypt";
 import { v4 } from "uuid";
 import { emailService } from "./EmailService.js";
@@ -148,15 +149,23 @@ class UserService {
       { login },
       {
         login: 1,
-        _id: 0,
+        _id: 1,
         bio: 1,
         role: 1,
         avatarUrl: 1,
       }
     );
+
     if (!user) {
       throw ApiError.BadRequest("User not found");
     }
+
+    const userPosts = await postModel.find({ user: user._id });
+
+    user.posts = userPosts;
+
+    await user.save();
+
     return user;
   }
 

@@ -37,6 +37,12 @@ const UserSchema = new mongoose.Schema(
       personality: [Number],
       goals: [String],
     },
+    posts: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Post",
+      },
+    ],
   },
   {
     timestamps: true,
