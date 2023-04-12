@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import { IUserMiniCardProps } from "../../types/Interfaces";
 import users from "./users.module.scss";
-import VanillaTilt from "vanilla-tilt";
 import { Link } from "react-router-dom";
 import baseAvatar from "../../assets/Img/base-profile-avatar.png";
 import { SERVER_HOST } from "../../http";
+import VanillaTilt from "vanilla-tilt";
 
 export const UserMiniCard: React.FC<IUserMiniCardProps> = ({
   login,

@@ -1,9 +1,13 @@
 import { IGallery, IProfileUser } from "./responses/UserResponse";
-import { Control, RegisterOptions, UseFormRegister } from "react-hook-form";
+import {
+  Control,
+  RegisterOptions,
+  UseFormRegister,
+  UseFormResetField,
+} from "react-hook-form";
 import { SelectComponents } from "react-select/dist/declarations/src/components";
 import { GroupBase, StylesConfig } from "react-select";
 import { FC, ReactElement } from "react";
-import { CSSProperties } from "@emotion/serialize";
 
 export interface IBtn {
   className: string;
@@ -145,6 +149,13 @@ export type fieldsName =
   | "goals"
   | "qualities";
 
+export type CreatePostFields =
+  | "title"
+  | "text"
+  | "description"
+  | "cover"
+  | "tags";
+
 export interface IAuthRequiredProps {
   description: string;
   linkPath: string;
@@ -232,11 +243,21 @@ export interface IInputSliderProps {
 export interface IInputFileProps {
   name: fieldsName;
   register: UseFormRegister<IFormSettingsFields>;
-  onChange?: React.ChangeEventHandler<HTMLInputElement> | undefined;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+}
+
+export interface ICoverInputProps {
+  name: CreatePostFields;
+  register: UseFormRegister<ICreatePostFields>;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+}
+
+export interface IFormCoverUploaderProps extends ICoverInputProps {
+  resetFile: UseFormResetField<ICreatePostFields>;
 }
 
 export interface IFormAvatarUploaderProps extends IInputFileProps {
-  avatarUrl: string;
+  avatarUrl?: string;
 }
 
 export interface IListEditorProps {
@@ -245,6 +266,7 @@ export interface IListEditorProps {
   placeholder?: string;
   validationRules?: IValidationRules;
   containerStyles?: React.CSSProperties;
+  outerContainerStyles?: React.CSSProperties;
   render: (
     el: IListItem,
     deleteItem: (id: string) => void,
@@ -291,4 +313,27 @@ export interface IFormUserData {
 export interface IChangePasswordFormFields {
   newPassword: string;
   oldPassword: string;
+}
+
+export interface ICreatePostFields {
+  title: string;
+  description: string;
+  text: string;
+  cover: FileList;
+  tags: string[];
+}
+
+export interface IPost {
+  _id: string;
+  title: string;
+  imgUrl: string;
+  description: string;
+  text: string;
+  tags: [string] | null;
+  viewsCount: number;
+  user: {
+    avatarUrl: string;
+    login: string;
+  };
+  createdAt: string;
 }

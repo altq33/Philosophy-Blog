@@ -10,6 +10,7 @@ export const ListEditor: React.FC<IListEditorProps> = ({
   validationRules,
   render,
   containerStyles,
+  outerContainerStyles,
 }) => {
   const [items, setItems] = useState<IListItem[] | null>(() => {
     return defaultItems && defaultItems.length
@@ -39,7 +40,7 @@ export const ListEditor: React.FC<IListEditorProps> = ({
   };
 
   return (
-    <div className={list_editor.container}>
+    <div className={list_editor.container} style={outerContainerStyles}>
       <ul style={containerStyles} className={list_editor.list}>
         {items && items.length ? (
           items.map((el, i) => (

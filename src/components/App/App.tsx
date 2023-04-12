@@ -16,6 +16,7 @@ import { ProfileSettings } from "../../pages/ProfileSettings/ProfileSettings";
 import { AuthRequired } from "../../hoc/AuthRequired";
 import { CurrentUser } from "../../hoc/CurrentUser";
 import { PasswordSettings } from "../../pages/PasswordSettings/PasswordSettings";
+import { CreatePost } from "../../pages/CreatePost/CreatePost";
 
 const App: React.FC = () => {
   const { store } = useContext(Context);
@@ -80,6 +81,20 @@ const App: React.FC = () => {
           <Route path="/users/authorization" element={<Authorization />} />
           <Route path="/users/registration" element={<Registration />} />
         </Route>
+        <Route
+          path="/:login/create-post"
+          element={
+            <AuthRequired
+              description={"Для создания постов "}
+              linkPath={"/users/authorization"}
+              linkTitle={"авторизуйтесь"}
+            >
+              <CurrentUser>
+                <CreatePost />
+              </CurrentUser>
+            </AuthRequired>
+          }
+        />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

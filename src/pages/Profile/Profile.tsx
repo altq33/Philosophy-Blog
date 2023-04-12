@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import profile from "./profile.module.scss";
 import { ProfileCard } from "../../components/ProfileCard/ProfileCard";
 import { UserInformation } from "../../components/UserInformation/UserInformation";
@@ -7,9 +7,12 @@ import { NotFound } from "../NotFound/NotFound";
 import { UserList } from "../../components/UserList/UserList";
 import { useUserProfile } from "../../hooks/useUserProfile";
 import { Loader } from "../../components/Loader/Loader";
+import { Context } from "../../main";
+import { Link } from "react-router-dom";
 
 export const Profile = () => {
   const { user, isLoading } = useUserProfile();
+  const { store } = useContext(Context);
 
   return isLoading ? (
     <div className={profile.wrap_container}>
@@ -62,6 +65,16 @@ export const Profile = () => {
               )}
             </ul>
           </UserInformation>
+        </div>
+        <div className={profile.posts_container}>
+          {store.user.login == user.login && (
+            <Link
+              to={`/${store.user.login}/create-post`}
+              className={profile.create_post_btn}
+            >
+              Создать пост
+            </Link>
+          )}
         </div>
       </div>
     </div>

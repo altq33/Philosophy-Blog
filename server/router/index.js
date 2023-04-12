@@ -3,7 +3,11 @@ import { userContoller } from "../controllers/UserController.js";
 import { galleryController } from "../controllers/GalleryController.js";
 import { registrationValidations } from "../validations/registrationValidation.js";
 import { authMiddleware } from "../middlewares/authMiddleware.js";
-import { fileMiddleware } from "../middlewares/fileMiddleware.js";
+import {
+  avatarFileMiddleware,
+  postCoverFileMiddleware,
+} from "../middlewares/fileMiddleware.js";
+import { postContoller } from "../controllers/PostController.js";
 
 const router = new Router();
 
@@ -22,7 +26,7 @@ router.get("/users/:login", userContoller.getUserProfile);
 router.patch(
   "/users/:login",
   authMiddleware,
-  fileMiddleware.single("avatar"),
+  avatarFileMiddleware.single("avatar"),
   userContoller.updateUserProfile
 );
 router.patch(
@@ -30,5 +34,20 @@ router.patch(
   authMiddleware,
   userContoller.updateUserPassword
 );
+router.post(
+  "/posts",
+  authMiddleware,
+  postCoverFileMiddleware.single("cover"),
+  postContoller.createPost
+);
+router.patch(
+  "/posts/:id",
+  authMiddleware,
+  postCoverFileMiddleware.single("cover"),
+  postContoller.updatePost
+);
+router.get("/posts", postContoller.getAllPosts);
+router.get("/posts/:id", postContoller.getPostById);
+router.delete("/posts/:id", authMiddleware, postContoller.deletePost);
 
 export { router };

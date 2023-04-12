@@ -1,0 +1,34 @@
+.file_label {
+  display: flex;
+  width: 120px;
+  height: 45px;
+  font-family: Inter;
+  font-weight: bold;
+  padding: 7px;
+  padding-right: 60px;
+  color: white;
+  text-align: center;
+  align-items: center;
+  line-height: 1.2;
+  background-image: url("../../assets/icons/addgal.svg");
+  background-repeat: no-repeat;
+  background-position: 95%;
+  background-size: 30%;
+  background-color: rgb(102, 114, 208);
+  border-radius: 4px;
+  transition: all ease 0.3s;
+  cursor: pointer;
+  &:hover {
+    transition: all ease 0.3s;
+    color: rgb(237, 190, 109);
+  }
+}
+
+.file_input {
+  opacity: 0;
+  font-size: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+  cursor: pointer;
+}

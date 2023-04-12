@@ -1,0 +1,45 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.cover {
+  width: 100%;
+  height: auto;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.buttons_container {
+  display: flex;
+  width: 100%;
+  padding: 20px;
+  gap: 20px;
+}
+
+.delete_cover {
+  display: flex;
+  width: 120px;
+  height: 45px;
+  font-family: Inter;
+  font-weight: bold;
+  padding: 7px;
+  padding-right: 60px;
+  color: white;
+  text-align: center;
+  align-items: center;
+  line-height: 1.2;
+  background-image: url("../../assets/icons/deletegal.svg");
+  background-repeat: no-repeat;
+  background-position: 95%;
+  background-size: 30%;
+  background-color: rgb(102, 114, 208);
+  border-radius: 4px;
+  transition: all ease 0.3s;
+  cursor: pointer;
+  &:hover {
+    transition: all ease 0.3s;
+    color: rgb(237, 190, 109);
+  }
+}
