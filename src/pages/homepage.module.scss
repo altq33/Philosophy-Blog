@@ -19,12 +19,15 @@
   }
 }
 .text2 {
-  color: #000000;
+  color: #8ce3af;
   font-family: Inter;
   text-align: center;
-  font-size: 3.5em;
-  font-weight: 500;
+  font-size: 4.5em;
+  font-weight: 600;
   padding-bottom: 20px;
+  span {
+    color: #7b83ce;
+  }
 }
 .parent {
   background: #f6f7f8;

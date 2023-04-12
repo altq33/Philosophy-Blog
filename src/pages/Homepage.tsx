@@ -47,7 +47,7 @@ export const Homepage = () => {
               marginTop: "50px",
             }}
           >
-            <h2 className={homepage.text2}>Философский Блог</h2>
+            <h2 className={homepage.text2}>Philosophy <span>Blog</span></h2>
             
           </ParallaxLayer>
         </animated.div>
