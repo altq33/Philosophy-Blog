@@ -5,10 +5,14 @@ import { SERVER_HOST } from "../../http";
 import { Link } from "react-router-dom";
 import baseAvatar from "../../assets/Img/base-profile-avatar.png";
 export const BlogPost: React.FC<IBlogPost> = ({ blogPost }) => {
+  
   const getDate = (date: string) => {
     const parseDate = new Date(date);
-    return `${parseDate.getDate()}-${parseDate.getMonth() + 1}-${parseDate.getFullYear()}`;
+    return `${parseDate.getDate()}-${
+      parseDate.getMonth() + 1
+    }-${parseDate.getFullYear()}`;
   };
+
   return (
     <div className={blog_post.post_parent}>
       <div className={blog_post.header}>
@@ -28,7 +32,9 @@ export const BlogPost: React.FC<IBlogPost> = ({ blogPost }) => {
             <Link to={`/${blogPost.user.login}`}>
               <h3 className={blog_post.login}>{blogPost.user.login}</h3>
             </Link>
-            <h4 className={blog_post.date}>создано: {getDate(blogPost.createdAt)}</h4>
+            <h4 className={blog_post.date}>
+              создано: {getDate(blogPost.createdAt)}
+            </h4>
           </div>
         </div>
         <div className={blog_post.view_header}>

@@ -8,4 +8,8 @@ export default class PostService {
   static async createPost(post: FormData) {
     return $api.post("/posts", post);
   }
+
+  static async getAllPosts() {
+    return $api.get("/posts");
+  }
 }
