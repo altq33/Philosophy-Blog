@@ -1,0 +1,127 @@
+.post_parent {
+  display: flex;
+  max-width: 600px;
+  width: 100%;
+  flex-direction: column;
+  font-family: Inter;
+  font-style: normal;
+  padding: 40px;
+  background: hsl(234, 46%, 65%);
+  border-radius: 10px;
+  gap: 20px;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.left_header {
+  display: flex;
+  gap: 20px;
+}
+.avatar {
+  margin-bottom: 20px;
+  background: #ffab14;
+  border: 3px solid #ffffff;
+  box-shadow: 0px 30px 30px rgba(136, 81, 0, 0.07);
+  border-radius: 250px;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+.middle_header {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.middle {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.login {
+  font-weight: 700;
+  font-size: 15px;
+  color: hsl(144, 61%, 72%);
+}
+.date {
+  font-weight: 700;
+  font-size: 15px;
+  color: hsl(0, 0%, 100%);
+}
+.view_header {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.view_icon {
+  width: 20px;
+}
+.view_count {
+  font-weight: 700;
+  font-size: 13px;
+  display: block;
+  color: hsl(0, 0%, 100%);
+}
+.header_img {
+  object-fit: cover;
+  max-width: 100%;
+  border-radius: 5px;
+}
+.title {
+  font-weight: 700;
+  font-size: 24px;
+  color: hsl(144, 61%, 72%);
+  display: block;
+  max-width: 100%;
+}
+.description {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 27px;
+  color: #ffffff;
+}
+.list_tags {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 100%;
+
+  color: white;
+  gap: 10px;
+}
+
+.list_item {
+  display: flex;
+  padding: 5px;
+  color: black;
+  align-items: center;
+  background: #8ce3af;
+  gap: 5px;
+  font-size: 16px;
+  border-radius: 10px;
+}
+.last_block_img {
+  display: flex;
+  justify-content: flex-start;
+}
+.btn_open_post {
+    display: flex;
+    align-self: flex-end;
+  a {
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    background: rgb(255, 165, 14);
+    color: black;
+    font-family: Inter;
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    text-align: center;
+    transition: all ease 0.3s;
+  }
+}

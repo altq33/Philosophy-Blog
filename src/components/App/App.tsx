@@ -17,6 +17,7 @@ import { AuthRequired } from "../../hoc/AuthRequired";
 import { CurrentUser } from "../../hoc/CurrentUser";
 import { PasswordSettings } from "../../pages/PasswordSettings/PasswordSettings";
 import { CreatePost } from "../../pages/CreatePost/CreatePost";
+import { Blog } from "../../pages/Blog/Blog";
 
 const App: React.FC = () => {
   const { store } = useContext(Context);
@@ -31,7 +32,7 @@ const App: React.FC = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Homepage />} />
-        <Route path="/blog" element={<Authorization />} />
+        <Route path="/blog" element={<Blog />} />
         <Route path="/game" element={<Authorization />} />
         <Route path="/library" element={<Authorization />} />
         <Route path="/tournament" element={<Authorization />} />

@@ -1,0 +1,11 @@
+.wrap_container {
+    max-width: 1832px;
+    margin: 0 auto;
+}
+.blog_posts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+    align-items: center;
+}
