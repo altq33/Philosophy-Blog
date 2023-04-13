@@ -2,17 +2,17 @@ import React, { MouseEvent, useContext } from "react";
 import user_posts from "./user_post.module.scss";
 import { IUserPost } from "../../types/Interfaces";
 import { Context } from "../../main";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 export const UserPost: React.FC<IUserPost> = ({
   src,
   title,
   description,
-  user,
   onDelete,
   id,
 }) => {
   const { store } = useContext(Context);
   const navigation = useNavigate();
+  const params = useParams();
 
   const onEdit = (e: MouseEvent<HTMLImageElement>) => {
     e.stopPropagation();
@@ -22,7 +22,6 @@ export const UserPost: React.FC<IUserPost> = ({
   const onClick = () => {
     navigation(`posts/${id}`);
   };
-
   const handleDelete = (e: MouseEvent<HTMLImageElement>) => {
     e.stopPropagation();
     console.log("click delete");
@@ -36,7 +35,7 @@ export const UserPost: React.FC<IUserPost> = ({
         <div className={user_posts.title_post}>{title}</div>
         <div className={user_posts.description}>{description}</div>
       </div>
-      {store.user.login == user.login && (
+      {store.user.login == params.login && (
         <>
           <img
             className={[user_posts.icons, user_posts.editBtn].join(" ")}

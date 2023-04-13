@@ -344,7 +344,10 @@ export interface IUserPost {
   id: string;
   description: string;
   onDelete: (id: string) => void;
-  user: IProfileUser;
+}
+
+export interface IUserPostList {
+  posts: IPost[];
 }
 export interface IBlogPost {
   blogPost: IPost;

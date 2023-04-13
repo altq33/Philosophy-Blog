@@ -10,6 +10,7 @@ import { Loader } from "../../components/Loader/Loader";
 import { Context } from "../../main";
 import { Link } from "react-router-dom";
 import { UserPost } from "../../components/UserPost/UserPost";
+import { UserPostList } from "../../components/UserPostList/UserPostList";
 
 export const Profile: React.FC = () => {
   const { user, isLoading } = useUserProfile();
@@ -63,7 +64,7 @@ export const Profile: React.FC = () => {
                 })
               ) : (
                 <h3 className={profile.no_goals}>Целей нет</h3>
-              )}
+              )}  
             </ul>
           </UserInformation>
         </div>
@@ -77,16 +78,7 @@ export const Profile: React.FC = () => {
             </Link>
           )}
 
-          <UserPost
-            id="kdjafkjdkfjadsjf"
-            onDelete={() => {}}
-            src="http://localhost:4444/uploads/posts/covers/selica1681156167915-cover.jpeg"
-            title="Мияги уронил сына"
-            description="
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, consequuntur necessitatibus distinctio odio quam atque autem, est consequatur ipsum fugit reprehenderit nam earum sequi optio neque molestiae pariatur dicta id! Lorem ipsum dolor
-              "
-            user={user}
-          />
+          <UserPostList posts={user.posts} />
         </div>
       </div>
     </div>
