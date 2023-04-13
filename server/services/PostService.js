@@ -14,7 +14,7 @@ class PostService {
     });
 
     const newPost = await doc.save();
-
+    
     return newPost;
   }
 

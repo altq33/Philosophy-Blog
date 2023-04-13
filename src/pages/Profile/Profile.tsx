@@ -9,7 +9,7 @@ import { useUserProfile } from "../../hooks/useUserProfile";
 import { Loader } from "../../components/Loader/Loader";
 import { Context } from "../../main";
 import { Link } from "react-router-dom";
-import { UserPosts } from "../../components/UserPosts/UserPosts";
+import { UserPost } from "../../components/UserPost/UserPost";
 
 export const Profile: React.FC = () => {
   const { user, isLoading } = useUserProfile();
@@ -76,14 +76,17 @@ export const Profile: React.FC = () => {
               Создать пост
             </Link>
           )}
-          <Link to={`/posts/${store.user.userId}`}>
-            <UserPosts
-              src="server/uploads/users/avatars/altq33-avatar.jpeg"
-              title="Мияги или же Валберисasdasadsasdasdadsaskjdaskldaslkdjsalkjdlsajdlj"
-              description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, consequuntur necessitatibus distinctio odio quam atque autem, est consequatur ipsum fugit reprehenderit nam earum sequi optio neque molestiae pariatur dicta id! Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, consequuntur necessitatibus distinctio odio quam atque autem, est consequatur ipsum fugit reprehenderit nam earum sequi optio neque molestiae pariatur dicta id!"
-              user={user}
-            />
-          </Link>
+
+          <UserPost
+            id="kdjafkjdkfjadsjf"
+            onDelete={() => {}}
+            src="http://localhost:4444/uploads/posts/covers/selica1681156167915-cover.jpeg"
+            title="Мияги уронил сына"
+            description="
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, consequuntur necessitatibus distinctio odio quam atque autem, est consequatur ipsum fugit reprehenderit nam earum sequi optio neque molestiae pariatur dicta id! Lorem ipsum dolor
+              "
+            user={user}
+          />
         </div>
       </div>
     </div>

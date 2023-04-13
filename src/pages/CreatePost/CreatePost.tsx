@@ -64,8 +64,12 @@ export const CreatePost = () => {
                 className={crpost.text_input}
                 {...register("title", {
                   required: "Поле является обязательным!",
+                  maxLength: {
+                    value: 26,
+                    message: "Максимально 26 символов!",
+                  },
                 })}
-                maxLength={50}
+                maxLength={26}
               />
               <ErrorContainer
                 styles={errorContainerProfileStyle}
@@ -78,11 +82,15 @@ export const CreatePost = () => {
                 className={crpost.text_area}
                 {...register("description", {
                   required: "Поле является обязательным!",
+                  maxLength: {
+                    value: 240,
+                    message: "Максимально 240 символов!",
+                  },
                 })}
                 name="description"
                 cols={30}
                 rows={30}
-                maxLength={150}
+                maxLength={240}
               />
               <ErrorContainer
                 styles={errorContainerProfileStyle}

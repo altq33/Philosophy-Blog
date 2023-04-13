@@ -338,10 +338,11 @@ export interface IPost {
   createdAt: string;
 }
 
-export interface IUserPosts {
+export interface IUserPost {
   src: string;
   title: string;
+  id: string;
   description: string;
-  // onDelete: (id: string) => void;
+  onDelete: (id: string) => void;
   user: IProfileUser;
 }
