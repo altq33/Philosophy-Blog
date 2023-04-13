@@ -14,7 +14,7 @@ class PostService {
     });
 
     const newPost = await doc.save();
-    
+
     return newPost;
   }
 
@@ -41,6 +41,7 @@ class PostService {
         { _id: id },
         {
           $inc: { viewsCount: 1 },
+        
         },
         {
           returnDocument: "before",
@@ -51,10 +52,13 @@ class PostService {
         bio: 0,
         activated: 0,
         activationLink: 0,
+        email: 0,
+        _id: 0,
         role: 0,
         __v: 0,
         createdAt: 0,
         updatedAt: 0,
+        posts: 0,
       })
       .exec();
     if (!post) {

@@ -9,8 +9,12 @@ export default class PostService {
   static async getAllPosts() {
     return $api.get("/posts");
   }
-  
+
   static async deletePost(id: string) {
     return $api.delete(`/posts/${id}`);
+  }
+
+  static async getPostById(id: string) {
+    return $api.get(`/posts/${id}`);
   }
 }

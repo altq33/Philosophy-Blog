@@ -5,7 +5,6 @@ import { SERVER_HOST } from "../../http";
 import { Link } from "react-router-dom";
 import baseAvatar from "../../assets/Img/base-profile-avatar.png";
 export const BlogPost: React.FC<IBlogPost> = ({ blogPost }) => {
-  
   const getDate = (date: string) => {
     const parseDate = new Date(date);
     return `${parseDate.getDate()}-${
@@ -52,7 +51,7 @@ export const BlogPost: React.FC<IBlogPost> = ({ blogPost }) => {
           {blogPost.tags?.map((tag, index) => {
             return (
               <li key={index} className={blog_post.list_item}>
-                {tag}
+                {`#${tag.split(" ").join("")}`}
               </li>
             );
           })}
@@ -67,7 +66,7 @@ export const BlogPost: React.FC<IBlogPost> = ({ blogPost }) => {
         )}
       </div>
       <div className={blog_post.btn_open_post}>
-        <Link to={`/posts/${blogPost._id}`}>Читать</Link>
+        <Link to={`/${blogPost.user.login}/posts/${blogPost._id}`}>Читать</Link>
       </div>
     </div>
   );

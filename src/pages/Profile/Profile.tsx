@@ -64,11 +64,12 @@ export const Profile: React.FC = () => {
                 })
               ) : (
                 <h3 className={profile.no_goals}>Целей нет</h3>
-              )}  
+              )}
             </ul>
           </UserInformation>
         </div>
         <div className={profile.posts_container}>
+          <h2 className={profile.posts_title}>Посты</h2>
           {store.user.login == user.login && (
             <Link
               to={`/${store.user.login}/create-post`}
@@ -77,8 +78,7 @@ export const Profile: React.FC = () => {
               Создать пост
             </Link>
           )}
-
-          <UserPostList posts={user.posts} />
+          <UserPostList posts={user.posts} /> =
         </div>
       </div>
     </div>

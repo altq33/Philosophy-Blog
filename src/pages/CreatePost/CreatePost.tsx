@@ -38,7 +38,7 @@ export const CreatePost = () => {
     formData.append("user", store.user.userId);
 
     PostService.createPost(formData).then((res) => {
-      navigation(`/posts/${res.data.post._id}`);
+      navigation(`/${store.user.login}/posts/${res.data.post._id}`);
     });
   };
 
