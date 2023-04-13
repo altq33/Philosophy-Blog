@@ -12,7 +12,7 @@ import SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
 import PostService from "../../services/PostService";
 import { Context } from "../../main";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ErrorContainer } from "../../components/ErrorContainer/ErrorContainer";
 import { errorContainerProfileStyle } from "../../resources/validations";
 
@@ -27,7 +27,7 @@ export const CreatePost = () => {
   } = useForm<ICreatePostFields>({ mode: "onChange" });
 
   const { store } = useContext(Context);
-
+  const navigation = useNavigate();
   const onSumbit = (data: ICreatePostFields) => {
     const formData = new FormData();
     formData.append("cover", data.cover ? data.cover[0] : "");
@@ -38,7 +38,7 @@ export const CreatePost = () => {
     formData.append("user", store.user.userId);
 
     PostService.createPost(formData).then((res) => {
-      console.log("Success");
+      navigation(`/posts/${res.data.post._id}`);
     });
   };
 
@@ -122,7 +122,7 @@ export const CreatePost = () => {
                   <ListEditor
                     onChange={onChange}
                     defaultItems={[]}
-                    placeholder="Введите цель"
+                    placeholder="Введите тэг"
                     outerContainerStyles={{ width: "50%", minWidth: "280px" }}
                     containerStyles={{
                       flexFlow: "row wrap",

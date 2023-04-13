@@ -1,0 +1,12 @@
+.wrap_container {
+  max-width: 1832px;
+  margin: 0 auto;
+  font-family: Inter;
+}
+
+.posts_container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+}

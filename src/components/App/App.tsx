@@ -17,6 +17,7 @@ import { AuthRequired } from "../../hoc/AuthRequired";
 import { CurrentUser } from "../../hoc/CurrentUser";
 import { PasswordSettings } from "../../pages/PasswordSettings/PasswordSettings";
 import { CreatePost } from "../../pages/CreatePost/CreatePost";
+import { Post } from "../../pages/Post/Post";
 
 const App: React.FC = () => {
   const { store } = useContext(Context);
@@ -95,6 +96,7 @@ const App: React.FC = () => {
             </AuthRequired>
           }
         />
+        <Route path="/:login/posts/:id" element={<Post />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

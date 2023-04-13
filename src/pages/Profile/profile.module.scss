@@ -6,7 +6,8 @@
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
-  align-items: stretch;
+  align-content:flex-start;
+  align-items: flex-start;
   max-height: 100%;
 }
 .bio {
@@ -55,13 +56,18 @@
   flex-direction: column;
   gap: 10px;
 }
+@media (max-width: 1647px) {
+  .profile_row {
+    justify-content: center;
+  }
+}
+
 @media (max-width: 947px) {
   .profile_row {
     justify-content: center;
   }
   .posts_container {
     max-width: 485px;
-   
   }
 }
 

@@ -329,7 +329,7 @@ export interface IPost {
   imgUrl: string;
   description: string;
   text: string;
-  tags: [string] | null;
+  tags: string[] | null;
   viewsCount: number;
   user: {
     avatarUrl: string;
@@ -344,5 +344,8 @@ export interface IUserPost {
   id: string;
   description: string;
   onDelete: (id: string) => void;
-  user: IProfileUser;
+}
+
+export interface IUserPostList {
+  posts: IPost[];
 }
