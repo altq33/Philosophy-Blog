@@ -2,13 +2,13 @@ import React, { useContext } from "react";
 import blog_post from "./blog_post.module.scss";
 import { IBlogPost } from "../../types/Interfaces";
 import { SERVER_HOST } from "../../http";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import baseAvatar from "../../assets/Img/base-profile-avatar.png";
 import { Like } from "../Like/Like";
 import { Context } from "../../main";
 export const BlogPost: React.FC<IBlogPost> = ({ blogPost }) => {
   const { store } = useContext(Context);
-
+  const [searchParams, setSearchParams] = useSearchParams();
   const getDate = (date: string) => {
     const parseDate = new Date(date);
     return `${parseDate.getDate()}-${
@@ -54,7 +54,15 @@ export const BlogPost: React.FC<IBlogPost> = ({ blogPost }) => {
         <ul className={blog_post.list_tags}>
           {blogPost.tags?.map((tag, index) => {
             return (
-              <li key={index} className={blog_post.list_item}>
+              <li
+                key={index}
+                className={blog_post.list_item}
+                onClick={() => {
+                  setSearchParams({
+                    tag: tag.split(" ").join("").toLowerCase(),
+                  });
+                }}
+              >
                 {`#${tag.split(" ").join("")}`}
               </li>
             );

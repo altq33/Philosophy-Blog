@@ -14,7 +14,6 @@ export const Like: React.FC<ILikeProps> = ({ userId, postId }) => {
 
   useEffect(() => {
     $api.post(`/posts/${postId}/like/check`, { user: userId }).then((res) => {
-      console.log(res.data);
       setIsLiked(res.data.status.isLiked);
       setNumber(res.data.status.count);
     });
