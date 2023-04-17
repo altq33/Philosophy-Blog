@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import blog from "./blog.module.scss";
 import { BlogPost } from "../../components/BlogPost/BlogPost";
 import { BlogPostList } from "../../components/BlogPostList/BlogPostList";
 import { IBlogPostList, IPost } from "../../types/Interfaces";
 import PostService from "../../services/PostService";
 import { Loader } from "../../components/Loader/Loader";
+import { Context } from "../../main";
 
 export const Blog: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [posts, setPosts] = useState<IPost[]>([]);
-
   useEffect(() => {
     setIsLoading(true);
     PostService.getAllPosts().then((res) => {

@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import blog_post from "./blog_post.module.scss";
 import { IBlogPost } from "../../types/Interfaces";
 import { SERVER_HOST } from "../../http";
 import { Link } from "react-router-dom";
 import baseAvatar from "../../assets/Img/base-profile-avatar.png";
+import { Like } from "../Like/Like";
+import { Context } from "../../main";
 export const BlogPost: React.FC<IBlogPost> = ({ blogPost }) => {
+  const { store } = useContext(Context);
+
   const getDate = (date: string) => {
     const parseDate = new Date(date);
     return `${parseDate.getDate()}-${
@@ -66,6 +70,7 @@ export const BlogPost: React.FC<IBlogPost> = ({ blogPost }) => {
         )}
       </div>
       <div className={blog_post.btn_open_post}>
+        <Like userId={store.user.userId} postId={blogPost._id} />
         <Link to={`/${blogPost.user.login}/posts/${blogPost._id}`}>Читать</Link>
       </div>
     </div>

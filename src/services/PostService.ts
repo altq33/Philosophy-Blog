@@ -14,6 +14,10 @@ export default class PostService {
     return $api.delete(`/posts/${id}`);
   }
 
+  static async updatePost(id: string, post: FormData) {
+    return $api.patch(`/posts/${id}`, post);
+  }
+
   static async getPostById(id: string) {
     return $api.get(`/posts/${id}`);
   }

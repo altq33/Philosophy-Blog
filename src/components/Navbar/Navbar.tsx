@@ -57,7 +57,7 @@ export const Navbar: React.FC = observer(() => {
           >
             Блог
           </CustomLink>
-
+          {/* 
           <CustomLink
             closeBurger={navMenu ? changeVisibilityBurger : undefined}
             style={activeStyle}
@@ -72,15 +72,15 @@ export const Navbar: React.FC = observer(() => {
             to="/library"
           >
             Библиотека
-          </CustomLink>
+          </CustomLink> */}
 
-          <CustomLink
+          {/* <CustomLink
             closeBurger={navMenu ? changeVisibilityBurger : undefined}
             style={activeStyle}
             to="/tournament"
           >
             Турнир
-          </CustomLink>
+          </CustomLink> */}
 
           <CustomLink
             closeBurger={navMenu ? changeVisibilityBurger : undefined}
@@ -102,7 +102,7 @@ export const Navbar: React.FC = observer(() => {
         </ul>
       </nav>
       <div className={navbar.right_nav}>
-        <Search />
+        {/* <Search /> */}
 
         <nav className={navbar.auth_btns}>
           {store.isAuth && !store.isLoading ? (

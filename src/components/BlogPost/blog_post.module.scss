@@ -107,8 +107,9 @@
   justify-content: flex-start;
 }
 .btn_open_post {
-    display: flex;
-    align-self: flex-end;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
   a {
     width: 200px;
     height: 50px;

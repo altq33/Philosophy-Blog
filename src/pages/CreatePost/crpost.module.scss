@@ -60,10 +60,12 @@
 }
 
 .label {
-  font-size: 20px;
+  font-family: Inter;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
+  font-size: 20px;
+  padding-bottom: 10px;
 }
 
 .submit_container {

@@ -6,6 +6,7 @@ import PostService from "../../services/PostService";
 import { Loader } from "../../components/Loader/Loader";
 import { NotFound } from "../NotFound/NotFound";
 import ReactMarkdown from "react-markdown";
+import { SoloPost } from "../../components/SoloPost/SoloPost";
 
 export const Post = () => {
   const [postInfo, setPostInfo] = useState<IPost | null>(null);
@@ -18,7 +19,6 @@ export const Post = () => {
     PostService.getPostById(params.id!!)
       .then((res) => {
         setPostInfo(res.data);
-        console.log(res.data);
         setIsLoading(false);
       })
       .catch((err) => {
@@ -31,13 +31,7 @@ export const Post = () => {
     <NotFound />
   ) : (
     <div className={post.wrap_container}>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <div className={post.posts_container}>
-          <ReactMarkdown children={postInfo?.text!!} />
-        </div>
-      )}
+      {isLoading ? <Loader /> : <SoloPost post={postInfo!!} />}
     </div>
   );
 };

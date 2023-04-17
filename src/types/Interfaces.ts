@@ -4,6 +4,7 @@ import {
   RegisterOptions,
   UseFormRegister,
   UseFormResetField,
+  UseFormSetValue,
 } from "react-hook-form";
 import { SelectComponents } from "react-select/dist/declarations/src/components";
 import { GroupBase, StylesConfig } from "react-select";
@@ -248,12 +249,16 @@ export interface IInputFileProps {
 
 export interface ICoverInputProps {
   name: CreatePostFields;
+  defaultValue?: string;
+  setFile?: any;
   register: UseFormRegister<ICreatePostFields>;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  setValue?: UseFormSetValue<ICreatePostFields>;
 }
 
 export interface IFormCoverUploaderProps extends ICoverInputProps {
   resetFile: UseFormResetField<ICreatePostFields>;
+  defaultValue?: string;
 }
 
 export interface IFormAvatarUploaderProps extends IInputFileProps {
@@ -336,6 +341,7 @@ export interface IPost {
     login: string;
   };
   createdAt: string;
+  likes: number;
 }
 
 export interface IUserPost {
@@ -355,4 +361,13 @@ export interface IBlogPost {
 
 export interface IBlogPostList {
   blogPostList: IPost[];
+}
+
+export interface ISoloPostProps {
+  post: IPost;
+}
+
+export interface ILikeProps {
+  userId: string;
+  postId: string;
 }

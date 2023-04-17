@@ -4,6 +4,7 @@ import hoc from "./hoc.module.scss";
 import { Link } from "react-router-dom";
 import { Context } from "../main";
 import { observer } from "mobx-react-lite";
+import { Loader } from "../components/Loader/Loader";
 export const AuthRequired = observer(
   ({ linkPath, linkTitle, description, children }: IAuthRequiredProps) => {
     const {

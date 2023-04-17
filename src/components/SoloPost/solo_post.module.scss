@@ -1,0 +1,173 @@
+.post_container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+}
+
+.post {
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+  flex-direction: column;
+  background: #7b83ce;
+  border-radius: 10px;
+  gap: 20px;
+  padding-bottom: 10px;
+}
+
+.cover {
+  width: 100%;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.user_info {
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-top: 10px;
+}
+.left {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.user_avatar {
+  background: #ffab14;
+  border: 3px solid #ffffff;
+  box-shadow: 0px 30px 30px rgba(136, 81, 0, 0.07);
+  border-radius: 250px;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.login_group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.date {
+  font-weight: 700;
+  font-size: 15px;
+  color: hsl(0, 0%, 100%);
+}
+
+.login {
+  font-weight: 700;
+  font-size: 24px;
+  color: hsl(144, 61%, 72%);
+  display: block;
+  max-width: 100%;
+}
+
+.view_count {
+  font-weight: 700;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: hsl(0, 0%, 100%);
+  &::after {
+    content: "";
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-image: url("../../assets/icons/views.svg");
+  }
+}
+
+.post_info {
+  width: 100%;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 26px;
+  color: hsl(144, 61%, 72%);
+  display: block;
+}
+
+.description {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 27px;
+  color: #ffffff;
+}
+
+.line {
+  display: block;
+  width: 100%;
+  height: 5px;
+  border-radius: 2px;
+  background-color: #ffab14;
+}
+
+.md_text {
+  display: block;
+  width: 100%;
+  font-family: Inter;
+  color: white;
+  font-size: 16px;
+  img {
+    max-width: 80%;
+  }
+  a {
+    color: #ffab14 !important;
+  }
+  ul {
+    list-style: none;
+  }
+  ol,
+  ul {
+    padding-left: 10px;
+  }
+  li {
+    padding-left: 3px;
+  }
+  ol {
+    list-style-type: decimal !important;
+  }
+  h1 {
+    font-size: 20px;
+  }
+  li::marker {
+    margin-left: 10px;
+    content: "\2022";
+    color: hsl(144, 61%, 72%);
+    font-weight: bold;
+    display: inline-block;
+    width: 10px;
+  }
+}
+
+.list_tags {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 100%;
+
+  color: white;
+  gap: 10px;
+}
+
+.list_item {
+  display: flex;
+  padding: 5px;
+  color: black;
+  align-items: center;
+  background: #8ce3af;
+  gap: 5px;
+  font-size: 16px;
+  border-radius: 10px;
+}

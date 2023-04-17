@@ -1,4 +1,4 @@
-;import mongoose from "mongoose";
+import mongoose from "mongoose";
 
 const PostSchema = new mongoose.Schema(
   {
@@ -25,6 +25,11 @@ const PostSchema = new mongoose.Schema(
     viewsCount: {
       type: Number,
       requred: true,
+      default: 0,
+    },
+    likes: {
+      type: Number,
+      required: true,
       default: 0,
     },
     user: {

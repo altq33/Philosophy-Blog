@@ -19,6 +19,7 @@ import { PasswordSettings } from "../../pages/PasswordSettings/PasswordSettings"
 import { CreatePost } from "../../pages/CreatePost/CreatePost";
 import { Blog } from "../../pages/Blog/Blog";
 import { Post } from "../../pages/Post/Post";
+import { EditPost } from "../../pages/EditPost/EditPost";
 
 const App: React.FC = () => {
   const { store } = useContext(Context);
@@ -93,6 +94,20 @@ const App: React.FC = () => {
             >
               <CurrentUser>
                 <CreatePost />
+              </CurrentUser>
+            </AuthRequired>
+          }
+        />
+        <Route
+          path="/:login/edit/:id"
+          element={
+            <AuthRequired
+              description={"Для редактирования постов "}
+              linkPath={"/users/authorization"}
+              linkTitle={"авторизуйтесь"}
+            >
+              <CurrentUser>
+                <EditPost />
               </CurrentUser>
             </AuthRequired>
           }

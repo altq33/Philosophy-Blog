@@ -23,6 +23,7 @@ export const CreatePost = () => {
     resetField,
     handleSubmit,
     setError,
+    setValue,
     control,
   } = useForm<ICreatePostFields>({ mode: "onChange" });
 
@@ -52,6 +53,7 @@ export const CreatePost = () => {
           onSubmit={handleSubmit(onSumbit)}
         >
           <FormCoverUploader
+            setValue={setValue}
             register={register}
             name="cover"
             resetFile={resetField}
@@ -114,14 +116,14 @@ export const CreatePost = () => {
                 errors={errors?.text}
               />
             </label>
-            <label className={crpost.label}>
+            <label htmlFor="" className={crpost.label}>
               Тэги
               <Controller
                 control={control}
-                render={({ field: { onChange } }) => (
+                render={({ field: { onChange, value } }) => (
                   <ListEditor
                     onChange={onChange}
-                    defaultItems={[]}
+                    defaultItems={value}
                     placeholder="Введите тэг"
                     outerContainerStyles={{ width: "50%", minWidth: "280px" }}
                     containerStyles={{

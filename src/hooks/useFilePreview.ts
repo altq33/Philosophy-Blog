@@ -4,7 +4,6 @@ export const useFilePreview = () => {
   const [selectedFile, setSelectedFile] = useState<File>();
   const [preview, setPreview] = useState<string>();
 
-
   useEffect(() => {
     if (!selectedFile) {
       setPreview(undefined);
@@ -22,9 +21,9 @@ export const useFilePreview = () => {
       setSelectedFile(undefined);
       return;
     }
+
     setSelectedFile(e.target.files[0]);
   };
 
-
-  return { preview, selectedFile, onSelectFile, setSelectedFile };
+  return { preview, selectedFile, onSelectFile, setSelectedFile, setPreview };
 };

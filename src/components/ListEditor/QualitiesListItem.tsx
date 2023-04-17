@@ -11,7 +11,9 @@ export const QualitiesListItem: React.FC<IGoalsListItemProps> = ({
       <button
         type="button"
         className={list_editor.delete}
-        onClick={() => onDelete(value.id)}
+        onClick={() => {
+          onDelete(value.id);
+        }}
       ></button>
     </li>
   );

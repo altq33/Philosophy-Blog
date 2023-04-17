@@ -44,7 +44,7 @@ export const Picture: React.FC<IPicture> = ({ url }) => {
         let url = URL.createObjectURL(data);
         let anchor = document.createElement("a");
         anchor.href = url;
-        anchor.download =  `${url}`;
+        anchor.download = `${url}.jpeg`;
         document.body.append(anchor);
         anchor.click();
         anchor.remove();

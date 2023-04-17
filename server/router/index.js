@@ -8,6 +8,7 @@ import {
   postCoverFileMiddleware,
 } from "../middlewares/fileMiddleware.js";
 import { postContoller } from "../controllers/PostController.js";
+import { likeController } from "../controllers/LikeController.js";
 
 const router = new Router();
 
@@ -49,5 +50,12 @@ router.patch(
 router.get("/posts", postContoller.getAllPosts);
 router.get("/posts/:id", postContoller.getPostById);
 router.delete("/posts/:id", authMiddleware, postContoller.deletePost);
+router.post("/posts/:id/like", authMiddleware, likeController.createLike);
+router.delete(
+  "/posts/:id/like/:user",
+  authMiddleware,
+  likeController.deleteLike
+);
+router.post("/posts/:id/like/check", likeController.checkLikeStatus);
 
 export { router };

@@ -78,7 +78,7 @@ export const Profile: React.FC = () => {
               Создать пост
             </Link>
           )}
-          <UserPostList posts={user.posts} /> =
+          <UserPostList posts={user.posts} /> 
         </div>
       </div>
     </div>

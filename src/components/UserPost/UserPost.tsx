@@ -2,7 +2,7 @@ import React, { MouseEvent, useContext } from "react";
 import user_posts from "./user_post.module.scss";
 import { IUserPost } from "../../types/Interfaces";
 import { Context } from "../../main";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 export const UserPost: React.FC<IUserPost> = ({
   src,
   title,
@@ -16,15 +16,15 @@ export const UserPost: React.FC<IUserPost> = ({
 
   const onEdit = (e: MouseEvent<HTMLImageElement>) => {
     e.stopPropagation();
-    navigation(`posts/edit/${id}`);
+    navigation(`/${params.login}/edit/${id}`);
   };
 
-  const onClick = () => {
+  const onClick = (e: MouseEvent<HTMLDivElement>) => {
     navigation(`posts/${id}`);
   };
+
   const handleDelete = (e: MouseEvent<HTMLImageElement>) => {
     e.stopPropagation();
-    console.log("click delete");
     onDelete(id);
   };
 
@@ -42,6 +42,7 @@ export const UserPost: React.FC<IUserPost> = ({
             onClick={onEdit}
             src="src/assets/icons/editPost.svg"
           />
+
           <img
             className={[user_posts.icons, user_posts.deleteBtn].join(" ")}
             onClick={handleDelete}

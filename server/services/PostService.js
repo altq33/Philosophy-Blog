@@ -1,4 +1,5 @@
 import { ApiError } from "../exceptions/ApiError.js";
+import { likeModel } from "../models/Like.js";
 import { postModel } from "../models/Post.js";
 
 class PostService {
@@ -10,6 +11,7 @@ class PostService {
       text: post.text,
       tags: post.tags,
       viewsCount: 0,
+      likes: 0,
       user: post.user,
     });
 
@@ -32,6 +34,7 @@ class PostService {
         updatedAt: 0,
       })
       .exec();
+
     return posts;
   }
 
@@ -41,7 +44,6 @@ class PostService {
         { _id: id },
         {
           $inc: { viewsCount: 1 },
-        
         },
         {
           returnDocument: "before",
